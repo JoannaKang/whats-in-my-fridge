@@ -1,13 +1,14 @@
-import react from 'react';
-
 function IngredientList(props) {
-  props.ingredientlist()
-  console.log(props.ingredients);
+
+  if (props.ingredients === undefined) {
+    return null
+  }
+
   return (
-    <>
-      <h1>hello I'm Ingredient List</h1>
-      <p>{props.ingredients[0]}</p>
-    </>
+    props.ingredients.map(el => {
+      console.log(el);
+      return <p key={el}>{el}</p>
+    })
   )
 }
 
