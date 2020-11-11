@@ -1,14 +1,16 @@
 function IngredientList(props) {
-
-  if (props.ingredients === undefined) {
+  console.log(props);
+  if (props.ingredients === undefined || props.ingredients === []) {
     return null
   }
 
   return (
+
     props.ingredients.map(el => {
-      console.log(el);
-      return <p key={el}>{el}</p>
+      //console.log(el);
+      return <p>{el.name} {el.category}</p>
     })
+
   )
 }
 
