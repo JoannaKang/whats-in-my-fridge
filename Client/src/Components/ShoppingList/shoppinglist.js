@@ -2,16 +2,18 @@ import './shoppinglist.css';
 import ApiService from '../../ApiService'
 import IngredientList from '../IngredientList/IngredientList'
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
+
+//TODO: Separate Add feature to subcomponent -> add In My Frideg component
 
 const ShoppingList = (props) => {
-
   // let [keywords, setKeywords] = useState()
+  console.log(props)
   const [addIngredient, setAddIngredient] = useState({
     name: '',
     category: '',
-    quantity: 0,
+    quantity: 0
   });
 
   // const getKeywords = async () => {
@@ -22,6 +24,18 @@ const ShoppingList = (props) => {
   //     keywords.map(el => el.name);
   //   }
   // }
+
+  const AllList = props.shoppinglist.flatMap(el => el);
+
+  const VeggiesList = AllList.filter(el => el.category === "Veggies");
+  const MeatList = AllList.filter(el => el.category === "Meat");
+  const FishList = AllList.filter(el => el.category === "Fish");
+  const DairyList = AllList.filter(el => el.category === "Dairy");
+  const BakeryList = AllList.filter(el => el.category === "Bakery");
+  const DessertList = AllList.filter(el => el.category === "Dessert");
+  const SauceList = AllList.filter(el => el.category === "Sauce");
+  const SpiceList = AllList.filter(el => el.category === "Spice");
+  const etcList = AllList.filter(el => el.category === "etc");
 
 
   const updateName = e => {
@@ -49,15 +63,13 @@ const ShoppingList = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.setShoppingList([addIngredient, ...props.shoppinglist]);
-  }
-
-  const savetoDB = () => {
-    ApiService.saveShoppingList(props.shoppinglist);
+    ApiService.saveShoppingList(addIngredient).then(() => props.fetchShoppingList());
   }
 
   return (
     <>
+
+      {/* TODO: Only render category if something inside it*/}
       <div className="list-container">
         <div className="Add-list">
           <h1>Shopping List</h1>
@@ -67,6 +79,7 @@ const ShoppingList = (props) => {
               <option>-Select-</option>
               <option>Veggies</option>
               <option>Meat</option>
+              <option>Fish</option>
               <option>Dairy</option>
               <option>Bakery</option>
               <option>Dessert</option>
@@ -79,9 +92,26 @@ const ShoppingList = (props) => {
           </form>
         </div>
         <div className="ingredient-list">
-          <IngredientList ingredients={props.shoppinglist} />
+          <div><h1>Veggies</h1></div>
+          <IngredientList ingredients={VeggiesList} />
+          <div><h1>Meat</h1></div>
+          <IngredientList ingredients={MeatList} />
+          <div><h1>Fish</h1></div>
+          <IngredientList ingredients={FishList} />
+          <div><h1>Dairy</h1></div>
+          <IngredientList ingredients={DairyList} />
+          <div><h1>Bakery</h1></div>
+          <IngredientList ingredients={BakeryList} />
+          <div><h1>Dessert</h1></div>
+          <IngredientList ingredients={DessertList} />
+          <div><h1>Sauce</h1></div>
+          <IngredientList ingredients={SauceList} />
+          <div><h1>Spice</h1></div>
+          <IngredientList ingredients={SpiceList} />
+          <div><h1>etc</h1></div>
+          <IngredientList ingredients={etcList} />
         </div>
-        <button onClick={savetoDB}>Save Shopping List</button>
+        <button>Move to My Fridge</button>
       </div>
 
     </>

@@ -12,19 +12,20 @@ function getMyFridgeItems() {
 
 function saveShoppingList(addedInfo) {
   try {
-    addedInfo.forEach(el =>
-      fetch(BASE_URL + '/shoppinglist', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: el.name,
-          category: el.category,
-          quantity: el.quantity
-        })
+    console.log(addedInfo);
+
+    return fetch(BASE_URL + '/shoppinglist', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: addedInfo.name,
+        category: addedInfo.category,
+        quantity: addedInfo.quantity
       })
-    )
+    })
+
   } catch (err) {
     console.log(err)
   }

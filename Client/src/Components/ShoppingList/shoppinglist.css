@@ -1,17 +1,27 @@
 .list-container {
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font: 1rem sans-serif;
+  font-size: 0.7rem;
+  height: 100vmax;
+  width: 100vmax;
+}
+
+.ingredient-list {
   display: flex;
   flex-direction: column;
   background-color: aqua;
-  width: 80vw;
   align-items: center;
   justify-content: center;
   font: 1rem sans-serif;
   font-size: 0.7rem;
 }
 
-
 .Add-list {
-  display: flex;
+  display: flex; 
   align-content: center;
   flex-direction: column;
 }
@@ -19,16 +29,12 @@
 .input-form {
   display: flex;
   flex-direction: row;
-  padding: 20px;
 }
 
 
 .catecory-select{
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
+
 }
 
-.add-button {
-  margin-left: 10px;
-}

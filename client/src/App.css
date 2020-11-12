@@ -1,16 +1,51 @@
 html {
   font-size: 62.5%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background-color: yellow;
+  height: 100vh;
+  width: 100vw;
 }
 
-/* h1 {
-  font-size: 2rem;
-} */
+a {
+  text-decoration: none;
+}
 
 .header {
   display: flex;
-  align-content: center;
+  flex-wrap: nowrap;
   justify-content: center;
   font-size: 1rem;
+  background-color: blueviolet;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.nav-bar{
+  display: flex;
+  align-items: center;
+  flex: flex-grow;
+  justify-content: center;
+  font: 1rem sans-serif;
+  font-size: 0.7rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: brown;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+.main-container {
+  display: flex;
+  background-color: coral;
+  height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+
+.nav-bar > button {
+margin: 10px;
+text-decoration: none;
 }

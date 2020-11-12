@@ -1,5 +1,4 @@
 function IngredientList(props) {
-  console.log(props);
   if (props.ingredients === undefined || props.ingredients === []) {
     return null
   }

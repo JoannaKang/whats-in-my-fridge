@@ -12,6 +12,7 @@ const InMyFridgeList = (props) => {
 
   const VeggiesList = AllList.filter(el => el.category === "Veggies");
   const MeatList = AllList.filter(el => el.category === "Meat");
+  const FishList = AllList.filter(el => el.category === "Fish");
   const DairyList = AllList.filter(el => el.category === "Dairy");
   const BakeryList = AllList.filter(el => el.category === "Bakery");
   const DessertList = AllList.filter(el => el.category === "Dessert");
@@ -23,23 +24,27 @@ const InMyFridgeList = (props) => {
 
   return (
     <>
-      <h1>In My Fridge</h1>
-      <div><h1>Veggies</h1></div>
-      <IngredientItem ingredientItems={VeggiesList} />
-      <div><h1>Meat</h1></div>
-      <IngredientItem ingredientItems={MeatList} />
-      <div><h1>Dairy</h1></div>
-      <IngredientItem ingredientItems={DairyList} />
-      <div><h1>Bakery</h1></div>
-      <IngredientItem ingredientItems={BakeryList} />
-      <div><h1>Dessert</h1></div>
-      <IngredientItem ingredientItems={DessertList} />
-      <div><h1>Sauce</h1></div>
-      <IngredientItem ingredientItems={SauceList} />
-      <div><h1>Spice</h1></div>
-      <IngredientItem ingredientItems={SpiceList} />
-      <div><h1>etc</h1></div>
-      <IngredientItem ingredientItems={etcList} />
+      <div className="MyFridge-container">
+        <h1>In My Fridge</h1>
+        <div><h1>Veggies</h1></div>
+        <IngredientItem ingredientItems={VeggiesList} />
+        <div><h1>Meat</h1></div>
+        <IngredientItem ingredientItems={MeatList} />
+        <div><h1>Fish</h1></div>
+        <IngredientItem ingredientItems={FishList} />
+        <div><h1>Dairy</h1></div>
+        <IngredientItem ingredientItems={DairyList} />
+        <div><h1>Bakery</h1></div>
+        <IngredientItem ingredientItems={BakeryList} />
+        <div><h1>Dessert</h1></div>
+        <IngredientItem ingredientItems={DessertList} />
+        <div><h1>Sauce</h1></div>
+        <IngredientItem ingredientItems={SauceList} />
+        <div><h1>Spice</h1></div>
+        <IngredientItem ingredientItems={SpiceList} />
+        <div><h1>etc</h1></div>
+        <IngredientItem ingredientItems={etcList} />
+      </div>
     </>
   )
 }
