@@ -4,14 +4,18 @@ function IngredientList(props) {
     return null
   }
 
-  return (
+  if (props.length === 0) {
+    return (
+      <p>Add new Shopping List</p>
+    )
+  } else {
+    return (
+      props.ingredients.map(el => {
+        return <p key={el._id}>{el.name} {el.category}</p>
+      })
+    )
+  }
 
-    props.ingredients.map(el => {
-      //console.log(el);
-      return <p>{el.name} {el.category}</p>
-    })
-
-  )
 }
 
 

@@ -5,8 +5,41 @@ function getAllIngredients() {
     .then(response => response.json())
 }
 
+function getMyFridgeItems() {
+  return fetch(BASE_URL + '/inmyfridge')
+    .then(res => res.json())
+}
+
+function saveShoppingList(addedInfo) {
+  try {
+    addedInfo.forEach(el =>
+      fetch(BASE_URL + '/shoppinglist', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: el.name,
+          category: el.category,
+          quantity: el.quantity
+        })
+      })
+    )
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+function getShoppingList() {
+  return fetch(BASE_URL + '/shoppinglist')
+    .then(res => res.json());
+}
+
 const exports = {
-  getAllIngredients
+  getAllIngredients,
+  getMyFridgeItems,
+  saveShoppingList,
+  getShoppingList
 }
 
 export default exports;

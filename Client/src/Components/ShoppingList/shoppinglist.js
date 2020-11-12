@@ -1,28 +1,18 @@
-import react from 'react';
 import './shoppinglist.css';
-
 import ApiService from '../../ApiService'
 import IngredientList from '../IngredientList/IngredientList'
 
 import { useState, useEffect } from 'react';
 
 
-const ShoppingList = () => {
+const ShoppingList = (props) => {
 
   // let [keywords, setKeywords] = useState()
   const [addIngredient, setAddIngredient] = useState({
     name: '',
-    category: ''
+    category: '',
+    quantity: 0,
   });
-
-  console.log(addIngredient);
-  const [shoppinglist, setShoppingList] = useState([]);
-  console.log(shoppinglist);
-
-  // const setShoppinglistInfo = (addIngredient) => {
-  //   setShoppingList(addIngredient);
-  //   console.log(shoppinglist)
-  // }
 
   // const getKeywords = async () => {
   //   const keywordsfromDB = await ApiService.getAllIngredients();
@@ -35,12 +25,10 @@ const ShoppingList = () => {
 
 
   const updateName = e => {
-
     setAddIngredient({
       ...addIngredient,
       name: e
     })
-
   }
 
   const updateCategory = e => {
@@ -50,9 +38,22 @@ const ShoppingList = () => {
     })
   }
 
+  const updateQuantity = e => {
+    setAddIngredient(
+      {
+        ...addIngredient,
+        quantity: e
+      }
+    )
+  }
+
   const submitHandler = (event) => {
     event.preventDefault();
-    setShoppingList([addIngredient, ...shoppinglist]);
+    props.setShoppingList([addIngredient, ...props.shoppinglist]);
+  }
+
+  const savetoDB = () => {
+    ApiService.saveShoppingList(props.shoppinglist);
   }
 
   return (
@@ -68,18 +69,21 @@ const ShoppingList = () => {
               <option>Meat</option>
               <option>Dairy</option>
               <option>Bakery</option>
+              <option>Dessert</option>
               <option>Sauce</option>
               <option>Spice</option>
               <option>etc</option>
             </select>
+            <input className="quantity" type="number" min='0' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
             <button className="add-button"> Add </button>
           </form>
-
         </div>
-        <div className="incredient-list">
-          <IngredientList ingredients={shoppinglist} />
+        <div className="ingredient-list">
+          <IngredientList ingredients={props.shoppinglist} />
         </div>
+        <button onClick={savetoDB}>Save Shopping List</button>
       </div>
+
     </>
   )
 }
