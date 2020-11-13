@@ -21,7 +21,7 @@ exports.saveInmyfridge = async (req, res) => {
   try {
     console.log("In my fridge", req.body);
     const { name, category, quantity } = await req.body;
-    const newMyFridgeItem = MyfridgeItem.create({ name, category, quantity });
+    const newMyFridgeItem = MyfridgeItem.create(req.body);
     res.status(201).send(newMyFridgeItem);
   } catch (e) {
     console.log(e)
@@ -32,12 +32,40 @@ exports.saveInmyfridge = async (req, res) => {
 exports.getMyFridgeList = async (req, res) => {
   try {
     const AllFridgeList = await MyfridgeItem.find({});
+    console.log(AllFridgeList);
     res.send(AllFridgeList);
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
   }
 };
+
+exports.getOnegetMyFridgeItem = async (req, res) => {
+  try {
+    console.log('Find One from My Fridge', req.params.id)
+    const foundedItem = await MyfridgeItem.findOne({
+      _id: req.params.id
+    });
+    console.log(foundedItem);
+    res.send(foundedItem);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+}
+
+exports.deleteMyfridge = async (req, res) => {
+  try {
+    console.log('Deleted', req.params.id.slice(1,))
+    await MyfridgeItem.deleteOne({
+      _id: req.params.id.slice(1,)
+    })
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+
+}
 
 exports.saveShoppingList = async (req, res) => {
   try {

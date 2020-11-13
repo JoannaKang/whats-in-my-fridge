@@ -1,18 +1,23 @@
-import './App.css';
-import ApiService from './ApiService';
-import ShoppingList from './Components/ShoppingList/shoppinglist'
-import InMyFridgeList from './Components/InMyFridgeList/InMyFridgeList'
-import MyRecipe from './Components/MyRecipe/MyRecipe'
-import Home from './Components/Home/Home'
-import Dashbard from '../src/Components/Dashboard/Dashboard'
+//**Import React */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
+import './App.css';
+import ApiService from './ApiService';
+
+//**Components
+import CategoryList from './Components/CategoryList/CategoryList';
+import MyRecipe from './Components/MyRecipe/MyRecipe';
+import Home from './Components/Home/Home';
+import Dashbard from '../src/Components/Dashboard/Dashboard';
+
+//TODO: Check MyFridgeList & MyShoppingList is not undefine at top level
 
 function App() {
 
   const [MyFridgeList, setMyfridgeList] = useState([]);
   const [MyShoppingList, setMyShoppingList] = useState([]);
+  const [checkedItems, setCheckedItems] = useState([]);
 
   const fetchMyFridgeList = () => {
     ApiService.getMyFridgeItems()
@@ -24,6 +29,14 @@ function App() {
   const fetchShoppinglist = () => {
     ApiService.getShoppingList()
       .then(data => setMyShoppingList(data));
+  }
+
+  const clickboxHandler = (e) => {
+    setCheckedItems([
+      ...checkedItems, e.target.value]
+    )
+    console.log('clicked', e.target.value, e.attribute)
+    console.log('checkedItems', checkedItems);
   }
 
   useEffect(() => {
@@ -41,20 +54,46 @@ function App() {
       <Router>
         <Switch>
           <div className="main-container">
+
             <Route exact path="/">
               <Home />
             </Route>
+
+
             <Route exact path='/shoppinglist'>
-              <ShoppingList shoppinglist={MyShoppingList} setShoppingList={setMyShoppingList} fetchShoppingList={fetchShoppinglist} />
+              <div className="list-container">
+                <CategoryList
+                  listitems={MyShoppingList}
+                  setMyShoppingList={setMyShoppingList}
+                  fetchMyFridgeList={fetchMyFridgeList}
+                  fetchShoppinglist={fetchShoppinglist}
+                  clickboxHandler={clickboxHandler}
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems} />
+                <button>Move to My Fridge</button>
+              </div>
             </Route>
 
             <Route exact path='/inmyfridge'>
-              <InMyFridgeList fridgelist={MyFridgeList} />
+              <div className="MyFridge-container">
+                <CategoryList
+                  listitems={MyFridgeList}
+                  setMyfridgeList={setMyfridgeList}
+                  fetchMyFridgeList={fetchMyFridgeList}
+                  fetchShoppinglist={fetchShoppinglist}
+                  clickboxHandler={clickboxHandler}
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems} />
+                <button>Get Recipes</button>
+              </div>
             </Route>
 
             <Route exact path='/myrecipe'>
-              <MyRecipe />
+              <div className="MyRecipe-container">
+                <MyRecipe />
+              </div>
             </Route>
+
           </div>
         </Switch>
 

@@ -9,17 +9,36 @@
 .input-form {
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
+  height: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-input{
+  flex: 4;
+  width: 20vw;
 }
 
 .catecory-select{
   display: flex;
   flex-direction: row;
   margin-left: 10px;
+  flex: 2;
+  width: 20vw;
 }
 
 .quantity {
   margin-left: 10px;
+  width: 5vw;
+}
+
+.add-shoppinglist{
+  width: 10vw;
+}
+
+.add-to-myfridge{
+  width: 10vw;
+  margin-right: 10px;
 }
 
 button {

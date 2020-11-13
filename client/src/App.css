@@ -42,9 +42,34 @@ a {
   background-color: coral;
   height: 100vh;
   padding-bottom: 60px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .nav-bar > button {
 margin: 10px;
 text-decoration: none;
+}
+
+.list-container {
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font: 1rem sans-serif;
+  font-size: 0.7rem;
+  height: 100vmax;
+  width: 100vmax;
+}
+
+.MyFridge-container {
+  background-color: yellowgreen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 1rem sans-serif;
+  font-size: 0.7rem;
+  height: 100vmax;
+  width: 100vmax;
 }

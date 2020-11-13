@@ -47,9 +47,8 @@ const AddItems = (props) => {
   return (
     <>
       <div className="Add-list">
-        <h1>Add Itmes</h1>
         <form className="input-form" >
-          <input type="ingredeint-add" placeholder="type shopping list.." value={addIngredient.name} onChange={e => updateName(e.target.value)}></input>
+          <input type="ingredeint-add" className="text-input" placeholder="Add new Item" value={addIngredient.name} onChange={e => updateName(e.target.value)}></input>
           <select className="catecory-select" value={addIngredient.category} onChange={(e) => updateCategory(e.target.value)} >
             <option>-Select-</option>
             <option>Veggies</option>
