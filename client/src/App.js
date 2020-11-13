@@ -4,6 +4,7 @@ import ShoppingList from './Components/ShoppingList/shoppinglist'
 import InMyFridgeList from './Components/InMyFridgeList/InMyFridgeList'
 import MyRecipe from './Components/MyRecipe/MyRecipe'
 import Home from './Components/Home/Home'
+import Dashbard from '../src/Components/Dashboard/Dashboard'
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       <div className="header"><h1>What's in My Fridge</h1></div>
+      <Dashbard fetchShoppingList={fetchShoppinglist} fetchMyFridgeList={fetchMyFridgeList} />
 
       <Router>
         <Switch>

@@ -20,21 +20,4 @@
   font-size: 0.7rem;
 }
 
-.Add-list {
-  display: flex; 
-  align-content: center;
-  flex-direction: column;
-}
-
-.input-form {
-  display: flex;
-  flex-direction: row;
-}
-
-
-.catecory-select{
-  display: flex;
-  flex-direction: row;
-
-}
 

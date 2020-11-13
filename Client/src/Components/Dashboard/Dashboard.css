@@ -1,0 +1,27 @@
+.Add-list {
+  display: flex; 
+  align-content: center;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 10px;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.catecory-select{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.quantity {
+  margin-left: 10px;
+}
+
+button {
+  margin-left: 10px;
+}

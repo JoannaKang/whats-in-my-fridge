@@ -11,7 +11,6 @@ const ShoppingListItem = require('./Models/ShoppingListItem');
 exports.getIngredients = async (req, res) => {
   try {
     const allIngredients = await Ingredients.find();
-    console.log("incotroller", allIngredients.length)
     res.status(200).send(allIngredients);
   } catch (err) {
     res.sendStatus(500);
@@ -20,7 +19,7 @@ exports.getIngredients = async (req, res) => {
 
 exports.saveInmyfridge = async (req, res) => {
   try {
-    console.log(req.body);
+    console.log("In my fridge", req.body);
     const { name, category, quantity } = await req.body;
     const newMyFridgeItem = MyfridgeItem.create({ name, category, quantity });
     res.status(201).send(newMyFridgeItem);
@@ -42,6 +41,7 @@ exports.getMyFridgeList = async (req, res) => {
 
 exports.saveShoppingList = async (req, res) => {
   try {
+    console.log("Shopping list", req.body);
     const newMyShoppingList = await ShoppingListItem.create(req.body);
     res.status(201).send(newMyShoppingList);
   } catch (e) {

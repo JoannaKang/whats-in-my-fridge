@@ -10,11 +10,11 @@ import { useState } from 'react';
 const ShoppingList = (props) => {
   // let [keywords, setKeywords] = useState()
   console.log(props)
-  const [addIngredient, setAddIngredient] = useState({
-    name: '',
-    category: '',
-    quantity: 0
-  });
+  // const [addIngredient, setAddIngredient] = useState({
+  //   name: '',
+  //   category: '',
+  //   quantity: 0
+  // });
 
   // const getKeywords = async () => {
   //   const keywordsfromDB = await ApiService.getAllIngredients();
@@ -71,7 +71,7 @@ const ShoppingList = (props) => {
 
       {/* TODO: Only render category if something inside it*/}
       <div className="list-container">
-        <div className="Add-list">
+        {/* <div className="Add-list">
           <h1>Shopping List</h1>
           <form className="input-form" onSubmit={submitHandler}>
             <input type="ingredeint-add" placeholder="type shopping list.." value={addIngredient.name} onChange={e => updateName(e.target.value)}></input>
@@ -87,10 +87,10 @@ const ShoppingList = (props) => {
               <option>Spice</option>
               <option>etc</option>
             </select>
-            <input className="quantity" type="number" min='0' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
+            <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
             <button className="add-button"> Add </button>
           </form>
-        </div>
+        </div> */}
         <div className="ingredient-list">
           <div><h1>Veggies</h1></div>
           <IngredientList ingredients={VeggiesList} />

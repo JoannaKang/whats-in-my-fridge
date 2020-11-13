@@ -44,6 +44,7 @@ const InMyFridgeList = (props) => {
         <IngredientItem ingredientItems={SpiceList} />
         <div><h1>etc</h1></div>
         <IngredientItem ingredientItems={etcList} />
+        <button>Get Recipes</button>
       </div>
     </>
   )

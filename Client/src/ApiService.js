@@ -10,10 +10,27 @@ function getMyFridgeItems() {
     .then(res => res.json())
 }
 
+function saveMyfridgeList(addedInfo) {
+  try {
+    return fetch(BASE_URL + '/inmyfridge', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: addedInfo.name,
+        category: addedInfo.category,
+        quantity: addedInfo.quantity
+      })
+    })
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 function saveShoppingList(addedInfo) {
   try {
-    console.log(addedInfo);
-
     return fetch(BASE_URL + '/shoppinglist', {
       method: "POST",
       headers: {
@@ -38,9 +55,10 @@ function getShoppingList() {
 
 const exports = {
   getAllIngredients,
+  saveMyfridgeList,
   getMyFridgeItems,
   saveShoppingList,
-  getShoppingList
+  getShoppingList,
 }
 
 export default exports;
