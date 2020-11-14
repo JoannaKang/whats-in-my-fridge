@@ -1,11 +1,14 @@
 const db = require('./db');
 const { fetchIngredientsList } = require('./ingredientlist');
+// const Recipies = require('./Recipies');
+const Recipies = require('./Models/Recipies');
 const Ingredients = require('./Models/Ingredients');
 const MyfridgeItem = require('./Models/Fridgeitem');
 const ShoppingListItem = require('./Models/ShoppingListItem');
 
 
-// fetchIngredientsList().then((res) => res.forEach(async el => { await Ingredients.create({ name: el }) }));
+// fetchIngredientsList()
+// .then((res) => res.forEach(async el => { await Ingredients.create({ name: el }) }));
 
 
 exports.getIngredients = async (req, res) => {
@@ -115,3 +118,18 @@ exports.deleteShoppingList = async (req, res) => {
   }
 }
 
+// exports.getRecipiesfromAPI = async () => {
+//   Recipies().then((res) => {
+//     const recipies = res;
+//     return recipies;
+//   });
+// }
+
+exports.getRecipes = async (req, res) => {
+  try {
+    const RecipiesfromDB = await Recipies.find();
+    res.status(200).send(RecipiesfromDB);
+  } catch (err) {
+    alert(err)
+  }
+}

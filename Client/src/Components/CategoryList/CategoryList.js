@@ -2,12 +2,9 @@ import IngredientItem from '../IngredientItem/IngredientItem'
 import Button from '../Buttons/Buttons'
 
 const CategoryList = (props) => {
-
   if (props.listitems.length === 0) {
     return null;
   }
-
-  // console.log('CategoryList', props);
 
   const AllList = props.listitems.flatMap(el => el)
 

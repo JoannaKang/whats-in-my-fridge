@@ -1,20 +1,23 @@
-import react from 'react';
-// import { gql } from 'apollo-boost';
-// import { useQuery } from '@apollo/react-hooks';
+function RecipeList(props) {
 
-import { gql, useQuery } from '@apollo/client'
-
-const getRecipes = gql`
-  { 
-     meals {
-      idMeal
-    }
+  if (props.Recipeitems === undefined) {
+    return null;
   }
-  `
 
 
-export default () => {
-  const { loading, error, data } = useQuery(getRecipes);
-  console.log(loading, error, data)
-  return <h1>Recipes list</h1>
+  return (
+    props.Recipeitems.map(el => {
+      return (
+        <div key={el._id}>
+          <img src={el.strMealThumb} width="100"></img>
+          {el.strMeal}
+        </div>
+      )
+    })
+  )
+
+
 }
+
+
+export default RecipeList;

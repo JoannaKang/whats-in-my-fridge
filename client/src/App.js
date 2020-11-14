@@ -10,6 +10,7 @@ import CategoryList from './Components/CategoryList/CategoryList';
 import MyRecipe from './Components/MyRecipe/MyRecipe';
 import Home from './Components/Home/Home';
 import Dashbard from '../src/Components/Dashboard/Dashboard';
+import RecipeList from '../src/Components/RecipeList/RecipeList';
 
 //TODO: Check MyFridgeList & MyShoppingList is not undefine at top level
 
@@ -18,6 +19,7 @@ function App() {
   const [MyFridgeList, setMyfridgeList] = useState([]);
   const [MyShoppingList, setMyShoppingList] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
+  const [Recipeitems, setRecipeitems] = useState([]);
 
   const fetchMyFridgeList = () => {
     ApiService.getMyFridgeItems()
@@ -33,6 +35,11 @@ function App() {
       });
   }
 
+  const fetchRecipes = () => {
+    ApiService.getRecipes()
+      .then(data => setRecipeitems(data));
+  }
+
   const clickboxHandler = (e) => {
     if (e.target.checked === true) {
       setCheckedItems([
@@ -41,12 +48,12 @@ function App() {
     } else {
       setCheckedItems(checkedItems.filter(el => el !== e.target.value));
     }
-
   }
 
   useEffect(() => {
     fetchMyFridgeList();
     fetchShoppinglist();
+    fetchRecipes();
   }, [])
 
 
@@ -105,10 +112,19 @@ function App() {
               </div>
             </Route>
 
+            <Route exact path='/recipes'>
+              <div className="Recipes-container">
+                <RecipeList
+                  Recipeitems={Recipeitems}
+
+                  setRecipeitems={setRecipeitems}
+                  fetchRecipes={fetchRecipes}
+                />
+              </div>
+            </Route>
+
           </div>
         </Switch>
-
-
 
         <div className="nav-bar">
           <button>

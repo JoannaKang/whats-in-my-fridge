@@ -16,7 +16,7 @@ function getOneMyFridgeItem(id) {
 }
 
 async function saveMyfridgeList(addedInfo) {
-  console.log('📣 fridgeItem saved!', addedInfo)
+  console.log('📣 fridgeItem save requested!', addedInfo)
   try {
     for (let i = 0; i < addedInfo.length; i++) {
       const status = await fetch(BASE_URL + '/inmyfridge', {
@@ -39,7 +39,7 @@ async function saveMyfridgeList(addedInfo) {
 }
 
 async function deleteMyFridgeItems(checkedItem) {
-  console.log('📣 fridgeItem deleted!', checkedItem)
+  console.log('📣 fridgeItem delete requested!', checkedItem)
   try {
     for (let i = 0; i < checkedItem.length; ++i) {
       await fetch(BASE_URL + `/inmyfridge/:${checkedItem[i]}`, {
@@ -53,7 +53,7 @@ async function deleteMyFridgeItems(checkedItem) {
 }
 
 async function saveShoppingList(addedInfo) {
-  console.log('📣 Shoppinglist SAVED!', addedInfo)
+  console.log('📣 Shoppinglist SAVE requested!', addedInfo)
   try {
     for (let i = 0; i < addedInfo.length; i++) {
       await fetch(BASE_URL + '/shoppinglist', {
@@ -77,10 +77,11 @@ async function saveShoppingList(addedInfo) {
 }
 
 function getShoppingList() {
-  console.log('📣 Shoppinglist Fetched!')
+  console.log('📣 Shoppinglist requested!')
   return fetch(BASE_URL + '/shoppinglist')
     .then(res => res.json());
 }
+
 
 function getOneShoppingList(id) {
   return fetch(BASE_URL + `/shoppinglist/${id}`)
@@ -88,19 +89,24 @@ function getOneShoppingList(id) {
 }
 
 async function deleteShoppingList(checkedItem) {
-  console.log('📣 Shoppinglist deleted!', checkedItem)
   try {
     for (let i = 0; i < checkedItem.length; ++i) {
       await fetch(BASE_URL + `/shoppinglist/:${checkedItem[i]}`, {
         method: 'DELETE'
       })
     }
+    console.log('📣 Shoppinglist deleted!', checkedItem)
   } catch (err) {
     console.log(err)
     alert(err);
   }
 }
 
+function getRecipes() {
+  console.log('📣 Recipe list requested!')
+  return fetch(BASE_URL + '/recipies')
+    .then(res => res.json());
+}
 
 
 const exports = {
@@ -112,7 +118,8 @@ const exports = {
   saveShoppingList,
   getShoppingList,
   getOneShoppingList,
-  deleteShoppingList
+  deleteShoppingList,
+  getRecipes
 }
 
 export default exports;
