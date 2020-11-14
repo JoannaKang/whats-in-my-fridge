@@ -28,15 +28,20 @@ function App() {
 
   const fetchShoppinglist = () => {
     ApiService.getShoppingList()
-      .then(data => setMyShoppingList(data));
+      .then(data => {
+        setMyShoppingList(data)
+      });
   }
 
   const clickboxHandler = (e) => {
-    setCheckedItems([
-      ...checkedItems, e.target.value]
-    )
-    console.log('clicked', e.target.value, e.attribute)
-    console.log('checkedItems', checkedItems);
+    if (e.target.checked === true) {
+      setCheckedItems([
+        ...checkedItems, e.target.value]
+      )
+    } else {
+      setCheckedItems(checkedItems.filter(el => el !== e.target.value));
+    }
+
   }
 
   useEffect(() => {
@@ -49,7 +54,12 @@ function App() {
   return (
     <>
       <div className="header"><h1>What's in My Fridge</h1></div>
-      <Dashbard fetchShoppingList={fetchShoppinglist} fetchMyFridgeList={fetchMyFridgeList} />
+      <Dashbard
+        fetchShoppingList={fetchShoppinglist}
+        fetchMyFridgeList={fetchMyFridgeList}
+        checkedItems={checkedItems}
+        setCheckedItems={setCheckedItems}
+      />
 
       <Router>
         <Switch>
@@ -64,13 +74,13 @@ function App() {
               <div className="list-container">
                 <CategoryList
                   listitems={MyShoppingList}
+                  setMyfridgeList={setMyfridgeList}
                   setMyShoppingList={setMyShoppingList}
                   fetchMyFridgeList={fetchMyFridgeList}
                   fetchShoppinglist={fetchShoppinglist}
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems} />
-                <button>Move to My Fridge</button>
               </div>
             </Route>
 
@@ -79,6 +89,7 @@ function App() {
                 <CategoryList
                   listitems={MyFridgeList}
                   setMyfridgeList={setMyfridgeList}
+                  setMyShoppingList={setMyShoppingList}
                   fetchMyFridgeList={fetchMyFridgeList}
                   fetchShoppinglist={fetchShoppinglist}
                   clickboxHandler={clickboxHandler}

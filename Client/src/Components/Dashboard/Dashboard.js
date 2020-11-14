@@ -7,7 +7,7 @@ const AddItems = (props) => {
   const [addIngredient, setAddIngredient] = useState({
     name: '',
     category: '',
-    quantity: 0
+    quantity: 1
   });
 
 
@@ -36,12 +36,12 @@ const AddItems = (props) => {
 
   const myfridgeHandler = (event) => {
     event.preventDefault();
-    ApiService.saveMyfridgeList(addIngredient).then(() => props.fetchMyFridgeList());
+    ApiService.saveMyfridgeList([addIngredient]).then(() => props.fetchMyFridgeList());
   }
 
   const shoppinglistHandler = (event) => {
     event.preventDefault();
-    ApiService.saveShoppingList(addIngredient).then(() => props.fetchShoppingList());
+    ApiService.saveShoppingList([addIngredient]).then(() => props.fetchShoppingList());
   }
 
   return (

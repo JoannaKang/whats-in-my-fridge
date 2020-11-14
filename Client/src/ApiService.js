@@ -11,64 +11,68 @@ function getMyFridgeItems() {
 }
 
 function getOneMyFridgeItem(id) {
-  console.log('⛵', id)
   return fetch(BASE_URL + `/inmyfridge/${id}`)
     .then(res => res.json());
 }
 
-
-function saveMyfridgeList(addedInfo) {
+async function saveMyfridgeList(addedInfo) {
   console.log('📣 fridgeItem saved!', addedInfo)
   try {
-    return fetch(BASE_URL + '/inmyfridge', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: addedInfo.name,
-        category: addedInfo.category,
-        quantity: addedInfo.quantity,
-        saved: "Fridge"
-      })
-    })
-
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-function deleteMyFridgeItems(checkedItem) {
-  console.log('📣 fridgeItem deleted!', checkedItem)
-  try {
-    checkedItem.map(el =>
-      fetch(BASE_URL + `/inmyfridge/:${el}`, {
-        method: 'DELETE'
-      }))
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-function saveShoppingList(addedInfo) {
-  console.log('📣 Shoppinglist SAVED!', addedInfo)
-  try {
-    addedInfo.map(el =>
-      fetch(BASE_URL + '/shoppinglist', {
+    for (let i = 0; i < addedInfo.length; i++) {
+      const status = await fetch(BASE_URL + '/inmyfridge', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: el.name,
-          category: el.category,
-          quantity: el.quantity,
+          name: addedInfo[i].name,
+          category: addedInfo[i].category,
+          quantity: addedInfo[i].quantity,
+          saved: "Fridge"
+        })
+      })
+    }
+  } catch (err) {
+    console.log(err)
+    alert(err);
+  }
+}
+
+async function deleteMyFridgeItems(checkedItem) {
+  console.log('📣 fridgeItem deleted!', checkedItem)
+  try {
+    for (let i = 0; i < checkedItem.length; ++i) {
+      await fetch(BASE_URL + `/inmyfridge/:${checkedItem[i]}`, {
+        method: 'DELETE'
+      })
+    }
+  } catch (err) {
+    console.log(err)
+    alert(err);
+  }
+}
+
+async function saveShoppingList(addedInfo) {
+  console.log('📣 Shoppinglist SAVED!', addedInfo)
+  try {
+    for (let i = 0; i < addedInfo.length; i++) {
+      await fetch(BASE_URL + '/shoppinglist', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: addedInfo[i].name,
+          category: addedInfo[i].category,
+          quantity: addedInfo[i].quantity,
           saved: "ShoppingList"
         })
       })
-    )
+    }
+
   } catch (err) {
     console.log(err)
+    alert(err);
   }
 }
 
@@ -78,6 +82,27 @@ function getShoppingList() {
     .then(res => res.json());
 }
 
+function getOneShoppingList(id) {
+  return fetch(BASE_URL + `/shoppinglist/${id}`)
+    .then(res => res.json());
+}
+
+async function deleteShoppingList(checkedItem) {
+  console.log('📣 Shoppinglist deleted!', checkedItem)
+  try {
+    for (let i = 0; i < checkedItem.length; ++i) {
+      await fetch(BASE_URL + `/shoppinglist/:${checkedItem[i]}`, {
+        method: 'DELETE'
+      })
+    }
+  } catch (err) {
+    console.log(err)
+    alert(err);
+  }
+}
+
+
+
 const exports = {
   getAllIngredients,
   saveMyfridgeList,
@@ -86,6 +111,8 @@ const exports = {
   deleteMyFridgeItems,
   saveShoppingList,
   getShoppingList,
+  getOneShoppingList,
+  deleteShoppingList
 }
 
 export default exports;

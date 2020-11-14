@@ -2,7 +2,7 @@ import Buttons from '../Buttons/Buttons'
 
 const IngredientItem = (props) => {
 
-  console.log('📧', props);
+  // console.log('📧', props);
 
   if (props.ingredientItems === undefined) {
     return null;

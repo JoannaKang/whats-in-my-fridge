@@ -1,66 +1,91 @@
 import ApiService from '../../ApiService'
+import { Link } from 'react-router-dom';
 
 const Button = (props) => {
 
+  // console.log('in button', props);
 
   if (props.listitems === undefined) {
     return null;
   }
 
+  const addtoShoppinglist = async (e) => {
+    props.setCheckedItems([]);
 
-  const shoppinglistHandler = async (e) => {
-    console.log('🌽', props.checkedItems)
+    let movedItemArray = [];
+    for (let i = 0; i < props.checkedItems.length; ++i) {
+      const el = props.checkedItems[i];
+      let res = await ApiService.getOneMyFridgeItem(el);
 
-    await props.checkedItems.map(el =>
-      ApiService.getOneMyFridgeItem(el)
-        .then((res) => {
-          // console.log('RESSSSS', res.name, res.category, res.quantity, res.saved)
-          const movedItem = Object.assign({}, { name: res.name, category: res.category, quantity: res.quantity })
-          return movedItem
-        })
-        .then((res) => {
-          const movedItem = [];
-          movedItem.push(res)
-          return movedItem
-        })
-        .then((res) => {
-          ApiService.saveShoppingList(res);
-          //FIXME: why is not Shoppinglist fetching again??
-        })
-    );
+      const movedItem = Object.assign({}, { name: res.name, category: res.category, quantity: res.quantity })
+      movedItemArray.push(movedItem);
+    }
 
-    await props.checkedItems.map(el => {
-      const removedFromFridge = []
+    await ApiService.saveShoppingList(movedItemArray);
+
+    let removedFromFridge = []
+    props.checkedItems.map(el => {
       removedFromFridge.push(el)
-      ApiService.deleteMyFridgeItems(removedFromFridge);
     })
+    await ApiService.deleteMyFridgeItems(removedFromFridge);
 
-    ApiService.getShoppingList();
+
+    props.fetchMyFridgeList();
+    props.fetchShoppinglist();
   }
 
-  const inmyfridgeHandler = async () => {
-    console.log('🍖', props.checkedItems)
+  const deleteMyfridgeItem = async () => {
     await ApiService.deleteMyFridgeItems(props.checkedItems);
-    //FIXME: why is not fetch myfridgelist again??
     props.fetchMyFridgeList();
   }
 
-  console.log('in button', props);
+  const movetoMyFridge = async (e) => {
+    props.setCheckedItems([]);
+    console.log(props.checkedItems)
+
+    let movedItemArray = [];
+
+    for (let i = 0; i < props.checkedItems.length; i++) {
+      const el = props.checkedItems[i];
+      let res = await ApiService.getOneShoppingList(el);
+
+      const movedItem = Object.assign({}, { name: res.name, category: res.category, quantity: res.quantity })
+      movedItemArray.push(movedItem);
+    }
+
+    await ApiService.saveMyfridgeList(movedItemArray);
+
+    let removedFromShoppinglist = [];
+    props.checkedItems.map(el => {
+      removedFromShoppinglist.push(el)
+    })
+    await ApiService.deleteShoppingList(removedFromShoppinglist);
+
+    props.fetchMyFridgeList();
+    props.fetchShoppinglist();
+  }
+
+  const deleteShoppinglist = async () => {
+    await ApiService.deleteShoppingList(props.checkedItems);
+    props.fetchShoppinglist();
+  }
+
+
 
   if (props.listitems[0].saved === "Fridge") {
     return (
       <>
-        <button onClick={shoppinglistHandler}>Add to shopping list</button>
-        <button onClick={inmyfridgeHandler}>Delete</button>
+        <button onClick={addtoShoppinglist}><Link to="/shoppinglist">Add to shopping list</Link></button>
+        <button onClick={deleteMyfridgeItem}>Delete</button>
       </>
     )
   } else if (props.listitems[0].saved === "ShoppingList") {
     return (
       <>
-          //TODO: Delete 핸들러 구현
-          //TODO: Move to my Fridge 핸들러 구현
-        <button>Move to My Fridge</button>
-        <button>Delete</button>
+        {/* //TODO: Delete 핸들러 구현
+          //TODO: Move to my Fridge 핸들러 구현 */}
+        <button onClick={movetoMyFridge}><Link to="/inmyfridge">Move to My Fridge</Link></button>
+        <button onClick={deleteShoppinglist}>Delete</button>
       </>
     )
   }
