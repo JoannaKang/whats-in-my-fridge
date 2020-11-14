@@ -1,11 +1,20 @@
 import react from 'react';
+// import { gql } from 'apollo-boost';
+// import { useQuery } from '@apollo/react-hooks';
 
-function RecipeList (props) {
+import { gql, useQuery } from '@apollo/client'
 
-return (
-<h1>hello I'm recipe List asdfasdf</h1>
-)
+const getRecipes = gql`
+  { 
+     meals {
+      idMeal
+    }
+  }
+  `
+
+
+export default () => {
+  const { loading, error, data } = useQuery(getRecipes);
+  console.log(loading, error, data)
+  return <h1>Recipes list</h1>
 }
-
-
-export default RecipeList;

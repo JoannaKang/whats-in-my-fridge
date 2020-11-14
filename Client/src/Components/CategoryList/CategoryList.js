@@ -26,24 +26,61 @@ const CategoryList = (props) => {
     <>
       <div className="category-container">
         <div><h1>Veggies</h1></div>
-        <IngredientItem ingredientItems={VeggiesList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={VeggiesList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Meat</h1></div>
-        <IngredientItem ingredientItems={MeatList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={MeatList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Fish</h1></div>
-        <IngredientItem ingredientItems={FishList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={FishList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Dairy</h1></div>
-        <IngredientItem ingredientItems={DairyList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={DairyList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Bakery</h1></div>
-        <IngredientItem ingredientItems={BakeryList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={BakeryList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Dessert</h1></div>
-        <IngredientItem ingredientItems={DessertList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={DessertList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Sauce</h1></div>
-        <IngredientItem ingredientItems={SauceList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={SauceList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>Spice</h1></div>
-        <IngredientItem ingredientItems={SpiceList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={SpiceList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
         <div><h1>etc</h1></div>
-        <IngredientItem ingredientItems={etcList} clickboxHandler={props.clickboxHandler} checkedItems={props.checkedItems} setCheckedItems={props.setCheckedItems} />
+        <IngredientItem
+          ingredientItems={etcList}
+          clickboxHandler={props.clickboxHandler}
+          checkedItems={props.checkedItems}
+          setCheckedItems={props.setCheckedItems} />
       </div>
+
       <Button
         listitems={props.listitems}
         setMyShoppingList={props.setMyShoppingList}
