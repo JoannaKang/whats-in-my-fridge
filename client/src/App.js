@@ -108,7 +108,11 @@ function App() {
 
             <Route exact path='/myrecipe'>
               <div className="MyRecipe-container">
-                <MyRecipe />
+                <MyRecipe
+                  Recipeitems={Recipeitems}
+                  setRecipeitems={setRecipeitems}
+                  fetchRecipes={fetchRecipes}
+                />
               </div>
             </Route>
 
@@ -116,7 +120,6 @@ function App() {
               <div className="Recipes-container">
                 <RecipeList
                   Recipeitems={Recipeitems}
-
                   setRecipeitems={setRecipeitems}
                   fetchRecipes={fetchRecipes}
                 />
