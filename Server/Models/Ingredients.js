@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const ingredientsSchema = new mongoose.Schema({
-  name: String
+  name: String,
+  recipes: [String]
 });
 
 module.exports = mongoose.model('Ingredient', ingredientsSchema);
+
 

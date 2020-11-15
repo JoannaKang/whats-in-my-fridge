@@ -42,4 +42,4 @@ async function fetchIngredientsList() {
 }
 
 
-// module.exports = { fetchIngredientsList };
+module.exports = { fetchIngredientsList };

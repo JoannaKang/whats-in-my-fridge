@@ -7,8 +7,6 @@ const MyfridgeItem = require('./Models/Fridgeitem');
 const ShoppingListItem = require('./Models/ShoppingListItem');
 
 
-// fetchIngredientsList()
-// .then((res) => res.forEach(async el => { await Ingredients.create({ name: el }) }));
 
 
 exports.getIngredients = async (req, res) => {
@@ -118,13 +116,6 @@ exports.deleteShoppingList = async (req, res) => {
   }
 }
 
-// exports.getRecipiesfromAPI = async () => {
-//   Recipies().then((res) => {
-//     const recipies = res;
-//     return recipies;
-//   });
-// }
-
 exports.getRecipes = async (req, res) => {
   try {
     const RecipiesfromDB = await Recipies.find();
@@ -133,3 +124,43 @@ exports.getRecipes = async (req, res) => {
     alert(err)
   }
 }
+
+async function ingredientrecipeMapping() {
+  try {
+    let res = await db;
+    try {
+      await res.connection.dropCollection("ingredients")
+    }
+    catch (err) {
+      console.log('Tried to drop ingredients db but it failed.');
+    }
+
+    let ingredient_res = await fetchIngredientsList();
+
+    for (let i = 0; i < ingredient_res.length; i++) {
+      await Ingredients.create({ name: ingredient_res[i] })
+    }
+
+
+    console.log('Recipe List Start!');
+    const ingredientslist = await Ingredients.find();
+    const recipelist = await Recipies.find();
+
+    for (let i = 0; i < ingredientslist.length; i++) {
+      for (let j = 0; j < recipelist.length; j++) {
+        for (let k = 1; k <= 20; k++) {
+          const ingredient = recipelist[j][`strIngredient${k}`]
+          if (ingredient === undefined || ingredient === null) { break };
+          if (ingredientslist[i].name === ingredient.toLowerCase()) {
+            Ingredients.findOneAndUpdate({ _id: ingredientslist[i]._id }, { $addToSet: { recipes: [recipelist[j]._id] } }
+            )
+          }
+        }
+      }
+    }
+    console.log('Finished get recipes')
+  } catch (err) {
+    console.log(err);
+  }
+}
+ingredientrecipeMapping();
