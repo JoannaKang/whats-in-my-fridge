@@ -1,22 +1,68 @@
-function RecipeList(props) {
+import ApiService from '../../ApiService'
+import React, { useState, useEffect } from 'react';
 
-  if (props.Recipeitems === undefined) {
-    return null;
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+}
+
+function RecipeList(props) {
+  const [fullrecipes, setFullrecipes] = useState([])
+
+  const getRecipeInfo = async (recipeIdArray) => {
+    let recipeInfos = [];
+
+
+
+    for (let i = 0; i < 3; i++) {
+      let randomIndex = getRandomInt(0, recipeIdArray.length - 1);
+
+      const recipe = await ApiService.getOneRecipe(recipeIdArray[randomIndex]);
+      recipeInfos.push(recipe);
+    }
+    return recipeInfos;
   }
+
+  useEffect(() => {
+    async function getRandomRecipes() {
+      let new_fullrecipes = [];
+      for (let i = 0; i < props.requestedRecipe.length; ++i) {
+        const name = props.requestedRecipe[i].ingredient;
+        const recipes = await getRecipeInfo(props.requestedRecipe[i].recipes);
+        new_fullrecipes.push({ ingredient: name, recipes: recipes });
+      }
+      setFullrecipes(new_fullrecipes);
+    }
+
+    getRandomRecipes()
+
+  }, [props.requestedRecipe]);
 
 
   return (
-    props.Recipeitems.map(el => {
+    fullrecipes.map(el => {
+      console.log(el);
+      let recipe_array = [];
+      el.recipes.forEach((recipe) => {
+        recipe_array.push(
+          <>
+            <div>
+              <img src={recipe.strMealThumb} width="100"></img>
+              {recipe.strArea} {recipe.strMeal}
+              <button>Save to my Recipe</button>
+            </div>
+          </>)
+      })
       return (
-        <div key={el._id}>
-          <img src={el.strMealThumb} width="100"></img>
-          {el.strMeal}
-        </div>
+        <>
+          <h1>{el.ingredient}</h1>
+          {recipe_array}
+          <button>Get more recipes</button>
+        </>
       )
     })
   )
-
-
 }
 
 

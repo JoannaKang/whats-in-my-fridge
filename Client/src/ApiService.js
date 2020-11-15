@@ -108,6 +108,12 @@ function getRecipes() {
     .then(res => res.json());
 }
 
+function getOneRecipe(id) {
+  console.log('📣 Recipe requested!')
+  return fetch(BASE_URL + `/recipies/${id}`)
+    .then(res => res.json());
+}
+
 
 const exports = {
   getAllIngredients,
@@ -119,7 +125,8 @@ const exports = {
   getShoppingList,
   getOneShoppingList,
   deleteShoppingList,
-  getRecipes
+  getRecipes,
+  getOneRecipe
 }
 
 export default exports;

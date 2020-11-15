@@ -82,8 +82,6 @@ const Button = (props) => {
   } else if (props.listitems[0].saved === "ShoppingList") {
     return (
       <>
-        {/* //TODO: Delete 핸들러 구현
-          //TODO: Move to my Fridge 핸들러 구현 */}
         <button onClick={movetoMyFridge}><Link to="/inmyfridge">Move to My Fridge</Link></button>
         <button onClick={deleteShoppinglist}>Delete</button>
       </>

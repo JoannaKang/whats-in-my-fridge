@@ -20,6 +20,7 @@ function App() {
   const [MyShoppingList, setMyShoppingList] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [Recipeitems, setRecipeitems] = useState([]);
+  const [requestedRecipe, setRequestedRecipe] = useState([]);
 
   const fetchMyFridgeList = () => {
     ApiService.getMyFridgeItems()
@@ -36,6 +37,7 @@ function App() {
   }
 
   const fetchRecipes = () => {
+    //TODO: requestedRecipe에 저장된 재료이름, 레시피 오브젝트를 가지고 진짜 레시피 정보를 디비에서 받아오기
     ApiService.getRecipes()
       .then(data => setRecipeitems(data));
   }
@@ -48,6 +50,34 @@ function App() {
     } else {
       setCheckedItems(checkedItems.filter(el => el !== e.target.value));
     }
+  }
+
+  const getRecipeHandler = async () => {
+    const selecteditems = checkedItems;
+    const recipesitems = [];
+    let recipes = [];
+
+    for (let i = 0; i < selecteditems.length; i++) {
+      await ApiService.getOneMyFridgeItem(selecteditems[i])
+        .then((res) => {
+          recipesitems.push(res.name);
+        })
+    }
+
+    const Allingredients = await ApiService.getAllIngredients();
+
+    for (let i = 0; i < recipesitems.length; i++) {
+      for (let j = 0; j < Allingredients.length; j++) {
+        if (recipesitems[i] === Allingredients[j].name) {
+          recipes.push({
+            ingredient: Allingredients[j].name,
+            recipes: Allingredients[j].recipes
+          })
+        }
+      }
+    }
+
+    setRequestedRecipe(recipes)
   }
 
   useEffect(() => {
@@ -102,12 +132,15 @@ function App() {
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems} />
-                <button>Get Recipes</button>
+                <button onClick={getRecipeHandler}>
+                  <Link to='/recipes'>Get Recipes</Link>
+                </button>
               </div>
             </Route>
 
             <Route exact path='/myrecipe'>
               <div className="MyRecipe-container">
+                <h1>My recipes list</h1>
                 <MyRecipe
                   Recipeitems={Recipeitems}
                   setRecipeitems={setRecipeitems}
@@ -118,9 +151,10 @@ function App() {
 
             <Route exact path='/recipes'>
               <div className="Recipes-container">
+                <h1>Recipes list</h1>
                 <RecipeList
-                  Recipeitems={Recipeitems}
-                  setRecipeitems={setRecipeitems}
+                  requestedRecipe={requestedRecipe ? requestedRecipe : []}
+                  setRequestedRecipe={setRequestedRecipe}
                   fetchRecipes={fetchRecipes}
                 />
               </div>

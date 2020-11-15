@@ -17,5 +17,6 @@ router.get('/shoppinglist/:id', controller.getOneShoppingList);
 router.delete('/shoppinglist/:id', controller.deleteShoppingList);
 
 router.get('/recipies', controller.getRecipes);
+router.get('/recipies/:id', controller.getOneRecipe);
 
 module.exports = router;

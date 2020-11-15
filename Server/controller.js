@@ -6,9 +6,6 @@ const Ingredients = require('./Models/Ingredients');
 const MyfridgeItem = require('./Models/Fridgeitem');
 const ShoppingListItem = require('./Models/ShoppingListItem');
 
-
-
-
 exports.getIngredients = async (req, res) => {
   try {
     const allIngredients = await Ingredients.find();
@@ -33,7 +30,7 @@ exports.getMyFridgeList = async (req, res) => {
   try {
     const AllFridgeList = await MyfridgeItem.find({});
     console.log(AllFridgeList);
-    res.send(AllFridgeList);
+    res.status(200).send(AllFridgeList);
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
@@ -47,7 +44,7 @@ exports.getOnegetMyFridgeItem = async (req, res) => {
       _id: req.params.id
     });
     console.log(foundedItem);
-    res.send(foundedItem);
+    res.status(200).send(foundedItem);
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
@@ -60,7 +57,7 @@ exports.deleteMyfridge = async (req, res) => {
     let result = await MyfridgeItem.deleteOne({
       _id: req.params.id.slice(1,)
     })
-    res.send(result);
+    res.status(204).send(result);
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
@@ -96,7 +93,7 @@ exports.getOneShoppingList = async (req, res) => {
       _id: req.params.id
     });
     console.log(foundedItem);
-    res.send(foundedItem);
+    res.status(200).send(foundedItem);
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
@@ -109,7 +106,7 @@ exports.deleteShoppingList = async (req, res) => {
     let result = await ShoppingListItem.deleteOne({
       _id: req.params.id.slice(1,)
     })
-    res.send(result);
+    res.status(204).send(result);
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
@@ -121,7 +118,22 @@ exports.getRecipes = async (req, res) => {
     const RecipiesfromDB = await Recipies.find();
     res.status(200).send(RecipiesfromDB);
   } catch (err) {
-    alert(err)
+    console.log(err);
+    res.sendStatus(500);
+  }
+}
+
+exports.getOneRecipe = async (req, res) => {
+  console.log('Find one from Recipes')
+  try {
+    console.log(req.params.id);
+    const foundedRecipe = await Recipies.findOne({
+      _id: req.params.id
+    });
+    res.status(200).send(foundedRecipe);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
   }
 }
 
@@ -152,15 +164,17 @@ async function ingredientrecipeMapping() {
           const ingredient = recipelist[j][`strIngredient${k}`]
           if (ingredient === undefined || ingredient === null) { break };
           if (ingredientslist[i].name === ingredient.toLowerCase()) {
-            Ingredients.findOneAndUpdate({ _id: ingredientslist[i]._id }, { $addToSet: { recipes: [recipelist[j]._id] } }
-            )
+            Ingredients.findOneAndUpdate({ _id: ingredientslist[i]._id }, { $addToSet: { recipes: [recipelist[j]._id] } })
+              .then(res => console.log(res));
           }
         }
       }
     }
-    console.log('Finished get recipes')
+
+
   } catch (err) {
     console.log(err);
+    res.sendStatus(500);
   }
 }
 ingredientrecipeMapping();
