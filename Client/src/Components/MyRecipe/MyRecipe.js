@@ -18,17 +18,61 @@ const MyRecipe = (props) => {
 
     }
     fetchFunc();
-  }, [])
-  console.log(fullRecipeInfo);
+  }, [props.MyRecipeList])
+
+
 
   return (
     fullRecipeInfo.map(el => {
-      console.log(el)
+
+      let fullIngredients_obj = [];
+
+      for (let i = 1; i <= 20; i++) {
+        const fullIngredient = {
+          ingredient: el[`strIngredient${i}`],
+          measure: el[`strMeasure${i}`]
+        }
+        fullIngredients_obj.push(fullIngredient)
+      }
+
+      fullIngredients_obj = fullIngredients_obj.filter(el => el.ingredient !== null).filter(el => el.ingredient !== "");
+      console.log(fullIngredients_obj);
+
+      let fullIngredientInfo = [];
+
+
+      for (let i = 0; i < fullIngredients_obj.length; i++) {
+        fullIngredientInfo.push(
+          <>
+            <li>{fullIngredients_obj[i].ingredient}  {fullIngredients_obj[i].measure}</li>
+          </>
+        )
+      }
+
+      console.log(fullIngredientInfo);
+
       return (
-        <div key={el._id}>
-          <img src={el.strMealThumb} width="100"></img>
-          {el.strMeal}
-        </div>
+        <>
+          <div key={el._id}>
+
+            <div className="simpleinfo-container" >
+              <img src={el.strMealThumb} width="100"></img>
+              {el.strMeal}
+            </div>
+
+          </div>
+
+          <div>
+            <div className="full-recipe-container" >
+              <div>
+                {fullIngredientInfo}
+              </div>
+              <div>
+                {el.strInstructions}
+              </div>
+            </div>
+          </div>
+        </>
       )
     })
   )

@@ -1,5 +1,6 @@
 import ApiService from '../../ApiService'
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Link } from 'react-router-dom';
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -59,7 +60,7 @@ function RecipeList(props) {
             <div key={recipe._id}>
               <img src={recipe.strMealThumb} width="100"></img>
               {recipe.strArea} {recipe.strMeal}
-              <button onClick={saveMyRecipe} value={recipe._id} >Save to my Recipe</button>
+              <button onClick={saveMyRecipe} value={recipe._id}><Link to='/myrecipe'>Save to my Recipe</Link></button>
             </div>
           </>)
       })

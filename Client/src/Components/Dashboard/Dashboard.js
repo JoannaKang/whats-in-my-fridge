@@ -1,6 +1,7 @@
 import './Dashboard.css';
 import { useState } from 'react';
 import ApiService from '../../ApiService'
+import Button from 'react-bootstrap/Button';
 
 const AddItems = (props) => {
 
@@ -62,8 +63,8 @@ const AddItems = (props) => {
             <option>etc</option>
           </select>
           <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
-          <button className="add-shoppinglist" onClick={shoppinglistHandler}> Add Shoppinglist</button>
-          <button className="add-to-myfridge" onClick={myfridgeHandler}> Add to My Fridge</button>
+          <Button className="add-shoppinglist" onClick={shoppinglistHandler}> Add Shoppinglist</Button>
+          <Button className="add-to-myfridge" onClick={myfridgeHandler}> Add to My Fridge</Button>
         </form>
       </div>
     </>
