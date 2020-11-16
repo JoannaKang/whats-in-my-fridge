@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ApiService from '../../ApiService';
+import Button from 'react-bootstrap/Button';
 
 const MyRecipe = (props) => {
 
   let [fullRecipeInfo, setFullRecipeInfo] = useState([]);
+
 
   useEffect(() => {
     const fetchFunc = async () => {
@@ -20,7 +22,10 @@ const MyRecipe = (props) => {
     fetchFunc();
   }, [props.MyRecipeList])
 
-
+  const [state, setState] = useState(false);
+  function toggle() {
+    setState(!state);
+  }
 
   return (
     fullRecipeInfo.map(el => {
@@ -36,7 +41,6 @@ const MyRecipe = (props) => {
       }
 
       fullIngredients_obj = fullIngredients_obj.filter(el => el.ingredient !== null).filter(el => el.ingredient !== "");
-      console.log(fullIngredients_obj);
 
       let fullIngredientInfo = [];
 
@@ -49,7 +53,6 @@ const MyRecipe = (props) => {
         )
       }
 
-      console.log(fullIngredientInfo);
 
       return (
         <>
@@ -58,19 +61,23 @@ const MyRecipe = (props) => {
             <div className="simpleinfo-container" >
               <img src={el.strMealThumb} width="100"></img>
               {el.strMeal}
+              <Button onClick={toggle}>
+                See Detail
+              </Button>
             </div>
 
-          </div>
+            {state ?
+              <div className="full-recipe-container" >
+                <div>
+                  {fullIngredientInfo}
+                </div>
+                <div>
+                  {el.strInstructions}
+                </div>
+              </div>
+              : <div></div>
+            }
 
-          <div>
-            <div className="full-recipe-container" >
-              <div>
-                {fullIngredientInfo}
-              </div>
-              <div>
-                {el.strInstructions}
-              </div>
-            </div>
           </div>
         </>
       )

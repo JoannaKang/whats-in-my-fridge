@@ -1,6 +1,7 @@
 //**Import React */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 import './App.css';
 import ApiService from './ApiService';
@@ -173,26 +174,26 @@ function App() {
         </Switch>
 
         <div className="nav-bar">
-          <button>
-            <Link to="/">
+          <Button href="/">
+            {/* <Link to=> */}
               Go to Home
-                </Link>
-          </button>
-          <button>
-            <Link to="/shoppinglist">
+                {/* </Link> */}
+          </Button>
+          <Button href="/shoppinglist">
+            {/* <Link to="/shoppinglist"> */}
               Shopping List
-                </Link>
-          </button>
-          <button>
-            <Link to="/inmyfridge">
+                {/* </Link> */}
+          </Button>
+          <Button href="/inmyfridge">
+            {/* <Link to="/inmyfridge"> */}
               In My Fridge
-                </Link>
-          </button>
-          <button>
-            <Link to="/myrecipe">
+                {/* </Link> */}
+          </Button>
+          <Button href="/myrecipe">
+            {/* <Link to="/myrecipe"> */}
               My Recipes
-                </Link>
-          </button>
+                {/* </Link> */}
+          </Button>
         </div>
       </Router>
 
