@@ -5,6 +5,7 @@ const Recipies = require('./Models/Recipies');
 const Ingredients = require('./Models/Ingredients');
 const MyfridgeItem = require('./Models/Fridgeitem');
 const ShoppingListItem = require('./Models/ShoppingListItem');
+const MyRecipe = require('./Models/Myrecipe');
 
 exports.getIngredients = async (req, res) => {
   try {
@@ -137,6 +138,28 @@ exports.getOneRecipe = async (req, res) => {
   }
 }
 
+exports.getMyRecipe = async (req, res) => {
+  try {
+    const MyRecipiesfromDB = await MyRecipe.find();
+    res.status(200).send(MyRecipiesfromDB);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+}
+
+exports.saveMyrecipe = async (req, res) => {
+  try {
+    console.log("from client", req.body);
+    const newMyrecipeId = await MyRecipe.create(req.body);
+    console.log("created", newMyrecipeId);
+    res.status(201).send(newMyrecipeId);
+  } catch (e) {
+    console.log(e)
+    res.sendStatus(500);
+  }
+}
+
 async function ingredientrecipeMapping() {
   try {
     let res = await db;
@@ -164,14 +187,13 @@ async function ingredientrecipeMapping() {
           const ingredient = recipelist[j][`strIngredient${k}`]
           if (ingredient === undefined || ingredient === null) { break };
           if (ingredientslist[i].name === ingredient.toLowerCase()) {
-            Ingredients.findOneAndUpdate({ _id: ingredientslist[i]._id }, { $addToSet: { recipes: [recipelist[j]._id] } })
-              .then(res => console.log(res));
+            await Ingredients.findOneAndUpdate({ _id: ingredientslist[i]._id }, { $addToSet: { recipes: [recipelist[j]._id] } })
+            // .then(res => console.log(res));
           }
         }
       }
     }
-
-
+    console.log('Ingredient list loaded')
   } catch (err) {
     console.log(err);
     res.sendStatus(500);

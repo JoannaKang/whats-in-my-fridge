@@ -114,6 +114,31 @@ function getOneRecipe(id) {
     .then(res => res.json());
 }
 
+function getMyRecipe() {
+  return fetch(BASE_URL + '/myrecipe')
+    .then(res => res.json())
+}
+
+async function saveMyRecipe(recipeIDs) {
+  console.log('📣 My Recipe SAVE requested!', recipeIDs)
+  try {
+    for (let i = 0; i < recipeIDs.length; i++) {
+      await fetch(BASE_URL + '/recipes', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          recipeID: recipeIDs[i]
+        })
+      })
+    }
+  } catch (err) {
+    console.log(err)
+    alert(err);
+  }
+}
+
 
 const exports = {
   getAllIngredients,
@@ -126,7 +151,9 @@ const exports = {
   getOneShoppingList,
   deleteShoppingList,
   getRecipes,
-  getOneRecipe
+  getOneRecipe,
+  getMyRecipe,
+  saveMyRecipe
 }
 
 export default exports;

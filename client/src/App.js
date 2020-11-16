@@ -18,6 +18,7 @@ function App() {
 
   const [MyFridgeList, setMyfridgeList] = useState([]);
   const [MyShoppingList, setMyShoppingList] = useState([]);
+  const [MyRecipeList, setMyRecipeList] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [Recipeitems, setRecipeitems] = useState([]);
   const [requestedRecipe, setRequestedRecipe] = useState([]);
@@ -37,9 +38,13 @@ function App() {
   }
 
   const fetchRecipes = () => {
-    //TODO: requestedRecipe에 저장된 재료이름, 레시피 오브젝트를 가지고 진짜 레시피 정보를 디비에서 받아오기
     ApiService.getRecipes()
       .then(data => setRecipeitems(data));
+  }
+
+  const fetchMyRecipes = () => {
+    ApiService.getMyRecipe()
+      .then(data => setMyRecipeList(data));
   }
 
   const clickboxHandler = (e) => {
@@ -84,6 +89,7 @@ function App() {
     fetchMyFridgeList();
     fetchShoppinglist();
     fetchRecipes();
+    fetchMyRecipes();
   }, [])
 
 
@@ -131,7 +137,8 @@ function App() {
                   fetchShoppinglist={fetchShoppinglist}
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
-                  setCheckedItems={setCheckedItems} />
+                  setCheckedItems={setCheckedItems}
+                />
                 <button onClick={getRecipeHandler}>
                   <Link to='/recipes'>Get Recipes</Link>
                 </button>
@@ -142,9 +149,9 @@ function App() {
               <div className="MyRecipe-container">
                 <h1>My recipes list</h1>
                 <MyRecipe
-                  Recipeitems={Recipeitems}
-                  setRecipeitems={setRecipeitems}
-                  fetchRecipes={fetchRecipes}
+                  fetchMyRecipes={fetchMyRecipes}
+                  MyRecipeList={MyRecipeList ? MyRecipeList : []}
+                  setMyRecipeList={setMyRecipeList}
                 />
               </div>
             </Route>
@@ -153,9 +160,11 @@ function App() {
               <div className="Recipes-container">
                 <h1>Recipes list</h1>
                 <RecipeList
+                  setRequestedRecipe={setRequestedRecipe}
                   requestedRecipe={requestedRecipe ? requestedRecipe : []}
                   setRequestedRecipe={setRequestedRecipe}
                   fetchRecipes={fetchRecipes}
+                  getRecipeHandler={getRecipeHandler}
                 />
               </div>
             </Route>

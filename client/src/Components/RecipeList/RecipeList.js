@@ -8,13 +8,11 @@ function getRandomInt(min, max) {
 }
 
 function RecipeList(props) {
+  // console.log(props);
   const [fullrecipes, setFullrecipes] = useState([])
 
   const getRecipeInfo = async (recipeIdArray) => {
     let recipeInfos = [];
-
-
-
     for (let i = 0; i < 3; i++) {
       let randomIndex = getRandomInt(0, recipeIdArray.length - 1);
 
@@ -24,9 +22,21 @@ function RecipeList(props) {
     return recipeInfos;
   }
 
+  const getMoreRecipe = () => {
+    props.getRecipeHandler()
+  }
+
+  const saveMyRecipe = (e) => {
+    const selectedRecipies = []
+    selectedRecipies.push(e.target.value)
+    ApiService.saveMyRecipe(selectedRecipies);
+  }
+
+
   useEffect(() => {
     async function getRandomRecipes() {
       let new_fullrecipes = [];
+      console.log(props.requestedRecipe);
       for (let i = 0; i < props.requestedRecipe.length; ++i) {
         const name = props.requestedRecipe[i].ingredient;
         const recipes = await getRecipeInfo(props.requestedRecipe[i].recipes);
@@ -42,15 +52,14 @@ function RecipeList(props) {
 
   return (
     fullrecipes.map(el => {
-      console.log(el);
       let recipe_array = [];
       el.recipes.forEach((recipe) => {
         recipe_array.push(
           <>
-            <div>
+            <div key={recipe._id}>
               <img src={recipe.strMealThumb} width="100"></img>
               {recipe.strArea} {recipe.strMeal}
-              <button>Save to my Recipe</button>
+              <button onClick={saveMyRecipe} value={recipe._id} >Save to my Recipe</button>
             </div>
           </>)
       })
@@ -58,7 +67,7 @@ function RecipeList(props) {
         <>
           <h1>{el.ingredient}</h1>
           {recipe_array}
-          <button>Get more recipes</button>
+          <button onClick={getMoreRecipe} value={el.ingredient}>Get more recipes</button>
         </>
       )
     })
