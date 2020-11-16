@@ -60,7 +60,8 @@ function RecipeList(props) {
             <div key={recipe._id}>
               <img src={recipe.strMealThumb} width="100"></img>
               {recipe.strArea} {recipe.strMeal}
-              <button onClick={saveMyRecipe} value={recipe._id}><Link to='/myrecipe'>Save to my Recipe</Link></button>
+              <button onClick={saveMyRecipe} value={recipe._id}>
+                <Link to='/myrecipe'>Save to my Recipe</Link></button>
             </div>
           </>)
       })

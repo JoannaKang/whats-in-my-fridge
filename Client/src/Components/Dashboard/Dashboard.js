@@ -4,12 +4,12 @@ import ApiService from '../../ApiService'
 import Button from 'react-bootstrap/Button';
 
 const AddItems = (props) => {
-
-  const [addIngredient, setAddIngredient] = useState({
+  const initialState = {
     name: '',
     category: '',
     quantity: 1
-  });
+  };
+  const [addIngredient, setAddIngredient] = useState(initialState);
 
 
   const updateName = e => {
@@ -38,11 +38,13 @@ const AddItems = (props) => {
   const myfridgeHandler = (event) => {
     event.preventDefault();
     ApiService.saveMyfridgeList([addIngredient]).then(() => props.fetchMyFridgeList());
+    setAddIngredient(initialState);
   }
 
   const shoppinglistHandler = (event) => {
     event.preventDefault();
     ApiService.saveShoppingList([addIngredient]).then(() => props.fetchShoppingList());
+    setAddIngredient(initialState);
   }
 
   return (
@@ -63,8 +65,8 @@ const AddItems = (props) => {
             <option>etc</option>
           </select>
           <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
-          <Button className="add-shoppinglist" onClick={shoppinglistHandler}> Add Shoppinglist</Button>
-          <Button className="add-to-myfridge" onClick={myfridgeHandler}> Add to My Fridge</Button>
+          <Button href="/shoppinglist" className="add-shoppinglist" onClick={shoppinglistHandler}> Add Shoppinglist</Button>
+          <Button href="/inmyfridge" className="add-to-myfridge" onClick={myfridgeHandler}> Add to My Fridge</Button>
         </form>
       </div>
     </>

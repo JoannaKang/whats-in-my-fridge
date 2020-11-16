@@ -10,10 +10,9 @@ import ApiService from './ApiService';
 import CategoryList from './Components/CategoryList/CategoryList';
 import MyRecipe from './Components/MyRecipe/MyRecipe';
 import Home from './Components/Home/Home';
-import Dashbard from '../src/Components/Dashboard/Dashboard';
+import Dashboard from '../src/Components/Dashboard/Dashboard';
 import RecipeList from '../src/Components/RecipeList/RecipeList';
 
-//TODO: Check MyFridgeList & MyShoppingList is not undefine at top level
 
 function App() {
 
@@ -59,6 +58,8 @@ function App() {
   }
 
   const getRecipeHandler = async () => {
+
+    console.log('clicked')
     const selecteditems = checkedItems;
     const recipesitems = [];
     let recipes = [];
@@ -98,7 +99,7 @@ function App() {
   return (
     <>
       <div className="header"><h1>What's in My Fridge</h1></div>
-      <Dashbard
+      <Dashboard
         fetchShoppingList={fetchShoppinglist}
         fetchMyFridgeList={fetchMyFridgeList}
         checkedItems={checkedItems}
@@ -110,7 +111,11 @@ function App() {
           <div className="main-container">
 
             <Route exact path="/">
-              <Home />
+              <Home MyFridgeList={MyFridgeList ? MyFridgeList : <div>SPINNER GOES HERE</div>}
+                clickboxHandler={clickboxHandler}
+                checkedItems={checkedItems}
+                getRecipeHandler={getRecipeHandler}
+              />
             </Route>
 
 
@@ -151,7 +156,7 @@ function App() {
                 <h1>My recipes list</h1>
                 <MyRecipe
                   fetchMyRecipes={fetchMyRecipes}
-                  MyRecipeList={MyRecipeList ? MyRecipeList : []}
+                  MyRecipeList={MyRecipeList ? MyRecipeList : <div>SPINNER GOES HERE</div>}
                   setMyRecipeList={setMyRecipeList}
                 />
               </div>
@@ -162,7 +167,7 @@ function App() {
                 <h1>Recipes list</h1>
                 <RecipeList
                   setRequestedRecipe={setRequestedRecipe}
-                  requestedRecipe={requestedRecipe ? requestedRecipe : []}
+                  requestedRecipe={requestedRecipe ? requestedRecipe : <div>SPINNER GOES HERE</div>}
                   setRequestedRecipe={setRequestedRecipe}
                   fetchRecipes={fetchRecipes}
                   getRecipeHandler={getRecipeHandler}

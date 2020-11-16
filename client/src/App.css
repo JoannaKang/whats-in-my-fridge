@@ -73,3 +73,9 @@ text-decoration: none;
   height: 100vmax;
   width: 100vmax;
 }
+
+.MyRecipe-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ApiService from '../../ApiService';
 import Button from 'react-bootstrap/Button';
+import FullRecipe from '../FullRecipe/FullRecipe'
+// import Card from 'react-bootstrap/Button';
 
 const MyRecipe = (props) => {
 
   let [fullRecipeInfo, setFullRecipeInfo] = useState([]);
-
+  let fullIngredientInfo = [];
 
   useEffect(() => {
     const fetchFunc = async () => {
@@ -22,10 +24,11 @@ const MyRecipe = (props) => {
     fetchFunc();
   }, [props.MyRecipeList])
 
-  const [state, setState] = useState(false);
-  function toggle() {
-    setState(!state);
-  }
+  // const [state, setState] = useState(false);
+  // function toggle() {
+  //   setState(!state);
+  //   console.log(state);
+  // }
 
   return (
     fullRecipeInfo.map(el => {
@@ -42,30 +45,37 @@ const MyRecipe = (props) => {
 
       fullIngredients_obj = fullIngredients_obj.filter(el => el.ingredient !== null).filter(el => el.ingredient !== "");
 
-      let fullIngredientInfo = [];
+      // let fullIngredientInfo = [];
 
 
       for (let i = 0; i < fullIngredients_obj.length; i++) {
-        fullIngredientInfo.push(
-          <>
-            <li>{fullIngredients_obj[i].ingredient}  {fullIngredients_obj[i].measure}</li>
-          </>
-        )
+        // fullIngredientInfo.push(
+        //   <>
+        //     {fullIngredients_obj[i].ingredient}  {fullIngredients_obj[i].measure}
+        //   </>
+        // )
+        fullIngredientInfo = <>{fullIngredients_obj[i].ingredient}  {fullIngredients_obj[i].measure}</>
       }
+
+      console.log('🔥 ', fullIngredients_obj)
+      console.log('🚀 ', fullIngredientInfo)
 
 
       return (
         <>
-          <div key={el._id}>
+          <div key={el._id} >
 
             <div className="simpleinfo-container" >
+              {/* <Card > */}
               <img src={el.strMealThumb} width="100"></img>
               {el.strMeal}
-              <Button onClick={toggle}>
-                See Detail
-              </Button>
-            </div>
 
+              {/* <Button onClick={toggle}>
+                See Detail
+              </Button> */}
+              {/* </Card> */}
+            </div>
+            {/* 
             {state ?
               <div className="full-recipe-container" >
                 <div>
@@ -76,7 +86,13 @@ const MyRecipe = (props) => {
                 </div>
               </div>
               : <div></div>
-            }
+            } */}
+            <FullRecipe
+              // FIXME: only props down fullingredient info for toggled recipe 
+              fullIngredientInfo={
+                fullIngredientInfo}
+              strInstructions={el.strInstructions}
+            />
 
           </div>
         </>
