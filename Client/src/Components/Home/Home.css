@@ -28,7 +28,7 @@
 .item-selectbox:hover {
   background-color: #ffe894;
   height: 33px;
-  transition: 0.3ms;
+  transition: 0.8ms;
 }
 
 .getRecipes {
@@ -49,5 +49,5 @@
 .getRecipes:hover {
   width: 55vw;
   background-color: #c4c4c4;
-  transition: 0.3ms;
+  transition: 0.8ms;
 }

@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import ApiService from './ApiService';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+
 //**Components
 import CategoryList from './Components/CategoryList/CategoryList';
 import MyRecipe from './Components/MyRecipe/MyRecipe';
@@ -53,6 +56,7 @@ function App() {
     } else {
       setCheckedItems(checkedItems.filter(el => el !== e.target.value));
     }
+    console.log(checkedItems);
   }
 
   const getRecipeHandler = async () => {
@@ -179,8 +183,8 @@ function App() {
         <div className="nav-bar">
           <button>
             <Link to="/">
-              Go to Home
-                </Link>
+              <FontAwesomeIcon icon={faHome} />
+            </Link>
           </button>
           <button>
             <Link to="/shoppinglist">
@@ -189,8 +193,8 @@ function App() {
           </button>
           <button>
             <Link to="/inmyfridge">
-              In My Fridge
-                </Link>
+              <img src={require('./Icons/2333450.svg')}></img>
+            </Link>
           </button>
           <button>
             <Link to="/myrecipe">

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../Home/Home.css'
 
 const Home = (props) => {
-  // console.log(props);
+  console.log(props);
 
 
   const now = new Date();
@@ -19,7 +19,8 @@ const Home = (props) => {
   const soontobeexpired = expiredItems.map(el => {
     return (
       <>
-        <button className="item-selectbox" key={el._id} onClick={props.clickboxHandler}
+        {/* FIXME: 왜때무네 망가졌지;?ㅠㅠㅠ */}
+        <button className="item-selectbox" key={el._id} onClick={() => props.clickboxHandler()}
           value={el._id.toString()}>
           {el.category.slice(0, 2)} {el.name}
         </button>

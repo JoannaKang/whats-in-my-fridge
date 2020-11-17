@@ -31,7 +31,8 @@ class Piechart extends React.Component {
             "#616774",
             "#DA92DB"
           ],
-          borderWidth: 0.5
+          borderWidth: 0.5,
+
         }
       ]
     }
@@ -64,11 +65,24 @@ class Piechart extends React.Component {
       return acc + curr
     }, 0)
 
+    const options = {
+      maintainAspectRatio: false,
+      responsive: false,
+      legend: {
+        position: 'right',
+        labels: {
+          boxWidth: 10,
+          fontSize: 10,
+          padding: 5
+        }
+      }
+    }
+
     return (
       <>
         <h1 className="mt-5" >You have {totalnoItems} Items in your fridge</h1>
         <div className='graph-container'>
-          <Pie data={this.state.dataPie} options={{ labels: { boxWidth: 10 } }} />
+          <Pie data={this.state.dataPie} options={options} />
         </div>
       </>
     );

@@ -54,12 +54,13 @@ h3{
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  background: linear-gradient( to bottom, #ffa6a9, #ffe3a3, #fafafa );
+  background: linear-gradient( to bottom, #ffa6a9, #ffe3a3, #ffffff );
   position: fixed;
   top: 0;
   width: 100vw;
   font-family: 'Cookie', cursive !important;
   font-size: 3rem;
+  padding-top: 15px;
   transition: top 0.2s ease-in-out;
 }
 
@@ -72,7 +73,7 @@ h3{
   font-size: 0.7rem;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: brown;
+  background-color: rgb(238, 238, 238);
   position: fixed;
   bottom: 0;
   width: 100vw;
@@ -81,7 +82,7 @@ h3{
 .main-container {
   display: flex;
   height: 100vh;
-  padding-bottom: 60px;
+  padding-bottom: 80px;
   flex-direction: column;
   padding-left: 20px;
   padding-right: 20px;
@@ -90,6 +91,8 @@ h3{
 .nav-bar > button {
 margin: 10px;
 text-decoration: none;
+padding: 5px;
+font-size: 1rem;
 }
 
 .list-container {
