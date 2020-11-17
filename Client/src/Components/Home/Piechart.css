@@ -1,0 +1,19 @@
+.mt-5 {
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  color: #3f454d;
+}
+
+.mt-5:focus {
+  text-decoration: none;
+}
+
+.graph-container {
+  background-color:  #ffffff;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+  padding: 20px;
+  box-shadow: 10px 10px 5px #f0f0f0
+}

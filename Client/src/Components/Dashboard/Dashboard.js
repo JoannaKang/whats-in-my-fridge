@@ -1,9 +1,14 @@
 import './Dashboard.css';
 import { useState } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import ApiService from '../../ApiService'
-import Button from 'react-bootstrap/Button';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+
 
 const AddItems = (props) => {
+
   const initialState = {
     name: '',
     category: '',
@@ -51,24 +56,33 @@ const AddItems = (props) => {
     <>
       <div className="Add-list">
         <form className="input-form" >
-          <input type="ingredeint-add" className="text-input" placeholder="Add new Item" value={addIngredient.name} onChange={e => updateName(e.target.value)}></input>
+          <input type="ingredeint-add" className="text-input" placeholder="+ Add new Item" value={addIngredient.name} onChange={e => updateName(e.target.value)}></input>
           <select className="catecory-select" value={addIngredient.category} onChange={(e) => updateCategory(e.target.value)} >
             <option>-Select-</option>
-            <option>Veggies</option>
-            <option>Meat</option>
-            <option>Fish</option>
-            <option>Dairy</option>
-            <option>Bakery</option>
-            <option>Dessert</option>
-            <option>Sauce</option>
-            <option>Spice</option>
-            <option>etc</option>
+            <option>🥦 Veggies</option>
+            <option>🥩 Meat</option>
+            <option>🐟 Fish</option>
+            <option>🥛 Dairy</option>
+            <option>🍓 Fruit</option>
+            <option>🥖 Bakery</option>
+            <option>🍰 Dessert</option>
+            <option>🍯 Sauce</option>
+            <option>🧂 Spice</option>
+            <option>💫 etc</option>
           </select>
           <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
-          <Button href="/shoppinglist" className="add-shoppinglist" onClick={shoppinglistHandler}> Add Shoppinglist</Button>
-          <Button href="/inmyfridge" className="add-to-myfridge" onClick={myfridgeHandler}> Add to My Fridge</Button>
+          <button className="add-shoppinglist" onClick={shoppinglistHandler} style={{ textDecoration: 'none', color: '#3f454d' }}>
+            <Link to="/shoppinglist">
+              <FontAwesomeIcon icon={faShoppingBasket} /> Shop List
+            </Link>
+          </button>
+          <button className="add-to-myfridge" onClick={myfridgeHandler} style={{ textDecoration: 'none', color: '#3f454d' }}>
+            <Link to="/inmyfridge">
+              <FontAwesomeIcon icon={faPlusSquare} /> Add to Fridge
+            </Link>
+          </button>
         </form>
-      </div>
+      </div >
     </>
   )
 

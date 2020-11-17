@@ -1,14 +1,10 @@
 import Piechart from './Piechart'
-import { MDBBox } from 'mdbreact';
-import CategoryList from '../CategoryList/CategoryList'
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import '../Home/Home.css'
 
 const Home = (props) => {
-  console.log(props);
+  // console.log(props);
 
-  // if (MyFridgeList.length === 0) {
-  //   return <div>SPINNER GOES HERE :P</div>
-  // }
 
   const now = new Date();
   const expiredItems = [];
@@ -23,33 +19,27 @@ const Home = (props) => {
   const soontobeexpired = expiredItems.map(el => {
     return (
       <>
-        <div key={el._id}>
-          <input type="checkbox"
-            onClick={props.clickboxHandler}
-            value={el._id.toString()}
-          ></input>
-          {el.category} {el.name}
-        </div>
+        <button className="item-selectbox" key={el._id} onClick={props.clickboxHandler}
+          value={el._id.toString()}>
+          {el.category.slice(0, 2)} {el.name}
+        </button>
       </>
     )
   })
 
 
   return (
-    <div>
-      <MDBBox>
-        <h1>Home</h1>
-        <Link to='/inmyfridge'>
-          <div className="piechart">
-            <Piechart MyFridgeList={props.MyFridgeList} />
-          </div>
-        </Link>
-        <div className="soon-to-be-expired">
-          <h1>Soon to be Expired</h1>
-          {soontobeexpired}
+    <div className="home-container">
+      <Link to='/inmyfridge' style={{ textDecoration: 'none' }}>
+        <div className="piechart">
+          <Piechart MyFridgeList={props.MyFridgeList} />
         </div>
-        <button onClick={() => props.getRecipeHandler()}><Link to='/recipes'>Get Recipes</Link></button>
-      </MDBBox>
+      </Link>
+      <h1>Soon to be Expired</h1>
+      <div className="soon-to-be-expired">
+        {soontobeexpired}
+      </div>
+      <button className="getRecipes" onClick={() => props.getRecipeHandler()}><Link to='/recipes'>Get Recipes</Link></button>
     </div>
   )
 }

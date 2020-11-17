@@ -1,7 +1,6 @@
 //**Import React */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 
 import './App.css';
 import ApiService from './ApiService';
@@ -12,7 +11,6 @@ import MyRecipe from './Components/MyRecipe/MyRecipe';
 import Home from './Components/Home/Home';
 import Dashboard from '../src/Components/Dashboard/Dashboard';
 import RecipeList from '../src/Components/RecipeList/RecipeList';
-
 
 function App() {
 
@@ -98,15 +96,15 @@ function App() {
 
   return (
     <>
-      <div className="header"><h1>What's in My Fridge</h1></div>
-      <Dashboard
-        fetchShoppingList={fetchShoppinglist}
-        fetchMyFridgeList={fetchMyFridgeList}
-        checkedItems={checkedItems}
-        setCheckedItems={setCheckedItems}
-      />
-
       <Router>
+        <div className="header">What's in My Fridge</div>
+        <Dashboard
+          fetchShoppingList={fetchShoppinglist}
+          fetchMyFridgeList={fetchMyFridgeList}
+          checkedItems={checkedItems}
+          setCheckedItems={setCheckedItems}
+        />
+
         <Switch>
           <div className="main-container">
 
@@ -179,26 +177,26 @@ function App() {
         </Switch>
 
         <div className="nav-bar">
-          <Button href="/">
-            {/* <Link to=> */}
+          <button>
+            <Link to="/">
               Go to Home
-                {/* </Link> */}
-          </Button>
-          <Button href="/shoppinglist">
-            {/* <Link to="/shoppinglist"> */}
+                </Link>
+          </button>
+          <button>
+            <Link to="/shoppinglist">
               Shopping List
-                {/* </Link> */}
-          </Button>
-          <Button href="/inmyfridge">
-            {/* <Link to="/inmyfridge"> */}
+                </Link>
+          </button>
+          <button>
+            <Link to="/inmyfridge">
               In My Fridge
-                {/* </Link> */}
-          </Button>
-          <Button href="/myrecipe">
-            {/* <Link to="/myrecipe"> */}
+                </Link>
+          </button>
+          <button>
+            <Link to="/myrecipe">
               My Recipes
-                {/* </Link> */}
-          </Button>
+                </Link>
+          </button>
         </div>
       </Router>
 

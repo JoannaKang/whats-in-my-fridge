@@ -24,12 +24,6 @@ const MyRecipe = (props) => {
     fetchFunc();
   }, [props.MyRecipeList])
 
-  // const [state, setState] = useState(false);
-  // function toggle() {
-  //   setState(!state);
-  //   console.log(state);
-  // }
-
   return (
     fullRecipeInfo.map(el => {
 
@@ -45,20 +39,11 @@ const MyRecipe = (props) => {
 
       fullIngredients_obj = fullIngredients_obj.filter(el => el.ingredient !== null).filter(el => el.ingredient !== "");
 
-      // let fullIngredientInfo = [];
-
-
       for (let i = 0; i < fullIngredients_obj.length; i++) {
-        // fullIngredientInfo.push(
-        //   <>
-        //     {fullIngredients_obj[i].ingredient}  {fullIngredients_obj[i].measure}
-        //   </>
-        // )
         fullIngredientInfo = <>{fullIngredients_obj[i].ingredient}  {fullIngredients_obj[i].measure}</>
       }
 
-      console.log('🔥 ', fullIngredients_obj)
-      console.log('🚀 ', fullIngredientInfo)
+
 
 
       return (
@@ -69,31 +54,13 @@ const MyRecipe = (props) => {
               {/* <Card > */}
               <img src={el.strMealThumb} width="100"></img>
               {el.strMeal}
-
-              {/* <Button onClick={toggle}>
-                See Detail
-              </Button> */}
-              {/* </Card> */}
             </div>
-            {/* 
-            {state ?
-              <div className="full-recipe-container" >
-                <div>
-                  {fullIngredientInfo}
-                </div>
-                <div>
-                  {el.strInstructions}
-                </div>
-              </div>
-              : <div></div>
-            } */}
+
             <FullRecipe
-              // FIXME: only props down fullingredient info for toggled recipe 
               fullIngredientInfo={
                 fullIngredientInfo}
               strInstructions={el.strInstructions}
             />
-
           </div>
         </>
       )

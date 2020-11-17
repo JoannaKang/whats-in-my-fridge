@@ -1,4 +1,53 @@
-.piechart {
+.home-container {
   display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.piechart{
+  margin-bottom: 30px;
+}
+
+.soon-to-be-expired {
+  display: flex;
+  flex: wrap;
+  padding:20px
+}
+
+
+.item-selectbox {
+  height: 30px;
+  background-color: #fff7ba;;
+  margin-right: 5px;
+  font-size: 1.2em;
+  color: #3f454d;
+  border-radius: 150px;
+  border-color: #ffffff00;
+}
+
+.item-selectbox:hover {
+  background-color: #ffe894;
+  height: 33px;
+  transition: 0.3ms;
+}
+
+.getRecipes {
   width: 50vw;
+  border-radius: 150px;
+  border-color: #ffffff00;
+  align-self: center;
+}
+
+.getRecipes {
+  width: 50vw;
+  height: 30px;
+  border-radius: 150px;
+  border-color: #ffffff00;
+  align-self: center;
+}
+
+.getRecipes:hover {
+  width: 55vw;
+  background-color: #c4c4c4;
+  transition: 0.3ms;
 }

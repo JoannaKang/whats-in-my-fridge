@@ -3,7 +3,6 @@
   align-content: center;
   justify-content: center;
   padding-top: 60px;
-  padding-bottom: 10px;
 }
 
 .input-form {
@@ -14,10 +13,36 @@
   justify-content: center;
 }
 
+.input-form :focus{
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-form :hover{
+  text-decoration: none;
+}
+
+
 .text-input{
   flex: 4;
   width: 20vw;
+  height: 40px;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 0.8rem;
+  border-color:#dfdfdf;;
 }
+
+.text-input:hover{
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #fff7ba;
+}
+
+.text-input:focus{
+  outline: none;
+}
+
 
 .catecory-select{
   display: flex;
@@ -25,22 +50,58 @@
   margin-left: 10px;
   flex: 2;
   width: 20vw;
+  height: 40px;
+}
+
+.catecory-select:hover {
+  background-color: #fff7ba;
+  transition: 0.3s;
 }
 
 .quantity {
   margin-left: 10px;
-  width: 5vw;
+  width: 7vw;
+  height: 40px;
+}
+
+.quantity:hover {
+  background-color: #fff7ba;
+  transition: 0.3s;
 }
 
 .add-shoppinglist{
-  width: 10vw;
+  width: 15vw;
+  height: 40px;
+  border: none;
+  color: #3f454d;
+  text-align: center;
+  vertical-align: center;
+  font-size: 1em;
+  padding: 5px; 
+  margin-left: 10px;
+  border-radius: 3px;
+}
+
+.add-shoppinglist:hover {
+  background-color: #fff7ba;
+  transition: 0.3s;
 }
 
 .add-to-myfridge{
-  width: 10vw;
-  margin-right: 10px;
+  width: 15vw;
+  margin-left: 10px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  font-size: 1em;
+  padding: 5px;
+  text-align: center;
+  border-radius: 3px;
+  color: #3f454d;
 }
 
-button {
-  margin-left: 10px;
+.add-to-myfridge:hover {
+  background-color: #fff7ba;
+  transition: 0.3s;
 }
+

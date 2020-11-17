@@ -1,6 +1,7 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
+// import { MDBContainer } from "mdbreact";
+import './Piechart.css';
 
 class Piechart extends React.Component {
 
@@ -15,8 +16,12 @@ class Piechart extends React.Component {
             "#46BFBD",
             "#FDB45C",
             "#949FB1",
-            "#4D5360",
-            "#AC64AD"
+            "#5e75a8",
+            "#AC64AD",
+            "#f38181",
+            "#fce38a",
+            "#eaffd0",
+            "#95e1d3"
           ],
           hoverBackgroundColor: [
             "#FF5A5E",
@@ -25,7 +30,8 @@ class Piechart extends React.Component {
             "#A8B3C5",
             "#616774",
             "#DA92DB"
-          ]
+          ],
+          borderWidth: 0.5
         }
       ]
     }
@@ -33,6 +39,12 @@ class Piechart extends React.Component {
 
   render() {
     const category = this.props.MyFridgeList.map(el => el.category)
+
+    this.state.dataPie.options = {
+      legend: {
+        position: 'right'
+      }
+    }
 
     let labels = [];
     category.filter(el => {
@@ -48,11 +60,17 @@ class Piechart extends React.Component {
     this.state.dataPie.labels = Object.keys(data);
     this.state.dataPie.datasets[0].data = Object.values(data);
 
+    const totalnoItems = Object.values(data).reduce(function (acc, curr) {
+      return acc + curr
+    }, 0)
+
     return (
-      <MDBContainer>
-        <h3 className="mt-5">In my Fridge</h3>
-        <Pie data={this.state.dataPie} options={{ responsive: true }} />
-      </MDBContainer>
+      <>
+        <h1 className="mt-5" >You have {totalnoItems} Items in your fridge</h1>
+        <div className='graph-container'>
+          <Pie data={this.state.dataPie} options={{ labels: { boxWidth: 10 } }} />
+        </div>
+      </>
     );
   }
 }
