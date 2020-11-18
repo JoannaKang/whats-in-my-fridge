@@ -1,4 +1,5 @@
 import Piechart from './Piechart'
+import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../Home/Home.css'
 
@@ -17,11 +18,12 @@ const Home = (props) => {
   }
 
   const soontobeexpired = expiredItems.map(el => {
+    console.log(el)
     return (
       <>
         {/* FIXME: 왜때무네 망가졌지;?ㅠㅠㅠ */}
         <button className="item-selectbox" key={el._id} onClick={() => props.clickboxHandler()}
-          value={el._id.toString()}>
+          value={el._id}>
           {el.category.slice(0, 2)} {el.name}
         </button>
       </>
@@ -36,7 +38,7 @@ const Home = (props) => {
           <Piechart MyFridgeList={props.MyFridgeList} />
         </div>
       </Link>
-      <h1>Soon to be Expired</h1>
+      <h1 className="title">Soon to be Expired</h1>
       <div className="soon-to-be-expired">
         {soontobeexpired}
       </div>

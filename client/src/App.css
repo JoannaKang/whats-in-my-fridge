@@ -6,19 +6,23 @@ html {
   font-size: 62.5%;
   display: flex;
   flex-direction: column;
-  background-color: yellow;
-  height: 100vh;
-  width: 100vw;
+  color: #3f454d;
+  animation: fadein 3s;
 }
 
 a {
   text-decoration: none;
-  color: #3f454d;
+  color: #3f454d !important;
 }
 
 a :hover {
   text-decoration: none;
 }
+
+*:focus{outline:none;}
+
+
+
 
 body {
   -ms-overflow-style: none; /* IE and Edge */
@@ -35,19 +39,19 @@ body::-webkit-scrollbar {
 h1 {
   font-family: 'Noto Sans', sans-serif;
   font-weight: 400;
-  font-size: 2.5em;
+  font-size: 2.5rem;
 }
 
 h2{
   font-family: 'Noto Sans', sans-serif;
   font-weight: 300;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 h3{
   font-family: 'Noto Sans', sans-serif;
   font-weight: 200;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .header {
@@ -81,7 +85,7 @@ h3{
 
 .main-container {
   display: flex;
-  height: 100vh;
+  height: 100%;
   padding-bottom: 80px;
   flex-direction: column;
   padding-left: 20px;
@@ -93,33 +97,77 @@ margin: 10px;
 text-decoration: none;
 padding: 5px;
 font-size: 1rem;
+border: 0px;
 }
 
 .list-container {
-  background-color: aqua;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
   font: 1rem sans-serif;
   font-size: 0.7rem;
-  height: 100vmax;
-  width: 100vmax;
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 100px;
 }
 
 .MyFridge-container {
-  background-color: yellowgreen;
   display: flex;
   flex-direction: column;
-  align-items: center;
   font: 1rem sans-serif;
   font-size: 0.7rem;
-  height: 100vmax;
-  width: 100vmax;
+  height: 100%;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  justify-content: center;
+}
+
+.getRecipe-button{
+  margin-top: 20px;
+  padding: 10px;
+  width: 40%;
+  border-radius: 150px;
+  border: none;
+  background-color: rgb(123, 185, 255);
+  justify-content: centers;
+}
+
+.getRecipe-button:hover {
+  background-color: rgb(92, 166, 250);
+  transition: 0.3s;
 }
 
 .MyRecipe-container {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  font-size: 0.7rem;
+  height: 100%;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  justify-content: center;
+}
+
+.Recipes-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  height: 100%;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  justify-content: center;
+}
+
+.button-div{
+  padding: 0px !important;
+  margin: 0px !important;
 }

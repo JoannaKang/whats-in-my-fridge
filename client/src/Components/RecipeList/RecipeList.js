@@ -1,6 +1,9 @@
 import ApiService from '../../ApiService'
+import './RecipeList.css'
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -14,7 +17,7 @@ function RecipeList(props) {
 
   const getRecipeInfo = async (recipeIdArray) => {
     let recipeInfos = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       let randomIndex = getRandomInt(0, recipeIdArray.length - 1);
 
       const recipe = await ApiService.getOneRecipe(recipeIdArray[randomIndex]);
@@ -23,7 +26,8 @@ function RecipeList(props) {
     return recipeInfos;
   }
 
-  const getMoreRecipe = () => {
+  // FIXME:클릭된 카테고리의 레시피만 다시 가져오기
+  const getMoreRecipe = (e) => {
     props.getRecipeHandler()
   }
 
@@ -57,19 +61,27 @@ function RecipeList(props) {
       el.recipes.forEach((recipe) => {
         recipe_array.push(
           <>
-            <div key={recipe._id}>
-              <img src={recipe.strMealThumb} width="100"></img>
-              {recipe.strArea} {recipe.strMeal}
-              <button onClick={saveMyRecipe} value={recipe._id}>
+            <div key={recipe._id} className="Recipe-info">
+              <div>
+                <h3 className="recipe-area">{recipe.strArea}</h3>
+                <img src={recipe.strMealThumb} width="100%"></img>
+                <h5>{recipe.strMeal}</h5>
+              </div>
+              <button className="save-to-myrecipe" onClick={saveMyRecipe} value={recipe._id}>
                 <Link to='/myrecipe'>Save to my Recipe</Link></button>
             </div>
           </>)
       })
       return (
         <>
-          <h1>{el.ingredient}</h1>
-          {recipe_array}
-          <button onClick={getMoreRecipe} value={el.ingredient}>Get more recipes</button>
+          <div className="Ingredient-category-container">
+            <span><h2 className="ingredient-name">{el.ingredient}</h2>
+              <button className="get-more-recipes" onClick={getMoreRecipe} value={el.ingredient}>
+                <FontAwesomeIcon icon={faPlus} /> Get more recipes</button></span>
+            <div className="recipe-array">
+              {recipe_array}
+            </div>
+          </div>
         </>
       )
     })

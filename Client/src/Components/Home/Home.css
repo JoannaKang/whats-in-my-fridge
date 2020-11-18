@@ -2,26 +2,35 @@
   display: flex;
   flex-direction: column;
   font-size: 1rem;
+  height: 100%;
+  padding: 20px;
 }
 
 .piechart{
   margin-bottom: 30px;
 }
 
+.title {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .soon-to-be-expired {
   display: flex;
-  flex: wrap;
-  padding:20px
+  flex-wrap: wrap;
+  padding:20px;
+  background-color:  #ffffff;
+  box-shadow: 5px 5px 2.5px #f0f0f0;
+  justify-content: center;
 }
 
 
 .item-selectbox {
-  height: 30px;
   background-color: #fff7ba;;
-  margin-right: 5px;
+  margin: 5px;
   font-size: 1.2em;
   color: #3f454d;
-  border-radius: 150px;
+  border-radius: 15px;
   border-color: #ffffff00;
 }
 
@@ -33,17 +42,11 @@
 
 .getRecipes {
   width: 50vw;
-  border-radius: 150px;
-  border-color: #ffffff00;
-  align-self: center;
-}
-
-.getRecipes {
-  width: 50vw;
   height: 30px;
   border-radius: 150px;
   border-color: #ffffff00;
   align-self: center;
+  margin-top: 20px;
 }
 
 .getRecipes:hover {

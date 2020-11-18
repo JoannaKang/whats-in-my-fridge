@@ -1,0 +1,91 @@
+.button-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20px;
+  color: #3f454d !important;
+}
+
+.button-div-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20px;
+  color: #3f454d !important;
+}
+
+a{
+  color: !important white;
+}
+
+.move-to-myfridge{ 
+  background-color:#ffa6a9;
+  width: 40%;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 150px;
+  border: none;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.move-to-myfridge:hover{ 
+  background-color:#ff8387;
+  transition: 0.3s;
+}
+
+.move-to-myfridge:focus{ 
+  outline: none;
+}
+
+/* .text-input:hover{
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #fff7ba;
+} */
+
+.add-to-shoppinglist{
+  background-color:#ffa6a9;
+  width: 40%;
+  margin-right: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 150px;
+  border: none;
+  font-size: 1.5rem;
+  justify-content: center;
+}
+
+.add-to-shoppinglist:hover{ 
+  background-color:#ff8387;
+  transition: 0.3s;
+}
+
+.delete {
+  background-color: #ffe3a3;
+  width: 40%;
+  padding: 10px;
+  border-radius: 150px;
+  border: none;
+  font-size: 1.5rem;
+  justify-content: center;
+  color: #3f454d !important;
+  margin-top: 20px;
+}
+
+.delete:hover {
+  background-color: #ffd982;
+  transition: 0.3s;
+}
+
+.delete:focus{ 
+  outline: none;
+}
+
+a {
+  color: white;
+  font-size: 1.5rem;
+}

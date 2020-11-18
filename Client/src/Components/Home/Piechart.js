@@ -72,7 +72,7 @@ class Piechart extends React.Component {
         position: 'right',
         labels: {
           boxWidth: 10,
-          fontSize: 10,
+          fontSize: 11,
           padding: 5
         }
       }

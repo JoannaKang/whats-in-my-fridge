@@ -1,5 +1,16 @@
-.full-recipe-container {
+.full-recipe-subcontainer {
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+  height: auto;
+  max-height: 9999px;
+}
+
+.full-recipe-subcontainer.collapsed {
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+}
+
+.toggle-div {
   display: flex;
-  flex-direction : column;
-  width: 80vw;
+  flex-direction: row;
 }

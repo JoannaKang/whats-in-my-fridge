@@ -1,5 +1,7 @@
 import ApiService from '../../ApiService'
 import { Link } from 'react-router-dom';
+import React from 'react';
+import './Buttons.css';
 
 const Button = (props) => {
 
@@ -75,15 +77,19 @@ const Button = (props) => {
   if (props.listitems[0].saved === "Fridge") {
     return (
       <>
-        <button onClick={addtoShoppinglist}><Link to="/shoppinglist">Add to shopping list</Link></button>
-        <button onClick={deleteMyfridgeItem}>Delete</button>
+        <div className="button-div-1">
+          <button className="add-to-shoppinglist" onClick={addtoShoppinglist}><Link to="/shoppinglist" style={{ color: 'black', textDecoration: 'inherit' }}>Add to shopping list</Link></button>
+          <button className="delete" onClick={deleteMyfridgeItem}>Delete</button>
+        </div>
       </>
     )
   } else if (props.listitems[0].saved === "ShoppingList") {
     return (
       <>
-        <button onClick={movetoMyFridge}><Link to="/inmyfridge">Move to My Fridge</Link></button>
-        <button onClick={deleteShoppinglist}>Delete</button>
+        <div className="button-div">
+          <button className="move-to-myfridge" onClick={movetoMyFridge}><Link to="/inmyfridge">Move to My Fridge</Link></button>
+          <button className="delete" onClick={deleteShoppinglist}>Delete</button>
+        </div>
       </>
     )
   }

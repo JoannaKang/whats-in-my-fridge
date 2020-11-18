@@ -6,7 +6,7 @@ import './App.css';
 import ApiService from './ApiService';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faShoppingBasket, faPlusSquare, faList } from '@fortawesome/free-solid-svg-icons'
 
 //**Components
 import CategoryList from './Components/CategoryList/CategoryList';
@@ -23,6 +23,7 @@ function App() {
   const [checkedItems, setCheckedItems] = useState([]);
   const [Recipeitems, setRecipeitems] = useState([]);
   const [requestedRecipe, setRequestedRecipe] = useState([]);
+  const [dateview, setDateview] = useState('Category');
 
   const fetchMyFridgeList = () => {
     ApiService.getMyFridgeItems()
@@ -49,6 +50,7 @@ function App() {
   }
 
   const clickboxHandler = (e) => {
+    console.log(e)
     if (e.target.checked === true) {
       setCheckedItems([
         ...checkedItems, e.target.value]
@@ -89,6 +91,14 @@ function App() {
     setRequestedRecipe(recipes)
   }
 
+  const renderDateview = () => {
+    setDateview('Date')
+  }
+
+  const renderCategoryview = () => {
+    setDateview('Category')
+  }
+
   useEffect(() => {
     fetchMyFridgeList();
     fetchShoppinglist();
@@ -110,7 +120,7 @@ function App() {
         />
 
         <Switch>
-          <div className="main-container">
+          <React.Fragment>
 
             <Route exact path="/">
               <Home MyFridgeList={MyFridgeList ? MyFridgeList : <div>SPINNER GOES HERE</div>}
@@ -137,8 +147,12 @@ function App() {
 
             <Route exact path='/inmyfridge'>
               <div className="MyFridge-container">
+                <div className="button-container">
+                  <button onClick={renderCategoryview} >Category</button>
+                  <button onClick={renderDateview}>Date</button>
+                </div>
                 <CategoryList
-                  listitems={MyFridgeList}
+                  listitems={MyFridgeList ? MyFridgeList : <div>SPINNER GOES HERE</div>}
                   setMyfridgeList={setMyfridgeList}
                   setMyShoppingList={setMyShoppingList}
                   fetchMyFridgeList={fetchMyFridgeList}
@@ -146,16 +160,21 @@ function App() {
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems}
+                  dateview={dateview}
+                  setDateview={setDateview}
                 />
-                <button onClick={getRecipeHandler}>
-                  <Link to='/recipes'>Get Recipes</Link>
+                <Link to='/recipes'>
+                  <div className='button-div'>
+                    <button className="getRecipe-button" onClick={getRecipeHandler}>
+                      Get Recipes
                 </button>
+                  </div>
+                </Link>
               </div>
             </Route>
 
             <Route exact path='/myrecipe'>
               <div className="MyRecipe-container">
-                <h1>My recipes list</h1>
                 <MyRecipe
                   fetchMyRecipes={fetchMyRecipes}
                   MyRecipeList={MyRecipeList ? MyRecipeList : <div>SPINNER GOES HERE</div>}
@@ -177,29 +196,32 @@ function App() {
               </div>
             </Route>
 
-          </div>
+          </React.Fragment>
         </Switch>
 
         <div className="nav-bar">
           <button>
             <Link to="/">
               <FontAwesomeIcon icon={faHome} />
+              Home
             </Link>
           </button>
           <button>
             <Link to="/shoppinglist">
-              Shopping List
+              <FontAwesomeIcon icon={faShoppingBasket} /> Shopping List
                 </Link>
           </button>
           <button>
             <Link to="/inmyfridge">
-              <img src={require('./Icons/2333450.svg')}></img>
+              <FontAwesomeIcon icon={faPlusSquare}></FontAwesomeIcon>
+               In my Fridge
             </Link>
           </button>
           <button>
             <Link to="/myrecipe">
+              <FontAwesomeIcon icon={faList} />
               My Recipes
-                </Link>
+            </Link>
           </button>
         </div>
       </Router>

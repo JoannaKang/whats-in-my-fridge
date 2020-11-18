@@ -1,5 +1,5 @@
 import './Dashboard.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import ApiService from '../../ApiService'
 
@@ -52,6 +52,12 @@ const AddItems = (props) => {
     setAddIngredient(initialState);
   }
 
+  // const [onkeyupstate, setOnkeyupstate] = (false)
+
+  // function onKeyupHandler() {
+  //   setOnkeyupstate(!onkeyupstate)
+  // }
+
   return (
     <>
       <div className="Add-list">
@@ -73,7 +79,7 @@ const AddItems = (props) => {
           <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
           <button className="add-shoppinglist" onClick={shoppinglistHandler} style={{ textDecoration: 'none', color: '#3f454d' }}>
             <Link to="/shoppinglist">
-              <FontAwesomeIcon icon={faShoppingBasket} /> Shop List
+              <FontAwesomeIcon icon={faShoppingBasket} /> Add to Shop List
             </Link>
           </button>
           <button className="add-to-myfridge" onClick={myfridgeHandler} style={{ textDecoration: 'none', color: '#3f454d' }}>
