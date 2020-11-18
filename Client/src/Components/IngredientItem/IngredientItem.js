@@ -21,7 +21,7 @@ const IngredientItem = (props) => {
           </input>
           <div className="detail">
             <span>{el.name}</span>
-            <span><FontAwesomeIcon icon={faPlus} color={"grey"} size="xs"></FontAwesomeIcon> {el.quantity} <FontAwesomeIcon icon={faMinus} size="xs" color={"grey"}></FontAwesomeIcon></span>
+            <span><FontAwesomeIcon className="plus" icon={faPlus} color={"grey"} size="xs"></FontAwesomeIcon> {el.quantity} <FontAwesomeIcon className="minus" icon={faMinus} size="xs" color={"grey"}></FontAwesomeIcon></span>
           </div>
         </div >
       )

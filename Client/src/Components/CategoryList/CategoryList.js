@@ -1,6 +1,8 @@
 import IngredientItem from '../IngredientItem/IngredientItem'
 import Button from '../Buttons/Buttons'
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import './CategorytList.css'
 
 const CategoryList = (props) => {
@@ -23,23 +25,28 @@ const CategoryList = (props) => {
 
   let dateDiv = []
   let previousDate = undefined;
-  let previousName = undefined;
-  let previousQuantity = undefined;
   for (let i = 0; i < dateItems.length; ++i) {
     if (i === 0) {
       previousDate = dateItems[i].date;
-      previousName = dateItems[i].name;
-      previousQuantity = dateItems[i].quantity;
-      dateDiv.push(<><div>{previousDate}</div> <div>{previousName}</div> <div>{previousQuantity}</div></>);
+      dateDiv.push(
+        <div className="date-div">{previousDate}</div>);
     }
     else {
       if (dateItems[i].date !== previousDate) {
         previousDate = dateItems[i].date;
-        previousName = dateItems[i].name;
-        previousQuantity = dateItems[i].quantity;
-        dateDiv.push(<><div>{dateItems[i].date}</div><div>{previousName}</div> <div>{previousQuantity}</div></>);
+        dateDiv.push(
+          <div className="date-div">{dateItems[i].date}</div>);
       }
     }
+
+    dateDiv.push(
+      <div className="dateinfo-container">
+        <div className="name-div">{dateItems[i].name}</div>
+        <div className="quant-div">
+          <FontAwesomeIcon className="plus" icon={faPlus} color={"grey"} size="xs" />
+          {dateItems[i].quantity}
+          <FontAwesomeIcon className="minus" icon={faMinus} color={"grey"} size="xs" /></div>
+      </div>);
   }
 
 
@@ -136,7 +143,7 @@ const CategoryList = (props) => {
     )
   } else if (props.dateview === 'Date') {
     return (
-      <div>{dateDiv}</div>
+      <div className="dateview-container">{dateDiv}</div>
     )
   }
 

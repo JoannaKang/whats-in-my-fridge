@@ -14,6 +14,7 @@ import MyRecipe from './Components/MyRecipe/MyRecipe';
 import Home from './Components/Home/Home';
 import Dashboard from '../src/Components/Dashboard/Dashboard';
 import RecipeList from '../src/Components/RecipeList/RecipeList';
+import Loader from './Components/Loader/Loader'
 
 function App() {
 
@@ -121,15 +122,13 @@ function App() {
 
         <Switch>
           <React.Fragment>
-
             <Route exact path="/">
-              <Home MyFridgeList={MyFridgeList ? MyFridgeList : <div>SPINNER GOES HERE</div>}
+              <Home MyFridgeList={MyFridgeList ? MyFridgeList : <Loader />}
                 clickboxHandler={clickboxHandler}
                 checkedItems={checkedItems}
                 getRecipeHandler={getRecipeHandler}
               />
             </Route>
-
 
             <Route exact path='/shoppinglist'>
               <div className="list-container">
@@ -148,11 +147,11 @@ function App() {
             <Route exact path='/inmyfridge'>
               <div className="MyFridge-container">
                 <div className="button-container">
-                  <button onClick={renderCategoryview} >Category</button>
-                  <button onClick={renderDateview}>Date</button>
+                  <button className="category" onClick={renderCategoryview} >Category</button>
+                  <button className="date" onClick={renderDateview}>Date</button>
                 </div>
                 <CategoryList
-                  listitems={MyFridgeList ? MyFridgeList : <div>SPINNER GOES HERE</div>}
+                  listitems={MyFridgeList ? MyFridgeList : <Loader />}
                   setMyfridgeList={setMyfridgeList}
                   setMyShoppingList={setMyShoppingList}
                   fetchMyFridgeList={fetchMyFridgeList}
@@ -177,7 +176,7 @@ function App() {
               <div className="MyRecipe-container">
                 <MyRecipe
                   fetchMyRecipes={fetchMyRecipes}
-                  MyRecipeList={MyRecipeList ? MyRecipeList : <div>SPINNER GOES HERE</div>}
+                  MyRecipeList={MyRecipeList ? MyRecipeList : <Loader />}
                   setMyRecipeList={setMyRecipeList}
                 />
               </div>
@@ -188,7 +187,7 @@ function App() {
                 <h1>Recipes list</h1>
                 <RecipeList
                   setRequestedRecipe={setRequestedRecipe}
-                  requestedRecipe={requestedRecipe ? requestedRecipe : <div>SPINNER GOES HERE</div>}
+                  requestedRecipe={requestedRecipe ? requestedRecipe : <Loader />}
                   setRequestedRecipe={setRequestedRecipe}
                   fetchRecipes={fetchRecipes}
                   getRecipeHandler={getRecipeHandler}

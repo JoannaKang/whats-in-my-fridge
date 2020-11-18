@@ -27,7 +27,7 @@ const FullRecipe = (props) => {
       <div className="toggle-div" onClick={() => toggle()}>
         <img className="thumbnail" src={props.data.strMealThumb} width="100"></img>
         <div className="text-area">
-          <div className="name">  {props.data.strMeal}</div> <div className="category"> 🥘 {props.data.strCategory}</div> <div className="area">📍{props.data.strArea}</div>
+          <div className="recipe-name">  {props.data.strMeal}</div> <div className="recipe-category"> 🥘 {props.data.strCategory}</div> <div className="area">📍{props.data.strArea}</div>
         </div>
       </div>
       <div className={`full-recipe-subcontainer ${!state ? "collapsed" : ""} `}>

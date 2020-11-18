@@ -21,9 +21,6 @@ a :hover {
 
 *:focus{outline:none;}
 
-
-
-
 body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -126,6 +123,43 @@ border: 0px;
   justify-content: center;
 }
 
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.category {
+  margin-right: 10px;
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.3rem;
+  background-color: rgb(199, 199, 199);
+}
+
+.date {
+  margin-right: 10px;
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.3rem;
+  background-color: rgb(199, 199, 199);
+}
+
+.category:hover {
+  background-color: rgb(167, 167, 167);
+}
+
+.date:hover {
+  background-color: rgb(167, 167, 167);
+}
+
 .getRecipe-button{
   margin-top: 20px;
   padding: 10px;
@@ -170,4 +204,11 @@ border: 0px;
 .button-div{
   padding: 0px !important;
   margin: 0px !important;
+}
+
+.category:focus {
+  outline:none;
+}
+.date:focus {
+  outline:none;
 }

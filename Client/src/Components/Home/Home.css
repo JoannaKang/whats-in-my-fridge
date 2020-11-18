@@ -8,9 +8,11 @@
 
 .piechart{
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .title {
+  margin-top: 10px;
   text-align: center;
   font-size: 2rem;
 }
@@ -22,6 +24,7 @@
   background-color:  #ffffff;
   box-shadow: 5px 5px 2.5px #f0f0f0;
   justify-content: center;
+  margin-top: 10px;
 }
 
 
