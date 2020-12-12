@@ -3,13 +3,15 @@
 📝Manage your grocery list, Get meal plan ideas!💡
 
 ## Main features<br/>
-🔍See your fridge status at one glance: You can not only check what's in your fridge but also which ingredients will soon expire<br/>
+1.See your fridge status at one glance: You can not only check what's in your fridge but also which ingredients will soon expire<br/>
 ![](https://media2.giphy.com/media/YfKxwaiSQ2w5DJP6yt/giphy.gif) <br/>
-🍎Manage ingredients state <br/>
+<br/>🍎Manage ingredients state <br/>
 ![](https://media4.giphy.com/media/dUTgRiAFDj9h94z79T/giphy.gif) <br/>
--  Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
+- Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
 - Have you used all the ingredients in your fridge? Check grocery items, move them to shopping list!<br/>
-📖 Get recipe: Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
+<br/>📖 Get recipe
+![](https://media1.giphy.com/media/uVNuq1LXngu3a5rfFf/giphy.gif) <br/>
+Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
 
 ## 🤖Here are tech stacks that I used for this project:
 <p align="left"> 
