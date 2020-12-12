@@ -16,7 +16,7 @@ This app is developed by Sooyeon Kang as solo project for the coding bootcamp <a
 ![](https://media1.giphy.com/media/uVNuq1LXngu3a5rfFf/giphy.gif) <br/>
 Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
 
-## Getting started
+## ⚙️Getting started
 
 ### Get Repo
 ```
