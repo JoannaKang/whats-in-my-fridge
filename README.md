@@ -2,7 +2,7 @@
 
 📝Manage your grocery list, Get meal plan ideas!💡
 
-##💡Main features💡
+## 💡Main features💡<br/>
 🔍See your fridge status at one glance: You can not only check what's in your fridge but also which ingredients will soon expire<br/>
 🍎Save Grocery list: Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
 🛒Add to shopping list: Have you used all the ingredients in your fridge? Check grocery items, move them to shopping list!<br/>
