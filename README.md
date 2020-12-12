@@ -1,6 +1,8 @@
 # whats-in-my-fridge
 
 📝Manage your grocery list, Get meal plan ideas!💡
+<img width="624" alt="Screen Shot 2020-12-12 at 4 17 02 PM" src="https://user-images.githubusercontent.com/34419390/101989059-b76b7a80-3c95-11eb-850e-45083e681589.png">
+
 
 ## Main features<br/>
 1. See your fridge status at one glance👀<br/>
@@ -10,7 +12,7 @@
 ![](https://media4.giphy.com/media/dUTgRiAFDj9h94z79T/giphy.gif) <br/>
 - Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
 - Have you used all the ingredients in your fridge? Check grocery items, move them to shopping list!<br/>
-3. Get recipe
+3. Get recipe <br/>
 ![](https://media1.giphy.com/media/uVNuq1LXngu3a5rfFf/giphy.gif) <br/>
 Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
 
