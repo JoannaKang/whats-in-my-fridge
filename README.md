@@ -4,7 +4,7 @@
 This app is developed by Sooyeon Kang as solo project for the coding bootcamp <a href="https://codeworks.me">Codeworks</a></p>
 
 
-## ✨Main features<br/>
+## ✨ Main features<br/>
 1. See your fridge status at one glance👀<br/>
 ![](https://media2.giphy.com/media/YfKxwaiSQ2w5DJP6yt/giphy.gif) <br/>
 - You can not only check what's in your fridge but also which ingredients will soon expire<br/>
@@ -16,7 +16,7 @@ This app is developed by Sooyeon Kang as solo project for the coding bootcamp <a
 ![](https://media1.giphy.com/media/uVNuq1LXngu3a5rfFf/giphy.gif) <br/>
 Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
 
-## ⚙️Getting started
+## ⚙️ Getting started
 
 ### Get Repo
 ```
