@@ -1,8 +1,5 @@
-# whats-in-my-fridge
-
-📝Manage your grocery list, Get meal plan ideas!💡
-<img width="624" alt="Screen Shot 2020-12-12 at 4 17 02 PM" src="https://user-images.githubusercontent.com/34419390/101989059-b76b7a80-3c95-11eb-850e-45083e681589.png">
-
+## 📝Manage your grocery list, Get meal plan ideas!💡 <br/>
+<img width="624" alt="Screen Shot 2020-12-12 at 4 17 02 PM" src="https://user-images.githubusercontent.com/34419390/101989059-b76b7a80-3c95-11eb-850e-45083e681589.png"> <br/>
 
 ## Main features<br/>
 1. See your fridge status at one glance👀<br/>
