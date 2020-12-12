@@ -4,19 +4,19 @@
 This app is developed by Joanna Kang as solo project for the coding bootcamp <a href="https://codeworks.me">Codeworks</a></p>
 
 
-## Main features<br/>
+## ✨Main features<br/>
 1. See your fridge status at one glance👀<br/>
 ![](https://media2.giphy.com/media/YfKxwaiSQ2w5DJP6yt/giphy.gif) <br/>
 - You can not only check what's in your fridge but also which ingredients will soon expire<br/>
-2. Manage ingredients state <br/>
+2. Manage ingredients state🍎 <br/>
 ![](https://media4.giphy.com/media/dUTgRiAFDj9h94z79T/giphy.gif) <br/>
 - Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
 - Have you used all the ingredients in your fridge? Check grocery items, move them to shopping list!<br/>
-3. Get recipe <br/>
+3. Get recipe📖 <br/>
 ![](https://media1.giphy.com/media/uVNuq1LXngu3a5rfFf/giphy.gif) <br/>
 Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
 
-## 🤖Here are tech stacks that I used for this project:
+## 🤖Here are tech stacks that I used for this project
 <p align="left"> 
    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> 
    <a href="https://reactjs.org/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> 
