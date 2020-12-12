@@ -2,7 +2,7 @@
 <h2><p align="center">Manage your grocery list📝, Get meal plan ideas!💡</p></h2>
 <p align="center">"What's in my fridge" is a grocery list app for helping you to keep your fridge nice and clean </br></p>
 <p align="center">This app is developed by Joanna Kang as solo project for the coding bootcamp <a href="https://codeworks.me">Codeworks</a></p>
----
+-------------------
 
 ## Main features<br/>
 1. See your fridge status at one glance👀<br/>
