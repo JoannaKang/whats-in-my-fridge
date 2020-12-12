@@ -1,5 +1,6 @@
 <img align="center" width="624" alt="Screen Shot 2020-12-12 at 4 17 02 PM" src="https://user-images.githubusercontent.com/34419390/101989059-b76b7a80-3c95-11eb-850e-45083e681589.png"> <br/>
 ## <p> Manage your grocery list📝, Get meal plan ideas!💡</p>
+"What's in my fridge" is grocery list app for helping you to keep your fridge nice and clean  
 
 ## Main features<br/>
 1. See your fridge status at one glance👀<br/>
