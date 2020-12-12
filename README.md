@@ -1,7 +1,7 @@
 <p align="center"><img width="624" alt="Screen Shot 2020-12-12 at 4 17 02 PM" src="https://user-images.githubusercontent.com/34419390/101989059-b76b7a80-3c95-11eb-850e-45083e681589.png"></p>
 <h2> <p align="center">Manage your grocery list📝, Get meal plan ideas!💡</p> </h2>
-"What's in my fridge" is a grocery list app for helping you to keep your fridge nice and clean </br>
-This app is developed by Joanna Kang as solo project for the coding bootcamp <a href="https://codeworks.me">Codeworks</a>
+<p align="center">"What's in my fridge" is a grocery list app for helping you to keep your fridge nice and clean </br></p>
+<p align="center">This app is developed by Joanna Kang as solo project for the coding bootcamp <a href="https://codeworks.me">Codeworks</a></p>
 
 ## Main features<br/>
 1. See your fridge status at one glance👀<br/>
