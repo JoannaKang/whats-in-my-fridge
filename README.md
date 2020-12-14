@@ -6,7 +6,7 @@ This app is developed by Sooyeon Kang as solo project for the coding bootcamp <a
 
 ## ✨ Main features<br/>
 1. See your fridge status at one glance👀<br/>
-![](https://media2.giphy.com/media/YfKxwaiSQ2w5DJP6yt/giphy.gif) <br/>
+![](https://media.giphy.com/media/4tnwB8Z7nUpjNP1tqc/giphy.gif) <br/>
 - You can not only check what's in your fridge but also which ingredients will soon expire<br/>
 2. Manage ingredients state🍎 <br/>
 ![](https://media4.giphy.com/media/dUTgRiAFDj9h94z79T/giphy.gif) <br/>
