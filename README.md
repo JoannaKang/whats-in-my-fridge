@@ -9,7 +9,7 @@ This app is developed by Sooyeon Kang as solo project for the coding bootcamp <a
 ![](https://media.giphy.com/media/4tnwB8Z7nUpjNP1tqc/giphy.gif) <br/>
 - You can not only check what's in your fridge but also which ingredients will soon expire<br/>
 2. Manage ingredients state🍎 <br/>
-![](https://media4.giphy.com/media/dUTgRiAFDj9h94z79T/giphy.gif) <br/>
+![](https://media.giphy.com/media/4tnwB8Z7nUpjNP1tqc/giphy.gif) <br/>
 - Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
 - Have you used all the ingredients in your fridge? Check grocery items, move them to shopping list!<br/>
 3. Get recipe📖 <br/>
