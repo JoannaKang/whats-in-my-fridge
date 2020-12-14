@@ -13,7 +13,7 @@ This app is developed by Sooyeon Kang as solo project for the coding bootcamp <a
 - Keep your fridge status updated and stop buying the same ingredients over and over again!<br/>
 - Have you used all the ingredients in your fridge? Check grocery items, move them to shopping list!<br/>
 3. Get recipe📖 <br/>
-![](https://media1.giphy.com/media/uVNuq1LXngu3a5rfFf/giphy.gif) <br/>
+![](https://media.giphy.com/media/6tesHVDktr2LahbMfj/giphy.gif) <br/>
 Don't get stressed about what should you eat today. Simply select ingredients from "My fridge list", and get recipes that you can cook with those ingredients!
 
 ## ⚙️ Getting started
