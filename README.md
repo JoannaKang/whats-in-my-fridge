@@ -22,7 +22,7 @@ Don't get stressed about what should you eat today. Simply select ingredients fr
 ```
 git clone https://github.com/JoannaKang/whats-in-my-fridge
 ```
-### Install dependency (in Client folder)
+### Install dependency (In both Client and Server folder)
 ```
 npm install
 ```
