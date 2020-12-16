@@ -27,11 +27,11 @@ git clone https://github.com/JoannaKang/whats-in-my-fridge
 npm install
 ```
 ### Run the app
-## In Client folder
+> In Client folder
 ```
 npm start
 ```
-## In Server folder
+> In Server folder
 ```
 nodemon
 ```
