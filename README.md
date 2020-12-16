@@ -22,13 +22,18 @@ Don't get stressed about what should you eat today. Simply select ingredients fr
 ```
 git clone https://github.com/JoannaKang/whats-in-my-fridge
 ```
-### Install dependency
+### Install dependency (in Client folder)
 ```
 npm install
 ```
 ### Run the app
+## In Client folder
 ```
 npm start
+```
+## In Server folder
+```
+nodemon
 ```
 
 ## 🤖Here are tech stacks that I used for this project
