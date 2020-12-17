@@ -12,8 +12,8 @@ import { faHome, faShoppingBasket, faPlusSquare, faList } from '@fortawesome/fre
 import CategoryList from './Components/CategoryList/CategoryList';
 import MyRecipe from './Components/MyRecipe/MyRecipe';
 import Home from './Components/Home/Home';
-import Dashboard from '../src/Components/Dashboard/Dashboard';
-import RecipeList from '../src/Components/RecipeList/RecipeList';
+import Dashboard from './Components/Dashboard/Dashboard';
+import RecipeList from './Components/RecipeList/RecipeList';
 import Loader from './Components/Loader/Loader'
 
 function App() {
