@@ -188,7 +188,6 @@ function App() {
                 <RecipeList
                   setRequestedRecipe={setRequestedRecipe}
                   requestedRecipe={requestedRecipe ? requestedRecipe : <Loader />}
-                  setRequestedRecipe={setRequestedRecipe}
                   fetchRecipes={fetchRecipes}
                   getRecipeHandler={getRecipeHandler}
                 />

@@ -1,21 +1,35 @@
 import ApiService from '../../ApiService'
 import './RecipeList.css'
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Link } from 'react-router-dom';
+import React, { useState, useEffect, ChangeEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import {FullRecipeInfo} from '../../Interfaces';
 
-function getRandomInt(min, max) {
+interface Recipes {
+  ingredient: string;
+  recipes: string[];
+}
+
+interface RecipeListProps {
+  setRequestedRecipe: (recipes: Recipes[]) => Recipes[];
+  requestedRecipe: Recipes[];
+  fetchRecipes: () => FullRecipeInfo[];
+  getRecipeHandler: () => Recipes[];
+}
+
+
+function getRandomInt(min:number, max:number) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
 }
 
-function RecipeList(props) {
+function RecipeList(props: RecipeListProps) {
   // console.log(props);
-  const [fullrecipes, setFullrecipes] = useState([])
+  const [fullrecipes, setFullrecipes] = useState<Recipes[]>([])
 
-  const getRecipeInfo = async (recipeIdArray) => {
+  const getRecipeInfo = async (recipeIdArray:string[]) => {
     let recipeInfos = [];
     for (let i = 0; i < 5; i++) {
       let randomIndex = getRandomInt(0, recipeIdArray.length - 1);
@@ -27,11 +41,11 @@ function RecipeList(props) {
   }
 
   // FIXME:클릭된 카테고리의 레시피만 다시 가져오기
-  const getMoreRecipe = (e) => {
+  const getMoreRecipe = () => {
     props.getRecipeHandler()
   }
 
-  const saveMyRecipe = (e) => {
+  const saveMyRecipe = (e: any) => {
     const selectedRecipies = []
     selectedRecipies.push(e.target.value)
     ApiService.saveMyRecipe(selectedRecipies);
@@ -40,7 +54,7 @@ function RecipeList(props) {
 
   useEffect(() => {
     async function getRandomRecipes() {
-      let new_fullrecipes = [];
+      let new_fullrecipes:Recipes[] = [];
       console.log(props.requestedRecipe);
       for (let i = 0; i < props.requestedRecipe.length; ++i) {
         const name = props.requestedRecipe[i].ingredient;
@@ -57,9 +71,10 @@ function RecipeList(props) {
 
   return (
     fullrecipes.map(el => {
-      let recipe_array = [];
-      el.recipes.forEach((recipe) => {
-        recipe_array.push(
+      let recipe_array:JSX.Element[] = [];
+      el.recipes.forEach((recipe: any) => {
+        recipe_array.push( 
+  
           <>
             <div key={recipe._id} className="Recipe-info">
               <div>
@@ -68,7 +83,8 @@ function RecipeList(props) {
                 <h5>{recipe.strMeal}</h5>
               </div>
               <button className="save-to-myrecipe" onClick={saveMyRecipe} value={recipe._id}>
-                <Link to='/myrecipe'>Save to my Recipe</Link></button>
+                <Link to='/myrecipe'>Save to my Recipe</Link>
+              </button>
             </div>
           </>)
       })
