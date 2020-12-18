@@ -3,21 +3,39 @@ import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../Home/Home.css'
 
-const Home = (props) => {
+
+interface Myfridgelist {
+  __v: string;
+  _id: string;
+  category: string;
+  date: string;
+  name: string;
+  quantity: number;
+  saved: string;
+}
+
+interface HomeProps {
+  MyFridgeList: Array<Myfridgelist>;
+  checkedItems: Array<string>;
+  clickboxHandler: () => React.FormEventHandler;
+  getRecipeHandler: () => React.MouseEventHandler;
+}
+
+const Home = (props:HomeProps) => {
   console.log(props);
 
 
-  const now = new Date();
-  const expiredItems = [];
+  const now:number = new Date().getTime();
+  const expiredItems:Array<Myfridgelist> = [];
 
   for (let i = 0; i < props.MyFridgeList.length; i++) {
-    const savedDate = new Date(props.MyFridgeList[i].date);
+    const savedDate:number = new Date(props.MyFridgeList[i].date).getTime();
     if (((now - savedDate) / 1000 / 60 / 24 / 52) > 7) {
       expiredItems.push(props.MyFridgeList[i]);
     }
   }
 
-  const soontobeexpired = expiredItems.map(el => {
+  const soontobeexpired:JSX.Element[] = expiredItems.map(el => {
     console.log(el)
     return (
       <>

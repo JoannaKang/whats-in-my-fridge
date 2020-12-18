@@ -3,7 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import './IngredientItem.css'
 
-const IngredientItem = (props) => {
+interface IngredientItem {
+    _id: string;
+    name: string;
+    category: string;
+    quantity: number;
+    saved: string;
+    date: string;
+    __v:string;
+}
+
+interface IngredientItemProps {
+  ingredientItems: Array<IngredientItem>
+  clickboxHandler: React.FormEventHandler;
+}
+
+const IngredientItem = (props: IngredientItemProps) => {
 
   // console.log('📧', props);
 
