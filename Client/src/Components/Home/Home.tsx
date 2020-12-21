@@ -2,17 +2,18 @@ import Piechart from './Piechart'
 import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../Home/Home.css'
+import { Myfridgelist } from '../../Interfaces';
 
 
-interface Myfridgelist {
-  __v: string;
-  _id: string;
-  category: string;
-  date: string;
-  name: string;
-  quantity: number;
-  saved: string;
-}
+// interface Myfridgelist {
+//   __v: string;
+//   _id: string;
+//   category: string;
+//   date: string;
+//   name: string;
+//   quantity: number;
+//   saved: string;
+// }
 
 interface HomeProps {
   MyFridgeList: Array<Myfridgelist>;

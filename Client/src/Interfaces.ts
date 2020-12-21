@@ -47,3 +47,13 @@ export interface FullRecipeInfo {
   strMeasure19?: string;
   strMeasure20?: string;
 }
+
+export interface Myfridgelist {
+  __v: string;
+  _id: string;
+  category: string;
+  date: string;
+  name: string;
+  quantity: number;
+  saved: string;
+}
