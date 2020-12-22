@@ -2,36 +2,49 @@ import './Dashboard.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import ApiService from '../../ApiService'
+import {Myfridgelist} from '../../Interfaces';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
+interface AddItemsProps {
+  fetchShoppingList: () => Array<Myfridgelist>;
+  fetchMyFridgeList: () => Array<Myfridgelist>;
+  checkedItems: Array<string>;
+  setCheckedItems: (value: Array<string>) => Array<string>;
+}
 
-const AddItems = (props) => {
+interface InitialState {
+  name: string;
+  category: string;
+  quantity: number;
+}
+
+const AddItems = (props:AddItemsProps) => {
 
   const initialState = {
     name: '',
     category: '',
     quantity: 1
   };
-  const [addIngredient, setAddIngredient] = useState(initialState);
+  const [addIngredient, setAddIngredient] = useState<InitialState>(initialState);
 
 
-  const updateName = e => {
+  const updateName = (e:string)=> {
     setAddIngredient({
       ...addIngredient,
       name: e
     })
   }
 
-  const updateCategory = e => {
+  const updateCategory = (e:string) => {
     setAddIngredient({
       ...addIngredient,
       category: e,
     })
   }
 
-  const updateQuantity = e => {
+  const updateQuantity = (e:number) => {
     setAddIngredient(
       {
         ...addIngredient,
@@ -40,13 +53,13 @@ const AddItems = (props) => {
     )
   }
 
-  const myfridgeHandler = (event) => {
+  const myfridgeHandler = (event:any) => {
     event.preventDefault();
     ApiService.saveMyfridgeList([addIngredient]).then(() => props.fetchMyFridgeList());
     setAddIngredient(initialState);
   }
 
-  const shoppinglistHandler = (event) => {
+  const shoppinglistHandler = (event:any) => {
     event.preventDefault();
     ApiService.saveShoppingList([addIngredient]).then(() => props.fetchShoppingList());
     setAddIngredient(initialState);
@@ -56,8 +69,8 @@ const AddItems = (props) => {
     <>
       <div className="Add-list">
         <form className="input-form" >
-          <input type="ingredeint-add" className="text-input" placeholder="+ Add new Item" value={addIngredient.name} onChange={e => updateName(e.target.value)}></input>
-          <select className="catecory-select" value={addIngredient.category} onChange={(e) => updateCategory(e.target.value)} >
+          <input type="ingredeint-add" className="text-input" placeholder="+ Add new Item" value={addIngredient.name} onChange={(e:React.ChangeEvent<HTMLInputElement>) => updateName(e.target.value)}></input>
+          <select className="catecory-select" value={addIngredient.category} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => updateCategory(e.target.value)} >
             <option>-Select-</option>
             <option>🥦 Veggies</option>
             <option>🥩 Meat</option>
@@ -70,7 +83,7 @@ const AddItems = (props) => {
             <option>🧂 Spice</option>
             <option>💫 etc</option>
           </select>
-          <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={e => updateQuantity(e.target.value)}></input>
+          <input className="quantity" type="number" min='1' value={addIngredient.quantity} onChange={(e:React.ChangeEvent<HTMLInputElement>) => updateQuantity(parseInt(e.target.value))}></input>
           <button className="add-shoppinglist" onClick={shoppinglistHandler} style={{ textDecoration: 'none', color: '#3f454d' }}>
             <Link to="/shoppinglist">
               <FontAwesomeIcon icon={faShoppingBasket} /> Add to Shop List
