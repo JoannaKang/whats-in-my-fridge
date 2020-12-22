@@ -16,6 +16,8 @@ interface IngredientItem {
 interface IngredientItemProps {
   ingredientItems: Array<IngredientItem>
   clickboxHandler: React.FormEventHandler;
+  checkedItems: Array<string>;
+  setCheckedItems: (value: Array<string>) => Array<string>;
 }
 
 const IngredientItem = (props: IngredientItemProps) => {
@@ -26,21 +28,25 @@ const IngredientItem = (props: IngredientItemProps) => {
   //   return null;
   // }
 
+  const arrayValue = props.ingredientItems.map(el => {
+    return (
+      <div key={el._id} className="item-div">
+        <input type="checkbox" className="list-checkbox"
+          onClick={props.clickboxHandler}
+          value={el._id.toString()} >
+        </input>
+        <div className="detail">
+          <span>{el.name}</span>
+          <span><FontAwesomeIcon className="plus" icon={faPlus} color={"grey"} size="xs"></FontAwesomeIcon> {el.quantity} <FontAwesomeIcon className="minus" icon={faMinus} size="xs" color={"grey"}></FontAwesomeIcon></span>
+        </div>
+      </div >
+    )
+  });
+
   return (
-    props.ingredientItems.map(el => {
-      return (
-        <div key={el._id} className="item-div">
-          <input type="checkbox" className="checkbox"
-            onClick={props.clickboxHandler}
-            value={el._id.toString()} >
-          </input>
-          <div className="detail">
-            <span>{el.name}</span>
-            <span><FontAwesomeIcon className="plus" icon={faPlus} color={"grey"} size="xs"></FontAwesomeIcon> {el.quantity} <FontAwesomeIcon className="minus" icon={faMinus} size="xs" color={"grey"}></FontAwesomeIcon></span>
-          </div>
-        </div >
-      )
-    })
+    <>
+      {arrayValue}
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './FullRecipe.css'
 import {FullRecipeInfo} from '../../Interfaces'
 
@@ -35,7 +35,7 @@ const FullRecipe = (props: FullRecipeProps) => {
   return (
     <>
       <div className="toggle-div" onClick={() => toggle()}>
-        <img className="thumbnail" src={props.data.strMealThumb} width="100"></img>
+        <img className="thumbnail" alt="meal-img" src={props.data.strMealThumb} width="100"></img>
         <div className="text-area">
           <div className="recipe-name">  {props.data.strMeal}</div> <div className="recipe-category"> 🥘 {props.data.strCategory}</div> <div className="area">📍{props.data.strArea}</div>
         </div>

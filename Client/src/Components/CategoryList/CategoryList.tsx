@@ -1,25 +1,44 @@
 import IngredientItem from '../IngredientItem/IngredientItem'
 import Button from '../Buttons/Buttons'
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import './CategorytList.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import './CategorytList.css';
+import {Myfridgelist} from '../../Interfaces';
 
-const CategoryList = (props) => {
-  if (props.listitems.length === 0) {
-    return null;
-  }
+interface CategorylistProps {
+  checkedItems: Array<string>;
+  clickboxHandler: () => React.FormEventHandler;
+  fetchMyFridgeList: () => Array<Myfridgelist>;
+  fetchShoppinglist: () => Array<Myfridgelist>;
+  listitems: Array<Myfridgelist>;
+  setCheckedItems: (value: Array<string>) => Array<string>;
+  setMyShoppingList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
+  setMyfridgeList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
+  dateview: string;
+}
 
-  const dateItems = []
-  props.listitems.map(el => {
-    dateItems.push({
+interface Dateitems {
+  date: string;
+  name: string;
+  quantity: number;
+}
+
+const CategoryList = (props:CategorylistProps) => {
+  // if (props.listitems.length === 0) {
+  //   return null;
+  // }
+
+  const dateItems:Array<Dateitems> = [];
+  props.listitems!.map(el => {
+    return dateItems.push({
       date: el.date.slice(0, 10),
       name: el.name,
       quantity: el.quantity
     })
   })
-  dateItems.sort(function (a, b) {
-    return new Date(a.date) - new Date(b.date)
+  dateItems.sort(function (a:Dateitems, b:Dateitems) {
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
   })
 
 
@@ -50,7 +69,7 @@ const CategoryList = (props) => {
   }
 
 
-  const AllList = props.listitems.flatMap(el => el)
+  const AllList = props.listitems!.flatMap(el => el)
 
   const VeggiesList = AllList.filter(el => el.category === "🥦 Veggies");
   const MeatList = AllList.filter(el => el.category === "🥩 Meat");
@@ -62,6 +81,7 @@ const CategoryList = (props) => {
   const SauceList = AllList.filter(el => el.category === "🍯 Sauce");
   const SpiceList = AllList.filter(el => el.category === "🧂 Spice");
   const etcList = AllList.filter(el => el.category === "💫 etc");
+
 
   if (props.dateview === 'Category' || props.dateview === undefined) {
     return (
@@ -138,7 +158,6 @@ const CategoryList = (props) => {
             setCheckedItems={props.setCheckedItems}
           />
         </div>
-
       </React.Fragment>
     )
   } else if (props.dateview === 'Date') {

@@ -52,12 +52,6 @@ const AddItems = (props) => {
     setAddIngredient(initialState);
   }
 
-  // const [onkeyupstate, setOnkeyupstate] = (false)
-
-  // function onKeyupHandler() {
-  //   setOnkeyupstate(!onkeyupstate)
-  // }
-
   return (
     <>
       <div className="Add-list">

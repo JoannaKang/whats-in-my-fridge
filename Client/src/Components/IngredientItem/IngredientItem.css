@@ -20,13 +20,12 @@ background-color: #ffa6a9;
 border-radius: 150px;
 } */
 
-.checkbox{
+.list-checkbox {
   margin-right: 10px;
   border: none;
 }
 
-
-.item-div{
+.item-div {
   display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
