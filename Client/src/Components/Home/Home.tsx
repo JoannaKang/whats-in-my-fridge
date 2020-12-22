@@ -5,27 +5,15 @@ import '../Home/Home.css'
 import { Myfridgelist } from '../../Interfaces';
 
 
-// interface Myfridgelist {
-//   __v: string;
-//   _id: string;
-//   category: string;
-//   date: string;
-//   name: string;
-//   quantity: number;
-//   saved: string;
-// }
-
 interface HomeProps {
   MyFridgeList: Array<Myfridgelist>;
   checkedItems: Array<string>;
+  setCheckedItems: (value: Array<string>) => Array<string>;
   clickboxHandler: () => React.FormEventHandler;
   getRecipeHandler: () => React.MouseEventHandler;
 }
 
 const Home = (props:HomeProps) => {
-  console.log(props);
-
-
   const now:number = new Date().getTime();
   const expiredItems:Array<Myfridgelist> = [];
 
@@ -37,18 +25,17 @@ const Home = (props:HomeProps) => {
   }
 
   const soontobeexpired:JSX.Element[] = expiredItems.map(el => {
-    console.log(el)
     return (
       <>
-        {/* FIXME: 왜때무네 망가졌지;?ㅠㅠㅠ */}
-        <button className="item-selectbox" key={el._id} onClick={() => props.clickboxHandler()}
-          value={el._id}>
+        <button className="item-selectbox" key={el._id}>
+        <input type="checkbox" className="checkbox"
+        value={el._id} 
+        onClick={props.clickboxHandler}/>
           {el.category.slice(0, 2)} {el.name}
-        </button>
+          </button>  
       </>
     )
   })
-
 
   return (
     <div className="home-container">
@@ -61,7 +48,11 @@ const Home = (props:HomeProps) => {
       <div className="soon-to-be-expired">
         {soontobeexpired}
       </div>
-      <button className="getRecipes" onClick={() => props.getRecipeHandler()}><Link to='/recipes'>Get Recipes</Link></button>
+      <button className="getRecipes" onClick={() => {
+        props.getRecipeHandler();
+        }}>
+        <Link to='/recipes'>Get Recipes</Link>
+      </button>
     </div>
   )
 }

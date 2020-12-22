@@ -89,7 +89,8 @@ function App() {
       }
     }
 
-    setRequestedRecipe(recipes)
+    setRequestedRecipe(recipes);
+    setCheckedItems([]);
   }
 
   const renderDateview = () => {
