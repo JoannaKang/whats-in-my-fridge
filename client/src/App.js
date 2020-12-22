@@ -1,4 +1,3 @@
-//**Import React */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -22,6 +21,7 @@ function App() {
   const [MyShoppingList, setMyShoppingList] = useState([]);
   const [MyRecipeList, setMyRecipeList] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [Recipeitems, setRecipeitems] = useState([]);
   const [requestedRecipe, setRequestedRecipe] = useState([]);
   const [dateview, setDateview] = useState('Category');

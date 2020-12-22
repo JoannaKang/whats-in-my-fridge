@@ -13,20 +13,26 @@ interface ButtonProps {
   setCheckedItems: (value: Array<string>) => Array<string>;
   setMyShoppingList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
   setMyfridgeList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
-
 }
+
+interface Item {
+  name:string;
+  category: string;
+  quantity: number;
+}
+
 
 const Button = (props:ButtonProps) => {
 
   const addtoShoppinglist = async () => {
     props.setCheckedItems([]);
 
-    let movedItemArray = [];
+    let movedItemArray:Item[] = [];
     for (let i = 0; i < props.checkedItems.length; ++i) {
       const el = props.checkedItems[i];
       let res = await ApiService.getOneMyFridgeItem(el);
 
-      const movedItem = Object.assign({}, { name: res.name, category: res.category, quantity: res.quantity })
+      const movedItem:Item = Object.assign({}, { name: res.name, category: res.category, quantity: res.quantity })
       movedItemArray.push(movedItem);
     }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import './Dashboard.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';

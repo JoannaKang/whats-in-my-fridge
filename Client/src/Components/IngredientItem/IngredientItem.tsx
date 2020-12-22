@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import './IngredientItem.css'
 
-interface IngredientItem {
+interface IngredientItemInterface {
     _id: string;
     name: string;
     category: string;
@@ -14,7 +14,7 @@ interface IngredientItem {
 }
 
 interface IngredientItemProps {
-  ingredientItems: Array<IngredientItem>
+  ingredientItems: Array<IngredientItemInterface>
   clickboxHandler: React.FormEventHandler;
   checkedItems: Array<string>;
   setCheckedItems: (value: Array<string>) => Array<string>;

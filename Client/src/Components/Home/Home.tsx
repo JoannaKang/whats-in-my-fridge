@@ -1,5 +1,6 @@
 import Piechart from './Piechart'
 import React from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../Home/Home.css'
 import { Myfridgelist } from '../../Interfaces';

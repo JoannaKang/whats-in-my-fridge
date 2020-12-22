@@ -1,5 +1,11 @@
 const BASE_URL = "http://localhost:3001";
 
+interface Item {
+  name:string;
+  category: string;
+  quantity: number;
+}
+
 function getAllIngredients() {
   return fetch(BASE_URL + '/ingredients')
     .then(response => response.json())
@@ -10,15 +16,16 @@ function getMyFridgeItems() {
     .then(res => res.json())
 }
 
-function getOneMyFridgeItem(id) {
+function getOneMyFridgeItem(id:string) {
   return fetch(BASE_URL + `/inmyfridge/${id}`)
     .then(res => res.json());
 }
 
-async function saveMyfridgeList(addedInfo) {
+async function saveMyfridgeList(addedInfo:Item[]) {
   console.log('📣 fridgeItem save requested!', addedInfo)
   try {
     for (let i = 0; i < addedInfo.length; i++) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const status = await fetch(BASE_URL + '/inmyfridge', {
         method: "POST",
         headers: {
@@ -38,7 +45,7 @@ async function saveMyfridgeList(addedInfo) {
   }
 }
 
-async function deleteMyFridgeItems(checkedItem) {
+async function deleteMyFridgeItems(checkedItem:Array<string>) {
   console.log('📣 fridgeItem delete requested!', checkedItem)
   try {
     for (let i = 0; i < checkedItem.length; ++i) {
@@ -52,7 +59,7 @@ async function deleteMyFridgeItems(checkedItem) {
   }
 }
 
-async function saveShoppingList(addedInfo) {
+async function saveShoppingList(addedInfo:Item[]) {
   console.log('📣 Shoppinglist SAVE requested!', addedInfo)
   try {
     for (let i = 0; i < addedInfo.length; i++) {
@@ -83,12 +90,12 @@ function getShoppingList() {
 }
 
 
-function getOneShoppingList(id) {
+function getOneShoppingList(id:string): Promise<Item> {
   return fetch(BASE_URL + `/shoppinglist/${id}`)
     .then(res => res.json());
 }
 
-async function deleteShoppingList(checkedItem) {
+async function deleteShoppingList(checkedItem:Array<string>) {
   try {
     for (let i = 0; i < checkedItem.length; ++i) {
       await fetch(BASE_URL + `/shoppinglist/:${checkedItem[i]}`, {
@@ -108,7 +115,7 @@ function getRecipes() {
     .then(res => res.json());
 }
 
-function getOneRecipe(id) {
+function getOneRecipe(id:string) {
   console.log('📣 Recipe requested!')
   return fetch(BASE_URL + `/recipies/${id}`)
     .then(res => res.json());
@@ -119,7 +126,7 @@ function getMyRecipe() {
     .then(res => res.json())
 }
 
-async function saveMyRecipe(recipeIDs) {
+async function saveMyRecipe(recipeIDs:Array<string>) {
   console.log('📣 My Recipe SAVE requested!', recipeIDs)
   try {
     for (let i = 0; i < recipeIDs.length; i++) {

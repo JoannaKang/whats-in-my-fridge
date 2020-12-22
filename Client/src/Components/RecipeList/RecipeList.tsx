@@ -1,6 +1,6 @@
 import ApiService from '../../ApiService'
 import './RecipeList.css'
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -79,7 +79,7 @@ function RecipeList(props: RecipeListProps) {
             <div key={recipe._id} className="Recipe-info">
               <div>
                 <h3 className="recipe-area">{recipe.strArea}</h3>
-                <img src={recipe.strMealThumb} width="100%"></img>
+                <img src={recipe.strMealThumb} alt="" width="100%"></img>
                 <h5>{recipe.strMeal}</h5>
               </div>
               <button className="save-to-myrecipe" onClick={saveMyRecipe} value={recipe._id}>
