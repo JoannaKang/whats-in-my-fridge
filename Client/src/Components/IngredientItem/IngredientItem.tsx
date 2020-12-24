@@ -17,7 +17,7 @@ interface IngredientItemProps {
   ingredientItems: Array<IngredientItemInterface>
   clickboxHandler: React.FormEventHandler;
   checkedItems: Array<string>;
-  setCheckedItems: (value: Array<string>) => Array<string>;
+  setCheckedItems: (value: Array<string>) => void;
 }
 
 const IngredientItem = (props: IngredientItemProps) => {

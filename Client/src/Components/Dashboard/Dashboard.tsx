@@ -9,10 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
 interface AddItemsProps {
-  fetchShoppingList: () => Array<Myfridgelist>;
-  fetchMyFridgeList: () => Array<Myfridgelist>;
-  checkedItems: Array<string>;
-  setCheckedItems: (value: Array<string>) => Array<string>;
+  fetchShoppingList: () => void;
+  fetchMyFridgeList: () => void;
 }
 
 interface InitialState {

@@ -12,10 +12,10 @@ interface Recipes {
 }
 
 interface RecipeListProps {
-  setRequestedRecipe: (recipes: Recipes[]) => Recipes[];
+  setRequestedRecipe: (recipes: Recipes[]) => void;
   requestedRecipe: Recipes[];
-  fetchRecipes: () => FullRecipeInfo[];
-  getRecipeHandler: () => Recipes[];
+  fetchRecipes: () => void;
+  getRecipeHandler: () => Promise<void>;
 }
 
 
@@ -70,7 +70,8 @@ function RecipeList(props: RecipeListProps) {
 
 
   return (
-    fullrecipes.map(el => {
+    <>
+    {fullrecipes.map(el => {
       let recipe_array:JSX.Element[] = [];
       el.recipes.forEach((recipe: any) => {
         recipe_array.push( 
@@ -100,7 +101,8 @@ function RecipeList(props: RecipeListProps) {
           </div>
         </>
       )
-    })
+    })}
+    </>
   )
 }
 

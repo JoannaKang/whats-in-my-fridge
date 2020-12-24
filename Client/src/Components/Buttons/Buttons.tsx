@@ -6,13 +6,13 @@ import {Myfridgelist} from '../../Interfaces';
 
 interface ButtonProps {
   checkedItems: Array<string>;
-  clickboxHandler: () => React.FormEventHandler;
-  fetchMyFridgeList: () => Array<Myfridgelist>;
-  fetchShoppinglist: () => Array<Myfridgelist>;
+  clickboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  fetchMyFridgeList: () =>  Promise<void>;
+  fetchShoppinglist: () => void;
   listitems: Array<Myfridgelist>;
-  setCheckedItems: (value: Array<string>) => Array<string>;
-  setMyShoppingList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
-  setMyfridgeList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
+  setCheckedItems: (value: Array<string>) => void;
+  setMyShoppingList: (value: Array<Myfridgelist>) => void;
+  setMyfridgeList: (value: Array<Myfridgelist>) => void;
 }
 
 interface Item {

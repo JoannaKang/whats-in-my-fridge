@@ -8,14 +8,14 @@ import {Myfridgelist} from '../../Interfaces';
 
 interface CategorylistProps {
   checkedItems: Array<string>;
-  clickboxHandler: () => React.FormEventHandler;
-  fetchMyFridgeList: () => Array<Myfridgelist>;
-  fetchShoppinglist: () => Array<Myfridgelist>;
+  clickboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  fetchMyFridgeList: () => Promise<void>;
+  fetchShoppinglist: () => void;
   listitems: Array<Myfridgelist>;
-  setCheckedItems: (value: Array<string>) => Array<string>;
-  setMyShoppingList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
-  setMyfridgeList: (value: Array<Myfridgelist>) => Array<Myfridgelist>;
-  dateview: string;
+  setCheckedItems: (value: string[]) => void;
+  setMyShoppingList: (value: Array<Myfridgelist>) => void;
+  setMyfridgeList: (value: Myfridgelist[]) => void;
+  dateview: string | undefined;
 }
 
 interface Dateitems {
@@ -24,10 +24,10 @@ interface Dateitems {
   quantity: number;
 }
 
-const CategoryList = (props:CategorylistProps) => {
-  // if (props.listitems.length === 0) {
-  //   return null;
-  // }
+const CategoryList = (props:CategorylistProps) : JSX.Element | null=> {
+  if (props.listitems.length === 0) {
+    return null;
+  }
 
   const dateItems:Array<Dateitems> = [];
   props.listitems!.map(el => {
@@ -42,7 +42,7 @@ const CategoryList = (props:CategorylistProps) => {
   })
 
 
-  let dateDiv = []
+  let dateDiv:JSX.Element[] = [];
   let previousDate = undefined;
   for (let i = 0; i < dateItems.length; ++i) {
     if (i === 0) {
@@ -160,7 +160,7 @@ const CategoryList = (props:CategorylistProps) => {
         </div>
       </React.Fragment>
     )
-  } else if (props.dateview === 'Date') {
+  } else {
     return (
       <div className="dateview-container">{dateDiv}</div>
     )

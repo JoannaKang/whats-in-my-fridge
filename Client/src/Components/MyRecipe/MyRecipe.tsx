@@ -4,14 +4,14 @@ import FullRecipe from '../FullRecipe/FullRecipe'
 import './MyRecipe.css'
 import {FullRecipeInfo} from '../../Interfaces'
 
-
-interface RecipeID {
-  _id: string;
-  recipeID: string;
+interface MyRecipeList {
+  _id: string,
+  recipeID: string
 }
 
+
 interface MyRecipeProps {
-  MyRecipeList: Array<RecipeID>
+  MyRecipeList: Array<MyRecipeList>
 }
 
 interface FullIngredient {
@@ -41,7 +41,8 @@ const MyRecipe = (props: MyRecipeProps) => {
   }, [props.MyRecipeList])
 
   return (
-    fullRecipeInfo.map((el: any) => {
+    <>
+    {fullRecipeInfo.map((el: any) => {
 
       let fullIngredients_obj:FullIngredient[] = [];
 
@@ -52,6 +53,7 @@ const MyRecipe = (props: MyRecipeProps) => {
         }
         fullIngredients_obj.push(fullIngredient)
       }
+      
 
       return (
         <>
@@ -67,8 +69,8 @@ const MyRecipe = (props: MyRecipeProps) => {
           </div>
         </>
       )
-    })
-  )
+    })}
+  </>)
 }
 
 export default MyRecipe

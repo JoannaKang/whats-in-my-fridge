@@ -7,11 +7,10 @@ import { Myfridgelist } from '../../Interfaces';
 
 
 interface HomeProps {
-  MyFridgeList: Array<Myfridgelist>;
+  MyFridgeList: Array<Myfridgelist>
   checkedItems: Array<string>;
-  setCheckedItems: (value: Array<string>) => Array<string>;
-  clickboxHandler: () => React.FormEventHandler;
-  getRecipeHandler: () => React.MouseEventHandler;
+  clickboxHandler: (e:React.ChangeEvent<HTMLInputElement>) => void;
+  getRecipeHandler: () => void;
 }
 
 const Home = (props:HomeProps) => {
@@ -31,7 +30,7 @@ const Home = (props:HomeProps) => {
         <button className="item-selectbox" key={el._id}>
         <input type="checkbox" className="checkbox"
         value={el._id} 
-        onClick={props.clickboxHandler}/>
+        onChange={props.clickboxHandler}/>
           {el.category.slice(0, 2)} {el.name}
           </button>  
       </>

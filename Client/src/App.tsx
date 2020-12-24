@@ -13,21 +13,33 @@ import MyRecipe from './Components/MyRecipe/MyRecipe';
 import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
 import RecipeList from './Components/RecipeList/RecipeList';
-import Loader from './Components/Loader/Loader'
+
+import {Myfridgelist, FullRecipeInfo} from './Interfaces';
+
+interface RecipeItems {
+  ingredient: string;
+  recipes: Array<string>;
+}
+
+interface MyRecipeList {
+  _id: string,
+  recipeID: string
+}
+
 
 function App() {
 
-  const [MyFridgeList, setMyfridgeList] = useState([]);
-  const [MyShoppingList, setMyShoppingList] = useState([]);
-  const [MyRecipeList, setMyRecipeList] = useState([]);
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [MyFridgeList, setMyfridgeList] = useState<Array<Myfridgelist>>([]);
+  const [MyShoppingList, setMyShoppingList] = useState<Array<Myfridgelist>>([]);
+  const [MyRecipeList, setMyRecipeList] = useState<Array<MyRecipeList>>([]);
+  const [checkedItems, setCheckedItems] = useState<Array<string>>([]);
   // eslint-disable-next-line no-unused-vars
-  const [Recipeitems, setRecipeitems] = useState([]);
-  const [requestedRecipe, setRequestedRecipe] = useState([]);
+  const [Recipeitems, setRecipeitems] = useState<Array<RecipeItems>>([]);
+  const [requestedRecipe, setRequestedRecipe] = useState<Array<RecipeItems>>([]);
   const [dateview, setDateview] = useState('Category');
 
   const fetchMyFridgeList = () => {
-    ApiService.getMyFridgeItems()
+    return ApiService.getMyFridgeItems()
       .then(res => {
         setMyfridgeList(res);
       })
@@ -50,7 +62,7 @@ function App() {
       .then(data => setMyRecipeList(data));
   }
 
-  const clickboxHandler = (e) => {
+  const clickboxHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     console.log(e)
     if (e.target.checked === true) {
       setCheckedItems([
@@ -66,8 +78,8 @@ function App() {
 
     console.log('clicked')
     const selecteditems = checkedItems;
-    const recipesitems = [];
-    let recipes = [];
+    const recipesitems:Array<string> = [];
+    let recipes:Array<RecipeItems> = [];
 
     for (let i = 0; i < selecteditems.length; i++) {
       await ApiService.getOneMyFridgeItem(selecteditems[i])
@@ -117,14 +129,12 @@ function App() {
         <Dashboard
           fetchShoppingList={fetchShoppinglist}
           fetchMyFridgeList={fetchMyFridgeList}
-          checkedItems={checkedItems}
-          setCheckedItems={setCheckedItems}
         />
 
         <Switch>
           <React.Fragment>
             <Route exact path="/">
-              <Home MyFridgeList={MyFridgeList ? MyFridgeList : <Loader />}
+              <Home MyFridgeList={MyFridgeList}
                 clickboxHandler={clickboxHandler}
                 checkedItems={checkedItems}
                 getRecipeHandler={getRecipeHandler}
@@ -141,7 +151,8 @@ function App() {
                   fetchShoppinglist={fetchShoppinglist}
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
-                  setCheckedItems={setCheckedItems} />
+                  setCheckedItems={setCheckedItems} 
+                  dateview={dateview}/>
               </div>
             </Route>
 
@@ -152,7 +163,7 @@ function App() {
                   <button className="date" onClick={renderDateview}>Date</button>
                 </div>
                 <CategoryList
-                  listitems={MyFridgeList ? MyFridgeList : <Loader />}
+                  listitems={MyFridgeList}
                   setMyfridgeList={setMyfridgeList}
                   setMyShoppingList={setMyShoppingList}
                   fetchMyFridgeList={fetchMyFridgeList}
@@ -161,7 +172,6 @@ function App() {
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems}
                   dateview={dateview}
-                  setDateview={setDateview}
                 />
                 <Link to='/recipes'>
                   <div className='button-div'>
@@ -176,9 +186,7 @@ function App() {
             <Route exact path='/myrecipe'>
               <div className="MyRecipe-container">
                 <MyRecipe
-                  fetchMyRecipes={fetchMyRecipes}
-                  MyRecipeList={MyRecipeList ? MyRecipeList : <Loader />}
-                  setMyRecipeList={setMyRecipeList}
+                  MyRecipeList={MyRecipeList}
                 />
               </div>
             </Route>
@@ -188,7 +196,7 @@ function App() {
                 <h1>Recipes list</h1>
                 <RecipeList
                   setRequestedRecipe={setRequestedRecipe}
-                  requestedRecipe={requestedRecipe ? requestedRecipe : <Loader />}
+                  requestedRecipe={requestedRecipe}
                   fetchRecipes={fetchRecipes}
                   getRecipeHandler={getRecipeHandler}
                 />
