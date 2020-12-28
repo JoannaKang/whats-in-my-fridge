@@ -16,5 +16,6 @@
     "titleBar.inactiveForeground": "#15202b99"
   },
   "peacock.color": "#f9e64f",
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "typescript.tsdk": "/Users/joannakang/Documents/GitHub/whats-in-my-fridge/Client/node_modules/typescript/lib"
 }
