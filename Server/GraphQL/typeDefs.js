@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Query {
     getIngredients: [String]
     getRecipes: [Recipe]
+    getIngredientsList: [Ingredients]
   }
 
   type Recipe { 
@@ -53,6 +54,29 @@ const typeDefs = gql`
     strMeasure18: String,
     strMeasure19: String,
     strMeasure20: String
+  }
+
+  type Ingredients {
+    strIngredient1: String,
+    strIngredient2: String,
+    strIngredient3: String,
+    strIngredient4: String,
+    strIngredient5: String,
+    strIngredient6: String,
+    strIngredient7: String,
+    strIngredient8: String,
+    strIngredient9: String,
+    strIngredient10: String,
+    strIngredient11: String,
+    strIngredient12: String,
+    strIngredient13: String,
+    strIngredient14: String,
+    strIngredient15: String,
+    strIngredient16: String,
+    strIngredient17: String,
+    strIngredient18: String,
+    strIngredient19: String,
+    strIngredient20: String,
   }
 `;
 

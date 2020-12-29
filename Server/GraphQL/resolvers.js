@@ -10,6 +10,7 @@ async function fetchRecipe() {
 
   for (let i = 0; i < Alphabets.length; i++) {
     res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${Alphabets[i]}`)
+    
     const apiResponse = await res.json()
     mealsbyAlphabet.push(apiResponse);
   }
@@ -34,18 +35,21 @@ async function fetchIngredientsList() {
     }
   }
 
-
   AllIngredients = AllIngredients.filter(el => el !== "").filter(el => el !== null);
   AllIngredients = AllIngredients.map(el => el.toLowerCase());
   AllIngredients = AllIngredients.filter((item, index) => AllIngredients.indexOf(item) === index);
-  console.log('inIngredeintlist', AllIngredients)
+  console.log('inIngredeintlist', AllIngredients.length)
   return AllIngredients;
 }
 
 const resolvers = {
   Query: {
-    getIngredients: () => fetchIngredientsList(),
-    getRecipes: () => fetchRecipe()
+    getIngredients() {
+      return fetchIngredientsList()
+    },
+    getRecipes() {
+      return fetchRecipe() 
+    }
   }
 }
 

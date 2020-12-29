@@ -1,5 +1,8 @@
+const { ApolloServer } = require('apollo-server');
+const gql = require('graphql-tag');
+
 const db = require('./db');
-const { fetchIngredientsList } = require('./ingredientlist');
+const {Query} = require('./GraphQL/resolvers');
 // const Recipies = require('./Recipies');
 const Recipies = require('./Models/Recipies');
 const Ingredients = require('./Models/Ingredients');
@@ -169,8 +172,8 @@ async function ingredientrecipeMapping() {
     catch (err) {
       console.log('Tried to drop ingredients db but it failed.');
     }
-
-    let ingredient_res = await fetchIngredientsList();
+ 
+    let ingredient_res = await Query.getIngredients();
 
     for (let i = 0; i < ingredient_res.length; i++) {
       await Ingredients.create({ name: ingredient_res[i] })
