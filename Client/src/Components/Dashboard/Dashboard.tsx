@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
 interface AddItemsProps {
-  fetchShoppingList: () => void;
-  fetchMyFridgeList: () => void;
+  //fetchShoppingList: () => void;
+  //fetchMyFridgeList: () => void;
 }
 
 interface InitialState {
@@ -54,13 +54,15 @@ const AddItems = (props:AddItemsProps) => {
 
   const myfridgeHandler = (event:any) => {
     event.preventDefault();
-    ApiService.saveMyfridgeList([addIngredient]).then(() => props.fetchMyFridgeList());
+    ApiService.saveMyfridgeList([addIngredient])
+    //.then(() => props.fetchMyFridgeList());
     setAddIngredient(initialState);
   }
 
   const shoppinglistHandler = (event:any) => {
     event.preventDefault();
-    ApiService.saveShoppingList([addIngredient]).then(() => props.fetchShoppingList());
+    ApiService.saveShoppingList([addIngredient])
+    //.then(() => props.fetchShoppingList());
     setAddIngredient(initialState);
   }
 

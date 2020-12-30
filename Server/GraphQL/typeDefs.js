@@ -1,10 +1,18 @@
-const {gql} = require('apollo-server');
+const {gql} = require('apollo-server-express');
 
 const typeDefs = gql`
   type Query {
     getIngredients: [String]
-    getRecipes: [Recipe]
+    fetchRecipesfromAPI: [Recipe]
     getIngredientsList: [Ingredients]
+    getMyFridgeItems: [Item]
+    getShoppingList: [Item]
+    getOnegetMyFridgeItem(id: String!): Item
+  }
+
+  type Mutation {
+    createUser(input: UserInput): User
+    createShoppinglist(id:ID, input: ItemInput): Item
   }
 
   type Recipe { 
@@ -57,26 +65,44 @@ const typeDefs = gql`
   }
 
   type Ingredients {
-    strIngredient1: String,
-    strIngredient2: String,
-    strIngredient3: String,
-    strIngredient4: String,
-    strIngredient5: String,
-    strIngredient6: String,
-    strIngredient7: String,
-    strIngredient8: String,
-    strIngredient9: String,
-    strIngredient10: String,
-    strIngredient11: String,
-    strIngredient12: String,
-    strIngredient13: String,
-    strIngredient14: String,
-    strIngredient15: String,
-    strIngredient16: String,
-    strIngredient17: String,
-    strIngredient18: String,
-    strIngredient19: String,
-    strIngredient20: String,
+    idIngredient: String,
+    strIngredient: String,
+    strDescription: String,
+    strType: String
+  }
+
+  type Item {
+    _id: String,
+    name: String,
+    category: String,
+    quantity: Int,
+    date: String,
+    saved: String
+  }
+
+  type Myrecipe{
+    recipeID: String
+  }
+  
+  type User {
+    _id: String,
+    shoppinglistitem: [Item],
+    fridgeitem: [Item],
+    myrecipe: [Myrecipe]
+  }
+
+  input ItemInput {
+    name: String,
+    category: String,
+    quantity: Int,
+  }
+
+  input MyrecipeInput {
+    recipeId: String
+  }
+
+  input UserInput {
+    _id: String
   }
 `;
 

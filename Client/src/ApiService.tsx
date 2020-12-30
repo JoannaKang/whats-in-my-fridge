@@ -1,3 +1,7 @@
+import { query } from "express";
+import { gql } from '@apollo/client';
+import { json } from "body-parser";
+
 const BASE_URL = "http://localhost:3001";
 
 interface Item {
@@ -17,8 +21,19 @@ function getMyFridgeItems() {
 }
 
 function getOneMyFridgeItem(id:string) {
-  return fetch(BASE_URL + `/inmyfridge/${id}`)
-    .then(res => res.json());
+  console.log('calling getonemyfridgeitem');
+  const query = `{
+    getOnegetMyFridgeItem (id: "${id}") {
+      _id
+      name
+      category
+      quantity
+      saved
+      date
+    }
+  }`
+
+  return fetch(BASE_URL + `/graphql?query=` + query).then(res => res.json());
 }
 
 async function saveMyfridgeList(addedInfo:Item[]) {

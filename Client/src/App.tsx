@@ -7,6 +7,9 @@ import ApiService from './ApiService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faShoppingBasket, faPlusSquare, faList } from '@fortawesome/free-solid-svg-icons'
 
+import { useQuery } from '@apollo/client';
+import {GET_USER_DATA} from './Services/queryServics';
+
 //**Components
 import CategoryList from './Components/CategoryList/CategoryList';
 import MyRecipe from './Components/MyRecipe/MyRecipe';
@@ -27,10 +30,12 @@ interface MyRecipeList {
 }
 
 
+
+
 function App() {
 
-  const [MyFridgeList, setMyfridgeList] = useState<Array<Myfridgelist>>([]);
-  const [MyShoppingList, setMyShoppingList] = useState<Array<Myfridgelist>>([]);
+  //const [MyFridgeList, setMyfridgeList] = useState<Array<Myfridgelist>>([]);
+  //const [MyShoppingList, setMyShoppingList] = useState<Array<Myfridgelist>>([]);
   const [MyRecipeList, setMyRecipeList] = useState<Array<MyRecipeList>>([]);
   const [checkedItems, setCheckedItems] = useState<Array<string>>([]);
   // eslint-disable-next-line no-unused-vars
@@ -38,19 +43,19 @@ function App() {
   const [requestedRecipe, setRequestedRecipe] = useState<Array<RecipeItems>>([]);
   const [dateview, setDateview] = useState('Category');
 
-  const fetchMyFridgeList = () => {
-    return ApiService.getMyFridgeItems()
-      .then(res => {
-        setMyfridgeList(res);
-      })
-  }
+  // const fetchMyFridgeList = () => {
+  //   return ApiService.getMyFridgeItems()
+  //     .then(res => {        
+  //       setMyfridgeList(res);
+  //     })
+  // }
 
-  const fetchShoppinglist = () => {
-    ApiService.getShoppingList()
-      .then(data => {
-        setMyShoppingList(data)
-      });
-  }
+  // const fetchShoppinglist = () => {
+  //   ApiService.getShoppingList()
+  //     .then(data => {
+  //       setMyShoppingList(data)
+  //     });
+  // }
 
   const fetchRecipes = () => {
     ApiService.getRecipes()
@@ -114,21 +119,32 @@ function App() {
   }
 
   useEffect(() => {
-    fetchMyFridgeList();
-    fetchShoppinglist();
+    //fetchMyFridgeList();
+    //fetchShoppinglist();
     fetchRecipes();
     fetchMyRecipes();
   }, [])
 
-
+  
+  const {loading, error, data} = useQuery(GET_USER_DATA);
+  
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  const MyFridgeList = data.getMyFridgeItems;
+  const MyShoppingList = data.getShoppingList;
+  
+  console.log(MyShoppingList);
+  console.log(MyFridgeList);
+  
+  
 
   return (
     <>
       <Router>
         <div className="header">What's in My Fridge</div>
         <Dashboard
-          fetchShoppingList={fetchShoppinglist}
-          fetchMyFridgeList={fetchMyFridgeList}
+          //fetchShoppingList={fetchShoppinglist}
+          //fetchMyFridgeList={fetchMyFridgeList}
         />
 
         <Switch>
@@ -145,10 +161,10 @@ function App() {
               <div className="list-container">
                 <CategoryList
                   listitems={MyShoppingList}
-                  setMyfridgeList={setMyfridgeList}
-                  setMyShoppingList={setMyShoppingList}
-                  fetchMyFridgeList={fetchMyFridgeList}
-                  fetchShoppinglist={fetchShoppinglist}
+                  //setMyfridgeList={setMyfridgeList}
+                  //setMyShoppingList={setMyShoppingList}
+                  //fetchMyFridgeList={fetchMyFridgeList}
+                  //fetchShoppinglist={fetchShoppinglist}
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems} 
@@ -164,10 +180,10 @@ function App() {
                 </div>
                 <CategoryList
                   listitems={MyFridgeList}
-                  setMyfridgeList={setMyfridgeList}
-                  setMyShoppingList={setMyShoppingList}
-                  fetchMyFridgeList={fetchMyFridgeList}
-                  fetchShoppinglist={fetchShoppinglist}
+                  //setMyfridgeList={setMyfridgeList}
+                  //setMyShoppingList={setMyShoppingList}
+                  //fetchMyFridgeList={fetchMyFridgeList}
+                  //fetchShoppinglist={fetchShoppinglist}
                   clickboxHandler={clickboxHandler}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems}

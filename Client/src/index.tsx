@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from '@apollo/client';
 import './index.css';
 import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
+const link = createHttpLink({
+  uri: 'http://localhost:3001/graphql'
+});
+
+const client = new ApolloClient({
+  link,
+  cache: new InMemoryCache()
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

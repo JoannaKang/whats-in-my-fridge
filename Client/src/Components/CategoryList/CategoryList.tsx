@@ -6,15 +6,18 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import './CategorytList.css';
 import {Myfridgelist} from '../../Interfaces';
 
+import { gql, useQuery } from '@apollo/client';
+import {GET_MYFRIDGE_ITEMS} from '../../Services/queryServics';
+
 interface CategorylistProps {
   checkedItems: Array<string>;
   clickboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  fetchMyFridgeList: () => Promise<void>;
-  fetchShoppinglist: () => void;
+  //fetchMyFridgeList: () => Promise<void>;
+  //fetchShoppinglist: () => void;
   listitems: Array<Myfridgelist>;
   setCheckedItems: (value: string[]) => void;
-  setMyShoppingList: (value: Array<Myfridgelist>) => void;
-  setMyfridgeList: (value: Myfridgelist[]) => void;
+  //setMyShoppingList: (value: Array<Myfridgelist>) => void;
+  //setMyfridgeList: (value: Myfridgelist[]) => void;
   dateview: string | undefined;
 }
 
@@ -24,7 +27,14 @@ interface Dateitems {
   quantity: number;
 }
 
+// function FridgeList () {
+//   const {loading, error, data} = useQuery(GET_MYFRIDGE_ITEMS);
+//   if (loading) return null;
+//   if (error) return `Error! ${error}`;
+// }
+
 const CategoryList = (props:CategorylistProps) : JSX.Element | null=> {
+  console.log(props);
   if (props.listitems.length === 0) {
     return null;
   }
@@ -149,10 +159,10 @@ const CategoryList = (props:CategorylistProps) : JSX.Element | null=> {
             setCheckedItems={props.setCheckedItems} />
           <Button
             listitems={props.listitems}
-            setMyShoppingList={props.setMyShoppingList}
-            setMyfridgeList={props.setMyfridgeList}
-            fetchMyFridgeList={props.fetchMyFridgeList}
-            fetchShoppinglist={props.fetchShoppinglist}
+            //setMyShoppingList={props.setMyShoppingList}
+            //setMyfridgeList={props.setMyfridgeList}
+            //fetchMyFridgeList={props.fetchMyFridgeList}
+            //fetchShoppinglist={props.fetchShoppinglist}
             clickboxHandler={props.clickboxHandler}
             checkedItems={props.checkedItems}
             setCheckedItems={props.setCheckedItems}

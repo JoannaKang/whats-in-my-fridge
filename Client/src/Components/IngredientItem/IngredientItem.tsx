@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import './IngredientItem.css'
 
+
 interface IngredientItemInterface {
     _id: string;
     name: string;
@@ -20,9 +21,10 @@ interface IngredientItemProps {
   setCheckedItems: (value: Array<string>) => void;
 }
 
-const IngredientItem = (props: IngredientItemProps) => {
 
-  // console.log('📧', props);
+const IngredientItem = (props: IngredientItemProps) => {
+ 
+  console.log('📧', props);
 
   // if (props.ingredientItems === undefined) {
   //   return null;

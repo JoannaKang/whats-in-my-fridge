@@ -1,6 +1,3 @@
-const { ApolloServer } = require('apollo-server');
-const gql = require('graphql-tag');
-
 const db = require('./db');
 const {Query} = require('./GraphQL/resolvers');
 // const Recipies = require('./Recipies');
@@ -9,6 +6,7 @@ const Ingredients = require('./Models/Ingredients');
 const MyfridgeItem = require('./Models/Fridgeitem');
 const ShoppingListItem = require('./Models/ShoppingListItem');
 const MyRecipe = require('./Models/Myrecipe');
+const User = require('./Models/User');
 
 exports.getIngredients = async (req, res) => {
   try {
@@ -163,6 +161,28 @@ exports.saveMyrecipe = async (req, res) => {
   }
 }
 
+exports.createUser = async (req, res) => {
+  try {
+    console.log('🧚‍♀️req.body', req.body);
+    const user = await User.create(req.body);
+    res.status(201).send(user);
+  } catch(e) {
+    console.log('error', e);
+    res.sendStatus(500);
+  }
+}
+
+exports.createShoppinglistItem = async (req, res) => {
+  try {
+    console.log('🤡req.body', req.body);
+    // const user = await User.create(req.body);
+    // res.status(201).send(user);
+  } catch(e) {
+    console.log('error', e);
+    res.sendStatus(500);
+  }
+}
+
 async function ingredientrecipeMapping() {
   try {
     let res = await db;
@@ -202,4 +222,4 @@ async function ingredientrecipeMapping() {
     res.sendStatus(500);
   }
 }
-ingredientrecipeMapping();
+// ingredientrecipeMapping();

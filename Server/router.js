@@ -23,5 +23,7 @@ router.get('/myrecipe', controller.getMyRecipe);
 
 // router.post('/myrecipies/:id', controller.saveMyrecipe);
 router.post('/recipes', controller.saveMyrecipe);
+// router.post('/graphql', controller.createUser, controller.createShoppinglistItem)
+
 
 module.exports = router;

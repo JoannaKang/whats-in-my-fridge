@@ -4,15 +4,20 @@ import React from 'react';
 import './Buttons.css';
 import {Myfridgelist} from '../../Interfaces';
 
+import { useQuery } from '@apollo/client';
+import {GET_ONE_FRIDGE_ITEM} from '../../Services/queryServics';
+
+
+
 interface ButtonProps {
   checkedItems: Array<string>;
   clickboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  fetchMyFridgeList: () =>  Promise<void>;
-  fetchShoppinglist: () => void;
+  //fetchMyFridgeList: () =>  Promise<void>;
+  //fetchShoppinglist: () => void;
   listitems: Array<Myfridgelist>;
   setCheckedItems: (value: Array<string>) => void;
-  setMyShoppingList: (value: Array<Myfridgelist>) => void;
-  setMyfridgeList: (value: Array<Myfridgelist>) => void;
+  //setMyShoppingList: (value: Array<Myfridgelist>) => void;
+  //setMyfridgeList: (value: Array<Myfridgelist>) => void;
 }
 
 interface Item {
@@ -24,13 +29,25 @@ interface Item {
 
 const Button = (props:ButtonProps) => {
 
+  // const {loading, error, data} = useQuery(GET_ONE_FRIDGE_ITEM);
+  
+  // if (loading) return 'Loading...';
+  // if (error) return `Error! ${error.message}`;
+  // const oneFridgeItem = data.getOnegetMyFridgeItem;
+
+  // console.log(oneFridgeItem);
+
+
   const addtoShoppinglist = async () => {
     props.setCheckedItems([]);
+
+    console.log('calling addtoshoppinglis');
 
     let movedItemArray:Item[] = [];
     for (let i = 0; i < props.checkedItems.length; ++i) {
       const el = props.checkedItems[i];
       let res = await ApiService.getOneMyFridgeItem(el);
+      console.log('getonemyfridgeitem', res);
 
       const movedItem:Item = Object.assign({}, { name: res.name, category: res.category, quantity: res.quantity })
       movedItemArray.push(movedItem);
@@ -45,13 +62,13 @@ const Button = (props:ButtonProps) => {
     await ApiService.deleteMyFridgeItems(removedFromFridge);
 
 
-    props.fetchMyFridgeList();
-    props.fetchShoppinglist();
+    //props.fetchMyFridgeList();
+    //props.fetchShoppinglist();
   }
 
   const deleteMyfridgeItem = async () => {
     await ApiService.deleteMyFridgeItems(props.checkedItems);
-    props.fetchMyFridgeList();
+    //props.fetchMyFridgeList();
   }
 
   const movetoMyFridge = async () => {
@@ -76,13 +93,13 @@ const Button = (props:ButtonProps) => {
     })
     await ApiService.deleteShoppingList(removedFromShoppinglist);
 
-    props.fetchMyFridgeList();
-    props.fetchShoppinglist();
+    //props.fetchMyFridgeList();
+    //props.fetchShoppinglist();
   }
 
   const deleteShoppinglist = async () => {
     await ApiService.deleteShoppingList(props.checkedItems);
-    props.fetchShoppinglist();
+    //props.fetchShoppinglist();
   }
 
   const fridgeFragment:JSX.Element = <div className="button-div-1">
