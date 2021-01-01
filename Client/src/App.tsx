@@ -121,8 +121,8 @@ function App() {
   useEffect(() => {
     //fetchMyFridgeList();
     //fetchShoppinglist();
-    fetchRecipes();
-    fetchMyRecipes();
+    // fetchRecipes();
+    // fetchMyRecipes();
   }, [])
 
   
@@ -133,8 +133,8 @@ function App() {
   const MyFridgeList = data.getMyFridgeItems;
   const MyShoppingList = data.getShoppingList;
   
-  console.log(MyShoppingList);
-  console.log(MyFridgeList);
+  // console.log(MyShoppingList);
+  // console.log(MyFridgeList);
   
   
 

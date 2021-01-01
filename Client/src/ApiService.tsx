@@ -1,13 +1,10 @@
-import { query } from "express";
-import { gql } from '@apollo/client';
-import { json } from "body-parser";
-
 const BASE_URL = "http://localhost:3001";
 
 interface Item {
   name:string;
   category: string;
   quantity: number;
+  saved: string;
 }
 
 function getAllIngredients() {
@@ -53,6 +50,28 @@ async function saveMyfridgeList(addedInfo:Item[]) {
           saved: "Fridge"
         })
       })
+
+      // const query = JSON.stringify({
+      //   query: `mutation CreateMyFridgelist(
+      //     $newMyFridgelist: ItemInput!
+      //    ) {
+      //      createMyFridgelist(input: $newMyFridgelist) {
+      //        name
+      //        category
+      //        quantity
+      //        saved
+      //      }
+      //    }
+      //   `
+      // })
+
+      // return fetch(BASE_URL + '/graphql', {
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: query
+      // })
     }
   } catch (err) {
     console.log(err)
@@ -90,6 +109,35 @@ async function saveShoppingList(addedInfo:Item[]) {
           saved: "ShoppingList"
         })
       })
+
+      // console.log(addedInfo[i]);
+      // const shoppinglist = addedInfo[i]
+      
+      // {
+      //   "newShoppinglist" : addedInfo[i]
+      // }
+      
+      // const query = JSON.stringify({
+      //   query: `mutation CreateShoppinglist(
+      //     $newShoppinglist: ItemInput!
+      //    ) {
+      //     createShoppinglist(input: $newShoppinglist) {
+      //        name
+      //        category
+      //        quantity
+      //        saved
+      //      }
+      //    }
+      //   `
+      // })
+
+      // return fetch(BASE_URL + '/graphql', {
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: query
+      // })
     }
 
   } catch (err) {

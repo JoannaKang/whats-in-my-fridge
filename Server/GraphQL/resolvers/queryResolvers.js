@@ -46,10 +46,10 @@ async function fetchIngredientsList() {
 
 const Query = {
   fetchRecipesfromAPI: () => {
-    return fetchRecipe() 
+    return fetchRecipe(); 
   },
   getIngredients: () => {
-    return fetchIngredientsList()
+    return fetchIngredientsList();
   },
   getMyFridgeItems: () => {
     return apiRead.getMyFridgeList();

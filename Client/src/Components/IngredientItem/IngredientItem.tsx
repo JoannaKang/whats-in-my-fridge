@@ -24,7 +24,7 @@ interface IngredientItemProps {
 
 const IngredientItem = (props: IngredientItemProps) => {
  
-  console.log('📧', props);
+  // console.log('📧', props);
 
   // if (props.ingredientItems === undefined) {
   //   return null;

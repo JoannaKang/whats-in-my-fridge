@@ -6,8 +6,6 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import './CategorytList.css';
 import {Myfridgelist} from '../../Interfaces';
 
-import { gql, useQuery } from '@apollo/client';
-import {GET_MYFRIDGE_ITEMS} from '../../Services/queryServics';
 
 interface CategorylistProps {
   checkedItems: Array<string>;
@@ -34,7 +32,7 @@ interface Dateitems {
 // }
 
 const CategoryList = (props:CategorylistProps) : JSX.Element | null=> {
-  console.log(props);
+  // console.log(props);
   if (props.listitems.length === 0) {
     return null;
   }

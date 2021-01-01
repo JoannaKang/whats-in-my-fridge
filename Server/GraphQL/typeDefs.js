@@ -12,7 +12,9 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(input: UserInput): User
-    createShoppinglist(id:ID, input: ItemInput): Item
+    createShoppinglist(input: ItemInput!): Item
+    createMyFridgelist(input: ItemInput): Item
+    deleteMyFridgeList(id: String!): Item
   }
 
   type Recipe { 
@@ -95,6 +97,7 @@ const typeDefs = gql`
     name: String,
     category: String,
     quantity: Int,
+    saved: String
   }
 
   input MyrecipeInput {

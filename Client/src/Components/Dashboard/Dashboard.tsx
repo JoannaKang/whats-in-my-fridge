@@ -52,13 +52,14 @@ const AddItems = (props:AddItemsProps) => {
     )
   }
 
+  //TODO: mutation query for add to my fridge 
   const myfridgeHandler = (event:any) => {
     event.preventDefault();
     ApiService.saveMyfridgeList([addIngredient])
     //.then(() => props.fetchMyFridgeList());
     setAddIngredient(initialState);
   }
-
+  //TODO: mutation query for add to shopping list
   const shoppinglistHandler = (event:any) => {
     event.preventDefault();
     ApiService.saveShoppingList([addIngredient])
