@@ -57,8 +57,11 @@ const Query = {
   getShoppingList: () => {
     return apiRead.getShoppingList();
   },
-  getOnegetMyFridgeItem: (_, {id}) => {
-    return apiRead.getOnegetMyFridgeItem(id);
+  getOneMyFridgeItem: (_, {id}) => {
+    return apiRead.getOneMyFridgeItem(id);
+  },
+  getOneShoppingList: (_, {id}) => {
+    return apiRead.getOneShoppingList(id);
   }
 }
 

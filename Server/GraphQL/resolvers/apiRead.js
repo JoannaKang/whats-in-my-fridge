@@ -21,16 +21,27 @@ exports.getShoppingList = async () => {
   }
 };
 
-exports.getOnegetMyFridgeItem = async (id) => {
+exports.getOneMyFridgeItem = async (id) => {
   try {
     console.log('Find One from My Fridge', id)
     const foundedItem = await MyfridgeItem.findOne({
       _id: id
     });
     return foundedItem;
-    // res.status(200).send(foundedItem);
   } catch (e) {
     console.log(e);
-    // res.sendStatus(500);
+  }
+}
+
+exports.getOneShoppingList = async (id) => {
+  try {
+    console.log('❤️❤️❤️❤️❤️Find One from Shopping list', id)
+    const foundedItem = await ShoppingListItem.findOne({
+      _id: id
+    });
+    console.log(foundedItem);
+    return foundedItem
+  } catch (e) {
+    console.log(e);
   }
 }

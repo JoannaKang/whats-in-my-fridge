@@ -2,15 +2,17 @@ const apiCreate = require('./apiCreate');
 const apiDelete = require('./apiDelete');
 
 const Mutation = {
-  createShoppinglist: (_, {input}) => {
+  createShoppingList: (_, {input}) => {
     return apiCreate.saveShoppingList(input)
   },
-  createMyFridgelist: (_, {input}) => {
+  createMyFridgeList: (_, {input}) => {
     return apiCreate.saveInmyfridge(input);
   },
   deleteMyFridgeList: (_, {id}) => {
-    console.log('🤔🤔🤔🤔🤔🤔🤔🤔', id);
     return apiDelete.deleteMyfridge(id);
+  },
+  deleteShoppingList: (_, {id}) => {
+    return apiDelete.deleteShoppingList(id);
   }
 }
 

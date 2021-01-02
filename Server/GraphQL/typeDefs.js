@@ -7,14 +7,16 @@ const typeDefs = gql`
     getIngredientsList: [Ingredients]
     getMyFridgeItems: [Item]
     getShoppingList: [Item]
-    getOnegetMyFridgeItem(id: String!): Item
+    getOneMyFridgeItem(id: String!): Item
+    getOneShoppingList(id: String!): Item
   }
 
   type Mutation {
     createUser(input: UserInput): User
-    createShoppinglist(input: ItemInput!): Item
-    createMyFridgelist(input: ItemInput): Item
+    createShoppingList(input: ItemInput!): Item
+    createMyFridgeList(input: ItemInput!): Item
     deleteMyFridgeList(id: String!): Item
+    deleteShoppingList(id: String!): Item
   }
 
   type Recipe { 

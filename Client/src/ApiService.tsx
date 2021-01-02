@@ -20,7 +20,7 @@ function getMyFridgeItems() {
 function getOneMyFridgeItem(id:string) {
   console.log('calling getonemyfridgeitem');
   const query = `{
-    getOnegetMyFridgeItem (id: "${id}") {
+    getOneMyFridgeItem (id: "${id}") {
       _id
       name
       category
@@ -30,8 +30,26 @@ function getOneMyFridgeItem(id:string) {
     }
   }`
 
-  return fetch(BASE_URL + `/graphql?query=` + query).then(res => res.json());
+  return fetch(BASE_URL + `/graphql?query=` + query)
+    .then(res => res.json());
+    
 }
+
+function getOneShoppingList(id:string): Promise<Item> {
+  const query = `{
+    getOneShoppingList (id: "${id}") {
+      _id
+      name
+      category
+      quantity
+      saved
+      date
+    }
+  }`
+  return fetch(BASE_URL + `/graphql?query=`+ query)
+    .then(res => res.json());
+}
+
 
 async function saveMyfridgeList(addedInfo:Item[]) {
   console.log('📣 fridgeItem save requested!', addedInfo)
@@ -79,19 +97,19 @@ async function saveMyfridgeList(addedInfo:Item[]) {
   }
 }
 
-async function deleteMyFridgeItems(checkedItem:Array<string>) {
-  console.log('📣 fridgeItem delete requested!', checkedItem)
-  try {
-    for (let i = 0; i < checkedItem.length; ++i) {
-      await fetch(BASE_URL + `/inmyfridge/:${checkedItem[i]}`, {
-        method: 'DELETE'
-      })
-    }
-  } catch (err) {
-    console.log(err)
-    alert(err);
-  }
-}
+// async function deleteMyFridgeItems(checkedItem:Array<string>) {
+//   console.log('📣 fridgeItem delete requested!', checkedItem)
+//   try {
+//     for (let i = 0; i < checkedItem.length; ++i) {
+//       await fetch(BASE_URL + `/inmyfridge/:${checkedItem[i]}`, {
+//         method: 'DELETE'
+//       })
+//     }
+//   } catch (err) {
+//     console.log(err)
+//     alert(err);
+//   }
+// }
 
 async function saveShoppingList(addedInfo:Item[]) {
   console.log('📣 Shoppinglist SAVE requested!', addedInfo)
@@ -153,24 +171,20 @@ function getShoppingList() {
 }
 
 
-function getOneShoppingList(id:string): Promise<Item> {
-  return fetch(BASE_URL + `/shoppinglist/${id}`)
-    .then(res => res.json());
-}
 
-async function deleteShoppingList(checkedItem:Array<string>) {
-  try {
-    for (let i = 0; i < checkedItem.length; ++i) {
-      await fetch(BASE_URL + `/shoppinglist/:${checkedItem[i]}`, {
-        method: 'DELETE'
-      })
-    }
-    console.log('📣 Shoppinglist deleted!', checkedItem)
-  } catch (err) {
-    console.log(err)
-    alert(err);
-  }
-}
+// async function deleteShoppingList(checkedItem:Array<string>) {
+//   try {
+//     for (let i = 0; i < checkedItem.length; ++i) {
+//       await fetch(BASE_URL + `/shoppinglist/:${checkedItem[i]}`, {
+//         method: 'DELETE'
+//       })
+//     }
+//     console.log('📣 Shoppinglist deleted!', checkedItem)
+//   } catch (err) {
+//     console.log(err)
+//     alert(err);
+//   }
+// }
 
 function getRecipes() {
   console.log('📣 Recipe list requested!')
@@ -215,11 +229,11 @@ const exports = {
   saveMyfridgeList,
   getMyFridgeItems,
   getOneMyFridgeItem,
-  deleteMyFridgeItems,
+  // deleteMyFridgeItems,
   saveShoppingList,
   getShoppingList,
   getOneShoppingList,
-  deleteShoppingList,
+  // deleteShoppingList,
   getRecipes,
   getOneRecipe,
   getMyRecipe,

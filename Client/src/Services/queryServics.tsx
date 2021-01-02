@@ -21,15 +21,18 @@ export const GET_USER_DATA = gql`
   }
 `
 
-// export const GET_ONE_FRIDGE_ITEM = gql`
-// query {
-//   getOnegetMyFridgeItem (id: String) {
-//     _id
-//     name
-//     category
-//     quantity
-//     saved
-//     date
-//   }
-// ` 
+export const GET_ONE_FRIDGE_ITEM = gql`
+    query GetOneMyFridgeItem(
+      $id: String!
+      ){
+      getOnegetMyFridgeItem(id: $id) {
+        _id
+        name
+        category
+        quantity
+        saved
+        date
+      }
+    }  
+` 
 

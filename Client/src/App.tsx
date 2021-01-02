@@ -68,7 +68,6 @@ function App() {
   }
 
   const clickboxHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
     if (e.target.checked === true) {
       setCheckedItems([
         ...checkedItems, e.target.value]

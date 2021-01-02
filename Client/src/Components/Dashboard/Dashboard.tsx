@@ -2,31 +2,38 @@
 import './Dashboard.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import ApiService from '../../ApiService'
-import {Myfridgelist} from '../../Interfaces';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
-interface AddItemsProps {
-  //fetchShoppingList: () => void;
-  //fetchMyFridgeList: () => void;
-}
+import { useMutation } from '@apollo/client';
+import { GET_USER_DATA } from '../../Services/queryServics';
+import {
+  CREATE_SHOPPING_LIST,
+  CREATE_MYFRIDGE_LIST
+} from '../../Services/mutationService'
+
 
 interface InitialState {
   name: string;
   category: string;
   quantity: number;
+  saved: string;
 }
 
-const AddItems = (props:AddItemsProps) => {
+const AddItems = () => {
 
   const initialState = {
     name: '',
     category: '',
-    quantity: 1
+    quantity: 1,
+    saved: ''
   };
+  
   const [addIngredient, setAddIngredient] = useState<InitialState>(initialState);
+
+  const [createShoppinglist] = useMutation(CREATE_SHOPPING_LIST, {refetchQueries:[{query: GET_USER_DATA}]});
+  const [createMyFridgeList] = useMutation(CREATE_MYFRIDGE_LIST, {refetchQueries:[{query: GET_USER_DATA}]});
 
 
   const updateName = (e:string)=> {
@@ -52,18 +59,23 @@ const AddItems = (props:AddItemsProps) => {
     )
   }
 
-  //TODO: mutation query for add to my fridge 
   const myfridgeHandler = (event:any) => {
     event.preventDefault();
-    ApiService.saveMyfridgeList([addIngredient])
-    //.then(() => props.fetchMyFridgeList());
+    const {name, category, quantity} = addIngredient;
+    const myFridgeItem = Object.assign({},{name:name, category:category, quantity:quantity, saved: 'Fridge'})
+    createMyFridgeList({
+      variables: {newMyFridgelist: myFridgeItem}
+    })
     setAddIngredient(initialState);
   }
-  //TODO: mutation query for add to shopping list
+ 
   const shoppinglistHandler = (event:any) => {
     event.preventDefault();
-    ApiService.saveShoppingList([addIngredient])
-    //.then(() => props.fetchShoppingList());
+    const {name, category, quantity} = addIngredient;
+    const shoppingListItem = Object.assign({},{name:name, category:category, quantity:quantity, saved: 'ShoppingList'})
+    createShoppinglist({
+      variables: {newShoppinglist: shoppingListItem}
+    })
     setAddIngredient(initialState);
   }
 
