@@ -39,7 +39,6 @@ function Button (props:ButtonProps) {
 
     if (checkedItems.length > 0) {
       if (listItems[0].saved === "Fridge") {
-        
         for (let i = 0; i < checkedItems.length; ++i) {
           const el = checkedItems[i];
           let res = await ApiService.getOneMyFridgeItem(el);
@@ -47,7 +46,6 @@ function Button (props:ButtonProps) {
           const movedItem:Item = Object.assign({}, { name: name, category: category, quantity: quantity, saved: "ShoppingList" })
           movedItemArray.push(movedItem);
         }
-        // props.setCheckedItems([]);
       } else if (listItems[0].saved === "ShoppingList") {
         for (let i = 0; i < checkedItems.length; ++i) {
           const el = checkedItems[i];

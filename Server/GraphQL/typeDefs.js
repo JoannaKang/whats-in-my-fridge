@@ -9,6 +9,9 @@ const typeDefs = gql`
     getShoppingList: [Item]
     getOneMyFridgeItem(id: String!): Item
     getOneShoppingList(id: String!): Item
+    getMyRecipeItems: [Myrecipe]
+    getOneRecipe(id: String!): Recipe
+    getFullRecipe: [Recipe]
   }
 
   type Mutation {

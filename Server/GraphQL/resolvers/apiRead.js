@@ -1,5 +1,7 @@
 const MyfridgeItem = require('../../Models/Fridgeitem');
 const ShoppingListItem = require('../../Models/ShoppingListItem');
+const MyRecipeItem = require('../../Models/Myrecipe');
+const Recipies = require('../../Models/Recipies');
 
 exports.getMyFridgeList = async () => {
   try {
@@ -43,5 +45,48 @@ exports.getOneShoppingList = async (id) => {
     return foundedItem
   } catch (e) {
     console.log(e);
+  }
+}
+
+exports.getMyRecipeItems = async () => {
+  try {
+    const allRecipeList = await MyRecipeItem.find({})
+    console.log('allRecipeList', allRecipeList);
+    return allRecipeList;
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+
+exports.getOneRecipe = async (id) => {
+  console.log('Find one from Recipes')
+  try {
+    console.log(id);
+    const foundedRecipe = await Recipies.findOne({
+      _id: id
+    });
+    return foundedRecipe;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+exports.getFullRecipe = async () => {
+  try {
+    const allRecipeList = await MyRecipeItem.find({});
+    const fullRecipes = []
+    for (let i = 0; i < allRecipeList.length; i++) {
+      const foundedRecipe = await Recipies.findOne({
+        _id: allRecipeList[i].recipeID
+      });
+      fullRecipes.push(foundedRecipe);
+    }
+    console.log('fullRecipes', fullRecipes);
+    return fullRecipes;
+    
+  } catch (error) {
+    console.log('error', error);    
   }
 }

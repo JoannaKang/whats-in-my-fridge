@@ -62,20 +62,21 @@ function App() {
       .then(data => setRecipeitems(data));
   }
 
-  const fetchMyRecipes = () => {
-    ApiService.getMyRecipe()
-      .then(data => setMyRecipeList(data));
-  }
+  // const fetchMyRecipes = () => {
+  //   ApiService.getMyRecipe()
+  //     .then(data => setMyRecipeList(data));
+  // }
 
   const clickboxHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked === true) {
       setCheckedItems([
         ...checkedItems, e.target.value]
       )
+      console.log(checkedItems);
     } else {
       setCheckedItems(checkedItems.filter(el => el !== e.target.value));
+      console.log(checkedItems);
     }
-    console.log(checkedItems);
   }
 
   const getRecipeHandler = async () => {
@@ -120,7 +121,7 @@ function App() {
   useEffect(() => {
     //fetchMyFridgeList();
     //fetchShoppinglist();
-    // fetchRecipes();
+    fetchRecipes();
     // fetchMyRecipes();
   }, [])
 
