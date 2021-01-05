@@ -38,13 +38,13 @@ nodemon
 
 ## 🤖Here are tech stacks that I used for this project
 <p align="left"> 
-   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> 
+   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor" alt="javascript" width="40" height="40"/> </a> 
     <a href="https://www.typescriptlang.org/" target="_blank"> <img src="https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor" alt="typescript" width="40" height="40"/> </a> 
-   <a href="https://reactjs.org/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> 
+   <a href="https://reactjs.org/" target="_blank"> <img src="https://icongr.am/devicon/react-original.svg?size=128&color=currentColor" alt="react" width="40" height="40"/> </a> 
     <a href="https://graphql.github.io/" target="_blank"> <img src="https://user-images.githubusercontent.com/25126281/102015838-d4678280-3d55-11eb-81d2-cd2a79ea3a82.png" alt="css3" width="40" height="40"/> </a> 
-   <a href="https://nodejs.org" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> 
-   <a href="https://expressjs.com" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> 
-   <a href="https://www.mongodb.com/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> 
-   <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> 
+   <a href="https://nodejs.org" target="_blank"> <img src="https://icongr.am/devicon/nodejs-original-wordmark.svg?size=128&color=currentColor" alt="nodejs" width="40" height="40"/> </a> 
+   <a href="https://expressjs.com" target="_blank"> <img src="https://icongr.am/devicon/express-original-wordmark.svg?size=128&color=currentColor" alt="express" width="40" height="40"/> </a> 
+   <a href="https://www.mongodb.com/" target="_blank"> <img src="https://icongr.am/devicon/mongodb-original-wordmark.svg?size=128&color=currentColor" alt="mongodb" width="40" height="40"/> </a> 
+   <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://icongr.am/devicon/css3-original-wordmark.svg?size=128&color=currentColor" alt="css3" width="40" height="40"/> </a> 
 </p>
 
